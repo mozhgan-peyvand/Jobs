@@ -4,6 +4,7 @@ import org.gradle.kotlin.dsl.dependencies
 import java.io.ByteArrayOutputStream
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
+import org.gradle.kotlin.dsl.provideDelegate
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
@@ -52,6 +53,61 @@ class CommonModulePlugin : Plugin<Project> {
 
                 composeOptions.kotlinCompilerExtensionVersion = "1.0.5"
                 buildFeatures.compose = true
+                flavorDimensions("mode")
+                productFlavors {
+                    create("dev") {
+                        dimension("mode")
+                        buildConfigField(
+                            "String",
+                            "VERSION_NAME",
+                            "\"dev-build${getDate()}-g${outputText}\""
+                        )
+                        val usePublishDependencyInGradle: String by project
+                        buildConfigField(
+                            "String",
+                            "usePublishDependencyInGradle",
+                            "\"${usePublishDependencyInGradle}\""
+                        )
+                        // The following configuration limits the "dev" flavor to using
+                        // English string resources and xxhdpi screen-density resources.
+                        resourceConfigurations.addAll(listOf("en", "xxhdpi"))
+                        // Disable PNG crunching
+                        aaptOptions.cruncherEnabled = false
+                        // Disable Split apk in development
+                        splits {
+                            abi {
+                                isEnable = false
+                            }
+                            density {
+                                isEnable = false
+                            }
+                        }
+                        resValue(
+                            "string",
+                            "API_URL_FindWork",
+                            "\"https://findwork.dev\""
+                        )
+
+                    }
+                    create("stage") {
+                        dimension("mode")
+                        val usePublishDependencyInGradle: String by project
+                        buildConfigField(
+                            "String",
+                            "usePublishDependencyInGradle",
+                            "\"${usePublishDependencyInGradle}\""
+                        )
+                    }
+                    create("prod") {
+                        dimension("mode")
+                        val usePublishDependencyInGradle: String by project
+                        buildConfigField(
+                            "String",
+                            "usePublishDependencyInGradle",
+                            "\"${usePublishDependencyInGradle}\""
+                        )
+                    }
+                }
             }
             // dependencies common to all projects
             with(project) {
