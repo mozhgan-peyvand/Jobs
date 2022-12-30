@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Jobs"
 include ':app'
+include ':data'
+include ':domain'
+include ':ui-find-job'

@@ -38,7 +38,7 @@ android {
     }
     flavorDimensions.add("mode")
     productFlavors {
-        create("dev") {
+        create("mock") {
             dimension = "mode"
             applicationIdSuffix = ".dev"
             versionName = "dev-build${getDate()}-g${getGitHash()}"
