@@ -11,13 +11,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 class CommonModulePlugin : Plugin<Project> {
     override fun apply(project: Project) {
 
-        val outputText: String = ByteArrayOutputStream().use { outputStream ->
-            project.exec {
-                commandLine("git", "rev-parse", "--short", "HEAD")
-                standardOutput = outputStream
-            }
-            outputStream.toString().trim()
-        }
+//        val outputText: String = ByteArrayOutputStream().use { outputStream ->
+//            project.exec {
+//                commandLine("git", "rev-parse", "--short", "HEAD")
+//                standardOutput = outputStream
+//            }
+//            outputStream.toString().trim()
+//        }
         //    apply commonPlugin to all project
         project.plugins.apply(BuildPlugins.ANDROID_LIBRARY)
         project.plugins.apply(BuildPlugins.KOTLIN_ANDROID)
@@ -55,19 +55,19 @@ class CommonModulePlugin : Plugin<Project> {
                 buildFeatures.compose = true
                 flavorDimensions("mode")
                 productFlavors {
-                    create("dev") {
+                    create("mock") {
                         dimension("mode")
-                        buildConfigField(
-                            "String",
-                            "VERSION_NAME",
-                            "\"dev-build${getDate()}-g${outputText}\""
-                        )
-                        val usePublishDependencyInGradle: String by project
-                        buildConfigField(
-                            "String",
-                            "usePublishDependencyInGradle",
-                            "\"${usePublishDependencyInGradle}\""
-                        )
+//                        buildConfigField(
+//                            "String",
+//                            "VERSION_NAME",
+//                            "\"dev-build${getDate()}-g${outputText}\""
+//                        )
+//                        val usePublishDependencyInGradle: String by project
+//                        buildConfigField(
+//                            "String",
+//                            "usePublishDependencyInGradle",
+//                            "\"${usePublishDependencyInGradle}\""
+//                        )
                         // The following configuration limits the "dev" flavor to using
                         // English string resources and xxhdpi screen-density resources.
                         resourceConfigurations.addAll(listOf("en", "xxhdpi"))
@@ -91,21 +91,21 @@ class CommonModulePlugin : Plugin<Project> {
                     }
                     create("stage") {
                         dimension("mode")
-                        val usePublishDependencyInGradle: String by project
-                        buildConfigField(
-                            "String",
-                            "usePublishDependencyInGradle",
-                            "\"${usePublishDependencyInGradle}\""
-                        )
+//                        val usePublishDependencyInGradle: String by project
+//                        buildConfigField(
+//                            "String",
+//                            "usePublishDependencyInGradle",
+//                            "\"${usePublishDependencyInGradle}\""
+//                        )
                     }
                     create("prod") {
                         dimension("mode")
-                        val usePublishDependencyInGradle: String by project
-                        buildConfigField(
-                            "String",
-                            "usePublishDependencyInGradle",
-                            "\"${usePublishDependencyInGradle}\""
-                        )
+//                        val usePublishDependencyInGradle: String by project
+//                        buildConfigField(
+//                            "String",
+//                            "usePublishDependencyInGradle",
+//                            "\"${usePublishDependencyInGradle}\""
+//                        )
                     }
                 }
             }
