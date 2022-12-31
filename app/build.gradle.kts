@@ -85,5 +85,6 @@ android {
 }
 
 dependencies {
+    implementation(project(":builder"))
     addCompose()
 }
