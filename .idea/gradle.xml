@@ -12,9 +12,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
-            <option value="$PROJECT_DIR$/data" />
-            <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/ui-find-job" />
+            <option value="$PROJECT_DIR$/data-jobs" />
+            <option value="$PROJECT_DIR$/data-user" />
+            <option value="$PROJECT_DIR$/domain-jobs" />
+            <option value="$PROJECT_DIR$/domain-user" />
+            <option value="$PROJECT_DIR$/ui-jobs" />
+            <option value="$PROJECT_DIR$/ui-user" />
           </set>
         </option>
       </GradleProjectSettings>

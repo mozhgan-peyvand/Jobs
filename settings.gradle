@@ -14,6 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Jobs"
 include ':app'
-include ':data'
-include ':domain'
-include ':ui-find-job'
+include ':data-user'
+include ':data-jobs'
+include ':ui-user'
+include ':ui-jobs'
+include ':domain-jobs'
+include ':domain-user'
