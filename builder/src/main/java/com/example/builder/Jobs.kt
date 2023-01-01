@@ -3,7 +3,7 @@ package com.example.builder
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.example.builder.ui.HomeActivity
+import com.example.builder.ui.BuilderActivity
 
 class Jobs (
     private var context: Context? = null,
@@ -33,8 +33,8 @@ class Jobs (
     }
 
     fun start() {
-        HomeActivity.appId = appId
-        Intent(context, HomeActivity::class.java).apply {
+        BuilderActivity.appId = appId
+        Intent(context, BuilderActivity::class.java).apply {
             (context as Activity).startActivityForResult(this, activityResultRequestCode)
         }
     }

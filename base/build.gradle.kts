@@ -3,9 +3,8 @@ plugins {
     id(BuildPlugins.KOTLIN_KAPT)
 }
 
+
 dependencies {
 
-    implementation(project(":base"))
-    addCompose()
-    addNavigationComponent()
+
 }
