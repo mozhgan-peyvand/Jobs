@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="Jobs.app" target="11" />
+      <module name="Jobs.base" target="11" />
       <module name="Jobs.builder" target="11" />
       <module name="Jobs.buildSrc" target="11" />
       <module name="Jobs.buildSrc.main" target="11" />

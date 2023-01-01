@@ -9,5 +9,8 @@ plugins {
 
 dependencies {
 
+    implementation(project(":ui-jobs"))
+    implementation(project(":ui-user"))
+    implementation(project(":base"))
     addCompose()
 }

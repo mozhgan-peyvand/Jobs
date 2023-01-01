@@ -14,3 +14,16 @@ fun Project.addCompose() {
         add("implementation", "androidx.navigation:navigation-compose:2.5.0-beta01")
     }
 }
+fun Project.addNavigationComponent() {
+    dependencies {
+        add("implementation", "androidx.navigation:navigation-fragment-ktx:2.3.1")
+        add("implementation", "androidx.navigation:navigation-ui-ktx:2.3.1")
+        add("implementation", "androidx.navigation:navigation-common-ktx:2.3.1")
+        add("implementation", "androidx.navigation:navigation-runtime-ktx:2.3.1")
+        add(
+            "androidTestImplementation",
+            "android.arch.navigation:navigation-testing-ktx:1.0.0-alpha06"
+        )
+
+    }
+}
