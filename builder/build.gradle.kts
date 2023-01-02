@@ -13,4 +13,5 @@ dependencies {
     implementation(project(":ui-user"))
     implementation(project(":base"))
     addCompose()
+    addNavigationComponent()
 }
