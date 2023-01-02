@@ -8,9 +8,11 @@
       <module name="Jobs.buildSrc" target="11" />
       <module name="Jobs.buildSrc.main" target="11" />
       <module name="Jobs.buildSrc.test" target="11" />
+      <module name="Jobs.data-favorite" target="11" />
       <module name="Jobs.data-jobs" target="11" />
       <module name="Jobs.data-user" target="11" />
       <module name="Jobs.domain" target="11" />
+      <module name="Jobs.ui-favorite" target="11" />
       <module name="Jobs.ui-jobs" target="11" />
       <module name="Jobs.ui-user" target="11" />
     </bytecodeTargetLevel>
