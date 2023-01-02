@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--draw vector with-->
+<!--    https://vectr.com/design/editor/f721380f-0825-4116-9f7e-d760b147b7fe-->
+<!--create animation with-->
+<!--    https://shapeshifter.design/-->
+<!--change setting with-->
+<!--    https://www.youtube.com/watch?v=EiMELNUIkzo-->
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="500dp"
+            android:height="500dp"
+            android:viewportWidth="500"
+            android:viewportHeight="500">
+            <path
+                android:name="path_3"
+                android:pathData="M 249.999 22.61 L 319.554 173.404 L 484.466 192.957 L 362.547 305.708 L 394.908 468.59 L 250 387.482 L 105.092 468.59 L 137.453 305.708 L 15.534 192.957 L 180.446 173.404 Z"
+                android:fillAlpha="0"
+                android:strokeColor="#000000"
+                android:strokeWidth="35"
+                android:strokeLineCap="round"
+                android:strokeLineJoin="round"/>
+        </vector>
+    </aapt:attr>
+    <target android:name="path_3">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="trimPathStart"
+                android:duration="300"
+                android:valueFrom="1"
+                android:valueTo="0"
+                android:valueType="floatType"
+                android:interpolator="@android:anim/accelerate_interpolator"/>
+        </aapt:attr>
+    </target>
+</animated-vector>
+

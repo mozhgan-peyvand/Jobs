@@ -41,8 +41,8 @@ class BuilderActivity : ComponentActivity() {
                 val activeIndex = savedInstanceState?.getInt("activeIndex") ?: 1
                 val menuItems = arrayOf(
                     CbnMenuItem(
-                        R.drawable.ic_dashboard,
-                        R.drawable.avd_dashboard,
+                        R.drawable.ic_favorite,
+                        R.drawable.avd_favorite,
                         AppRouters.UserScreen.routers
                     ),
                     CbnMenuItem(
