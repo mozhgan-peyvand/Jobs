@@ -9,6 +9,7 @@ plugins {
 
 dependencies {
 
+    implementation(project(":ui-favorite"))
     implementation(project(":ui-jobs"))
     implementation(project(":ui-user"))
     implementation(project(":base"))

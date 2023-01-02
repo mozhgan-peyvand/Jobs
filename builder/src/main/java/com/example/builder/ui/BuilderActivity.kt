@@ -22,6 +22,7 @@ import com.example.ui_user.util.navigation.addUserNavGraph
 import com.example.builder.R
 import com.example.builder.ui.bottomNavigaiton.CbnMenuItem
 import com.example.builder.ui.bottomNavigaiton.CurvedBottomNavigationView
+import com.example.ui_favorite.util.navigation.addFavoriteGraph
 
 class BuilderActivity : ComponentActivity() {
 
@@ -43,13 +44,12 @@ class BuilderActivity : ComponentActivity() {
                     CbnMenuItem(
                         R.drawable.ic_favorite,
                         R.drawable.avd_favorite,
-                        AppRouters.UserScreen.routers
+                        AppRouters.FavoriteScreen.routers
                     ),
                     CbnMenuItem(
                         R.drawable.ic_home,
                         R.drawable.avd_home,
                         AppRouters.JobScreen.routers
-
                     ),
                     CbnMenuItem(
                         R.drawable.ic_profile,
@@ -97,6 +97,7 @@ class BuilderActivity : ComponentActivity() {
         NavHost(navController = navController, startDestination = AppRouters.JobGraph.routers) {
             addJobsGraph(navController)
             addUserNavGraph(navController)
+            addFavoriteGraph(navController)
         }
     }
 }

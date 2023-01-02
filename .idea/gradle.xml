@@ -14,10 +14,13 @@
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/builder" />
+            <option value="$PROJECT_DIR$/data-favorite" />
             <option value="$PROJECT_DIR$/data-jobs" />
             <option value="$PROJECT_DIR$/data-user" />
+            <option value="$PROJECT_DIR$/domain-favorite" />
             <option value="$PROJECT_DIR$/domain-jobs" />
             <option value="$PROJECT_DIR$/domain-user" />
+            <option value="$PROJECT_DIR$/ui-favorite" />
             <option value="$PROJECT_DIR$/ui-jobs" />
             <option value="$PROJECT_DIR$/ui-user" />
           </set>
