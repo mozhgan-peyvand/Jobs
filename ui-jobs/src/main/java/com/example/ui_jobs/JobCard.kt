@@ -1,6 +1,7 @@
 package com.example.ui_jobs
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -16,6 +17,9 @@ import androidx.compose.ui.unit.dp
 fun JobCard(name: String, description: String, image: Int) {
     Card(
         modifier = Modifier.padding(10.dp)
+            .clickable{
+
+            }
             .fillMaxWidth()
             .wrapContentHeight(),
         shape = MaterialTheme.shapes.medium,
@@ -23,6 +27,7 @@ fun JobCard(name: String, description: String, image: Int) {
         backgroundColor = MaterialTheme.colors.surface
     ) {
         Row(
+            modifier= Modifier.padding(1.dp) ,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
