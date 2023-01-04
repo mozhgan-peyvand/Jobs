@@ -1,61 +1,90 @@
 package com.example.ui_jobs.screens
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.ui_jobs.JobCard
-import com.example.ui_jobs.JobInfoModel
+import androidx.compose.ui.res.dimensionResource
+import com.example.ui_jobs.model.JobInfoModel
+import com.example.ui_jobs.R
+import com.example.ui_jobs.util.ui.JobCard
+import com.example.ui_jobs.model.SlideState
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun JobScreen() {
-
-    var jobList = listOf(
-        JobInfoModel(1,"android","description",1),
-        JobInfoModel(2,"android","description",1),
-        JobInfoModel(3,"android","description",1),
-        JobInfoModel(4,"android","description",1),
-        JobInfoModel(5,"android","description",1),
-        JobInfoModel(6,"android","description",1),
-        JobInfoModel(7,"android","description",1),
+    var jobList = arrayOf(
+        JobInfoModel(1,"android1","description1",1),
+        JobInfoModel(2,"android2","description2",1),
+        JobInfoModel(3,"android3","description3",1),
+        JobInfoModel(4,"android4","description4",1),
+        JobInfoModel(5,"android5","description5",1),
+        JobInfoModel(6,"android6","description6",1),
+        JobInfoModel(7,"android7","description7",1),
 
     )
-    var jobStateList by remember {
-        mutableStateOf(jobList)
+    val shoesArticles = remember { mutableStateListOf(*jobList) }
+    val slideStates = remember {
+        mutableStateMapOf<JobInfoModel, SlideState>()
+            .apply {
+                shoesArticles.map { shoesArticle ->
+                    shoesArticle to SlideState.NONE
+                }.toMap().also {
+                    putAll(it)
+                }
+            }
     }
+    ShoesList(
+        shoesArticles = shoesArticles,
+        slideStates = slideStates,
+        updateSlideState = { shoesArticle, slideState -> slideStates[shoesArticle] = slideState },
+        updateItemPosition = { currentIndex, destinationIndex ->
+            val shoesArticle = shoesArticles[currentIndex]
+            shoesArticles.removeAt(currentIndex)
+            shoesArticles.add(destinationIndex, shoesArticle)
+            slideStates.apply {
+                shoesArticles.map { shoesArticle ->
+                    shoesArticle to SlideState.NONE
+                }.toMap().also {
+                    putAll(it)
+                }
+            }
+        }
+    )
+
+
+
+}
+@ExperimentalAnimationApi
+@Composable
+fun ShoesList(
+    shoesArticles: MutableList<JobInfoModel>,
+    slideStates: Map<JobInfoModel, SlideState>,
+    updateSlideState: (shoesArticle: JobInfoModel, slideState: SlideState) -> Unit,
+    updateItemPosition: (currentIndex: Int, destinationIndex: Int) -> Unit
+) {
+    val lazyListState = rememberLazyListState()
     LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(16.dp)
+        state = lazyListState,
+        modifier = Modifier.padding(top = dimensionResource(id = R.dimen.list_top_padding))
     ) {
-        item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(vertical = 25.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    " Plants in Cosmetics",
-                    style = MaterialTheme.typography.h3
-                )
-            }
-        }
-        items(items = jobStateList, key = { it.id}){ jobInfo ->
-            Row(modifier = Modifier.padding(1.dp).animateItemPlacement()) {
-
-                JobCard(jobInfo.name, jobInfo.description, jobInfo.imageRes)
+        items(shoesArticles.size) { index ->
+            val shoesArticle = shoesArticles.getOrNull(index)
+            if (shoesArticle != null) {
+                key(shoesArticle) {
+                    val slideState = slideStates[shoesArticle] ?: SlideState.NONE
+                    JobCard(
+                        shoesArticle = shoesArticle,
+                        slideState = slideState,
+                        shoesArticles = shoesArticles,
+                        updateSlideState = updateSlideState,
+                        updateItemPosition = updateItemPosition
+                    )
+                }
             }
         }
     }
-
-
 }
