@@ -8,27 +8,26 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import com.example.ui_jobs.model.JobInfoModel
-import com.example.ui_jobs.R
-import com.example.ui_jobs.util.ui.JobCard
-import com.example.ui_jobs.model.SlideState
+import com.example.common_ui_view.R
+import com.example.common_ui_view.JobCard
+import com.example.common_ui_view.SlideState
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun JobScreen() {
     var jobList = arrayOf(
-        JobInfoModel(1,"android1","description1",1),
-        JobInfoModel(2,"android2","description2",1),
-        JobInfoModel(3,"android3","description3",1),
-        JobInfoModel(4,"android4","description4",1),
-        JobInfoModel(5,"android5","description5",1),
-        JobInfoModel(6,"android6","description6",1),
-        JobInfoModel(7,"android7","description7",1),
+        com.example.common_ui_view.JobInfoModel(1, "android1", "description1", 1),
+        com.example.common_ui_view.JobInfoModel(2, "android2", "description2", 1),
+        com.example.common_ui_view.JobInfoModel(3, "android3", "description3", 1),
+        com.example.common_ui_view.JobInfoModel(4, "android4", "description4", 1),
+        com.example.common_ui_view.JobInfoModel(5, "android5", "description5", 1),
+        com.example.common_ui_view.JobInfoModel(6, "android6", "description6", 1),
+        com.example.common_ui_view.JobInfoModel(7, "android7", "description7", 1),
 
     )
     val shoesArticles = remember { mutableStateListOf(*jobList) }
     val slideStates = remember {
-        mutableStateMapOf<JobInfoModel, SlideState>()
+        mutableStateMapOf<com.example.common_ui_view.JobInfoModel, SlideState>()
             .apply {
                 shoesArticles.map { shoesArticle ->
                     shoesArticle to SlideState.NONE
@@ -61,9 +60,9 @@ fun JobScreen() {
 @ExperimentalAnimationApi
 @Composable
 fun ShoesList(
-    shoesArticles: MutableList<JobInfoModel>,
-    slideStates: Map<JobInfoModel, SlideState>,
-    updateSlideState: (shoesArticle: JobInfoModel, slideState: SlideState) -> Unit,
+    shoesArticles: MutableList<com.example.common_ui_view.JobInfoModel>,
+    slideStates: Map<com.example.common_ui_view.JobInfoModel, SlideState>,
+    updateSlideState: (shoesArticle: com.example.common_ui_view.JobInfoModel, slideState: SlideState) -> Unit,
     updateItemPosition: (currentIndex: Int, destinationIndex: Int) -> Unit
 ) {
     val lazyListState = rememberLazyListState()

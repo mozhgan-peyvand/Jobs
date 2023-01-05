@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-
+    implementation(project(":common-ui-view"))
     implementation(project(":base"))
     addCompose()
     addNavigationComponent()
