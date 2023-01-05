@@ -1,4 +1,4 @@
-package com.example.ui_jobs.util.ui
+package com.example.common_ui_view
 
 import android.util.Log
 import androidx.compose.animation.core.Animatable
@@ -14,8 +14,6 @@ import androidx.compose.ui.input.pointer.PointerInputChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.unit.IntOffset
-import com.example.ui_jobs.model.JobInfoModel
-import com.example.ui_jobs.model.SlideState
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt

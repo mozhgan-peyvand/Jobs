@@ -1,4 +1,4 @@
-package com.example.ui_jobs.util.ui
+package com.example.common_ui_view
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateIntAsState
@@ -17,9 +17,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.example.ui_jobs.R
-import com.example.ui_jobs.model.JobInfoModel
-import com.example.ui_jobs.model.SlideState
 import kotlinx.coroutines.launch
 
 private val particlesStreamRadii = mutableListOf<Float>()
