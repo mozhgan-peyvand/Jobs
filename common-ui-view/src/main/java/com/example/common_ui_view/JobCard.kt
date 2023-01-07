@@ -5,11 +5,14 @@ import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyListLayoutInfo
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
@@ -18,6 +21,8 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import kotlinx.coroutines.launch
+import kotlin.math.absoluteValue
+
 
 private val particlesStreamRadii = mutableListOf<Float>()
 private var itemHeight = 0
@@ -31,7 +36,10 @@ fun JobCard(
     slideState: SlideState,
     shoesArticles: MutableList<JobInfoModel>,
     updateSlideState: (shoesArticle: JobInfoModel, slideState: SlideState) -> Unit,
-    updateItemPosition: (currentIndex: Int, destinationIndex: Int) -> Unit
+    updateItemPosition: (currentIndex: Int, destinationIndex: Int) -> Unit,
+    navigateToJobDetailScreen: (() -> Unit)? = null,
+    lazyListState: LazyListState,
+    modifier: Modifier
 ) {
     val itemHeightDp = dimensionResource(id = R.dimen.image_size)
     with(LocalDensity.current) {
@@ -69,7 +77,7 @@ fun JobCard(
     }
 
     Box(
-        Modifier
+        modifier
             .padding(horizontal = 16.dp)
             .dragToReorder(
                 shoesArticle,
@@ -84,30 +92,46 @@ fun JobCard(
                     currentIndex.value = cIndex
                     destinationIndex.value = dIndex
                 }
-            ).clickable{  }
+            )
+            .clickable { }
             .offset { IntOffset(0, verticalTranslation) }
             .zIndex(zIndex)
             .rotate(rotation)
     ) {
         Card(
-            modifier = Modifier.padding(10.dp)
-                .clickable{
-
-                }
+            modifier = Modifier
+                .padding(10.dp)
                 .fillMaxWidth()
-                .wrapContentHeight(),
+                .wrapContentHeight()
+                .clickable { navigateToJobDetailScreen?.invoke() }
+                .graphicsLayer {
+                    val value =
+                        1 - (lazyListState.layoutInfo.normalizedItemPosition(shoesArticle.id).absoluteValue * 0.15F)
+                    alpha = value
+                    scaleX = value
+                    scaleY = value
+                },
             shape = MaterialTheme.shapes.medium,
             elevation = 5.dp,
             backgroundColor = MaterialTheme.colors.surface
         ) {
             Row(
-                modifier= Modifier.padding(1.dp) ,
+                modifier = Modifier
+                    .padding(1.dp)
+                    .graphicsLayer {
+                        val value =
+                            1 - (lazyListState.layoutInfo.normalizedItemPosition(shoesArticle.id).absoluteValue * 0.15F)
+                        alpha = value
+                        scaleX = value
+                        scaleY = value
+                    },
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_baseline_calendar_month_24),
                     contentDescription = null,
-                    modifier = Modifier.size(130.dp)
+                    modifier = Modifier
+                        .size(130.dp)
                         .padding(8.dp),
                     contentScale = ContentScale.Fit,
                 )
@@ -118,7 +142,7 @@ fun JobCard(
                         color = MaterialTheme.colors.onSurface,
                     )
                     Text(
-                        text =  shoesArticle.description,
+                        text = shoesArticle.description,
                         style = MaterialTheme.typography.body2,
                     )
                 }
@@ -126,3 +150,12 @@ fun JobCard(
         }
     }
 }
+
+fun LazyListLayoutInfo.normalizedItemPosition(key: Any): Float =
+    visibleItemsInfo
+        .firstOrNull { it.key == key }
+        ?.let {
+            val center = (viewportEndOffset + viewportStartOffset - it.size) / 2F
+            (it.offset.toFloat() - center) / center
+        }
+        ?: 0F

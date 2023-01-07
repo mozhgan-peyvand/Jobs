@@ -3,6 +3,7 @@ package com.example.builder.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -26,6 +27,8 @@ import com.example.builder.ui.bottomNavigaiton.BottomBarScreen
 import com.example.ui_favorite.util.navigation.addFavoriteGraph
 import com.example.ui_jobs.util.navigation.addJobsGraph
 import com.example.ui_user.util.navigation.addUserNavGraph
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 class BuilderActivity : ComponentActivity() {
 
@@ -35,16 +38,17 @@ class BuilderActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
 
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            navController = rememberNavController()
+            navController = rememberAnimatedNavController()
 
             Scaffold(
                 bottomBar = { BottomBar(navController = navController) }
             ) { paddingValue ->
 
-                NavHost(
+                AnimatedNavHost(
                     navController = navController,
                     startDestination = AppRouters.JobGraph.routers,
                     modifier = Modifier.padding(paddingValue)

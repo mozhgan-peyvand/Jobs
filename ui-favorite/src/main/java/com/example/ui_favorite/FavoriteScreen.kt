@@ -36,52 +36,52 @@ fun FavoriteScreen() {
                 }
             }
     }
-    ShoesList(
-        shoesArticles = shoesArticles,
-        slideStates = slideStates,
-        updateSlideState = { shoesArticle, slideState -> slideStates[shoesArticle] = slideState },
-        updateItemPosition = { currentIndex, destinationIndex ->
-            val shoesArticle = shoesArticles[currentIndex]
-            shoesArticles.removeAt(currentIndex)
-            shoesArticles.add(destinationIndex, shoesArticle)
-            slideStates.apply {
-                shoesArticles.map { shoesArticle ->
-                    shoesArticle to SlideState.NONE
-                }.toMap().also {
-                    putAll(it)
-                }
-            }
-        }
-    )
+//    ShoesList(
+//        shoesArticles = shoesArticles,
+//        slideStates = slideStates,
+//        updateSlideState = { shoesArticle, slideState -> slideStates[shoesArticle] = slideState },
+//        updateItemPosition = { currentIndex, destinationIndex ->
+//            val shoesArticle = shoesArticles[currentIndex]
+//            shoesArticles.removeAt(currentIndex)
+//            shoesArticles.add(destinationIndex, shoesArticle)
+//            slideStates.apply {
+//                shoesArticles.map { shoesArticle ->
+//                    shoesArticle to SlideState.NONE
+//                }.toMap().also {
+//                    putAll(it)
+//                }
+//            }
+//        }
+//    )
 }
 
-@ExperimentalAnimationApi
-@Composable
-fun ShoesList(
-    shoesArticles: MutableList<JobInfoModel>,
-    slideStates: Map<JobInfoModel, SlideState>,
-    updateSlideState: (shoesArticle: JobInfoModel, slideState: SlideState) -> Unit,
-    updateItemPosition: (currentIndex: Int, destinationIndex: Int) -> Unit
-) {
-    val lazyListState = rememberLazyListState()
-    LazyColumn(
-        state = lazyListState,
-        modifier = Modifier.padding(top = dimensionResource(id = R.dimen.list_top_padding))
-    ) {
-        items(shoesArticles.size) { index ->
-            val shoesArticle = shoesArticles.getOrNull(index)
-            if (shoesArticle != null) {
-                key(shoesArticle) {
-                    val slideState = slideStates[shoesArticle] ?: SlideState.NONE
-                    JobCard(
-                        shoesArticle = shoesArticle,
-                        slideState = slideState,
-                        shoesArticles = shoesArticles,
-                        updateSlideState = updateSlideState,
-                        updateItemPosition = updateItemPosition
-                    )
-                }
-            }
-        }
-    }
-}
+//@ExperimentalAnimationApi
+//@Composable
+//fun ShoesList(
+//    shoesArticles: MutableList<JobInfoModel>,
+//    slideStates: Map<JobInfoModel, SlideState>,
+//    updateSlideState: (shoesArticle: JobInfoModel, slideState: SlideState) -> Unit,
+//    updateItemPosition: (currentIndex: Int, destinationIndex: Int) -> Unit
+//) {
+//    val lazyListState = rememberLazyListState()
+//    LazyColumn(
+//        state = lazyListState,
+//        modifier = Modifier.padding(top = dimensionResource(id = R.dimen.list_top_padding))
+//    ) {
+//        items(shoesArticles.size) { index ->
+//            val shoesArticle = shoesArticles.getOrNull(index)
+//            if (shoesArticle != null) {
+//                key(shoesArticle) {
+//                    val slideState = slideStates[shoesArticle] ?: SlideState.NONE
+//                    JobCard(
+//                        shoesArticle = shoesArticle,
+//                        slideState = slideState,
+//                        shoesArticles = shoesArticles,
+//                        updateSlideState = updateSlideState,
+//                        updateItemPosition = updateItemPosition
+//                    )
+//                }
+//            }
+//        }
+//    }
+//}
