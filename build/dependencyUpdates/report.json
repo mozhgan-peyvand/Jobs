@@ -1,0 +1,1059 @@
+{
+    "current": {
+        "dependencies": [
+            {
+                "group": "androidx.activity",
+                "userReason": null,
+                "version": "1.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/activity#1.5.1",
+                "name": "activity"
+            },
+            {
+                "group": "androidx.activity",
+                "userReason": null,
+                "version": "1.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/activity#1.5.0-beta01",
+                "name": "activity-ktx"
+            },
+            {
+                "group": "androidx.annotation",
+                "userReason": null,
+                "version": "1.3.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/annotation#1.3.0",
+                "name": "annotation"
+            },
+            {
+                "group": "androidx.annotation",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/annotation#1.1.0",
+                "name": "annotation-experimental"
+            },
+            {
+                "group": "androidx.appcompat",
+                "userReason": null,
+                "version": "1.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/appcompat#1.5.1",
+                "name": "appcompat-resources"
+            },
+            {
+                "group": "androidx.arch.core",
+                "userReason": null,
+                "version": "2.1.0",
+                "projectUrl": "https://developer.android.com/topic/libraries/architecture/index.html",
+                "name": "core-common"
+            },
+            {
+                "group": "androidx.arch.core",
+                "userReason": null,
+                "version": "2.1.0",
+                "projectUrl": "https://developer.android.com/topic/libraries/architecture/index.html",
+                "name": "core-runtime"
+            },
+            {
+                "group": "androidx.autofill",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "autofill"
+            },
+            {
+                "group": "androidx.cardview",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "cardview"
+            },
+            {
+                "group": "androidx.collection",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "collection"
+            },
+            {
+                "group": "androidx.collection",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "collection-ktx"
+            },
+            {
+                "group": "androidx.compose.animation",
+                "userReason": null,
+                "version": "1.1.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.1.1",
+                "name": "animation"
+            },
+            {
+                "group": "androidx.compose.animation",
+                "userReason": null,
+                "version": "1.1.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.1.1",
+                "name": "animation-core"
+            },
+            {
+                "group": "androidx.compose.foundation",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.2.1",
+                "name": "foundation"
+            },
+            {
+                "group": "androidx.compose.foundation",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.2.1",
+                "name": "foundation-layout"
+            },
+            {
+                "group": "androidx.compose.material",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.2.1",
+                "name": "material-icons-core"
+            },
+            {
+                "group": "androidx.compose.material",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.2.1",
+                "name": "material-ripple"
+            },
+            {
+                "group": "androidx.compose.runtime",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.2.1",
+                "name": "runtime"
+            },
+            {
+                "group": "androidx.compose.runtime",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.2.1",
+                "name": "runtime-saveable"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-geometry"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-graphics"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-text"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-tooling-data"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-unit"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-util"
+            },
+            {
+                "group": "androidx.concurrent",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "https://developer.android.com/topic/libraries/architecture/index.html",
+                "name": "concurrent-futures"
+            },
+            {
+                "group": "androidx.constraintlayout",
+                "userReason": null,
+                "version": "2.0.1",
+                "projectUrl": "http://tools.android.com",
+                "name": "constraintlayout"
+            },
+            {
+                "group": "androidx.constraintlayout",
+                "userReason": null,
+                "version": "2.0.1",
+                "projectUrl": "http://tools.android.com",
+                "name": "constraintlayout-solver"
+            },
+            {
+                "group": "androidx.coordinatorlayout",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "coordinatorlayout"
+            },
+            {
+                "group": "androidx.core",
+                "userReason": null,
+                "version": "1.8.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/core#1.8.0",
+                "name": "core"
+            },
+            {
+                "group": "androidx.cursoradapter",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "cursoradapter"
+            },
+            {
+                "group": "androidx.customview",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "customview"
+            },
+            {
+                "group": "androidx.customview",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/customview#1.0.0",
+                "name": "customview-poolingcontainer"
+            },
+            {
+                "group": "androidx.documentfile",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "documentfile"
+            },
+            {
+                "group": "androidx.drawerlayout",
+                "userReason": null,
+                "version": "1.1.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "drawerlayout"
+            },
+            {
+                "group": "androidx.dynamicanimation",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "dynamicanimation"
+            },
+            {
+                "group": "androidx.emoji2",
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/emoji2#1.2.0",
+                "name": "emoji2"
+            },
+            {
+                "group": "androidx.emoji2",
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/emoji2#1.2.0",
+                "name": "emoji2-views-helper"
+            },
+            {
+                "group": "androidx.fragment",
+                "userReason": null,
+                "version": "1.3.6",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/fragment#1.3.6",
+                "name": "fragment"
+            },
+            {
+                "group": "androidx.interpolator",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "interpolator"
+            },
+            {
+                "group": "androidx.legacy",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "legacy-support-core-utils"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-common"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.0-beta01",
+                "name": "lifecycle-common-java8"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.0.0",
+                "projectUrl": "https://developer.android.com/topic/libraries/architecture/index.html",
+                "name": "lifecycle-livedata"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-livedata-core"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.4.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.4.1",
+                "name": "lifecycle-process"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-runtime"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-viewmodel"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.0-beta01",
+                "name": "lifecycle-viewmodel-compose"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.0-beta01",
+                "name": "lifecycle-viewmodel-ktx"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "userReason": null,
+                "version": "2.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-viewmodel-savedstate"
+            },
+            {
+                "group": "androidx.loader",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "loader"
+            },
+            {
+                "group": "androidx.localbroadcastmanager",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "localbroadcastmanager"
+            },
+            {
+                "group": "androidx.navigation",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/navigation#2.5.0-beta01",
+                "name": "navigation-common"
+            },
+            {
+                "group": "androidx.navigation",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/navigation#2.5.0-beta01",
+                "name": "navigation-common-ktx"
+            },
+            {
+                "group": "androidx.navigation",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/navigation#2.5.0-beta01",
+                "name": "navigation-runtime"
+            },
+            {
+                "group": "androidx.navigation",
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/navigation#2.5.0-beta01",
+                "name": "navigation-runtime-ktx"
+            },
+            {
+                "group": "androidx.print",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "print"
+            },
+            {
+                "group": "androidx.profileinstaller",
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/profileinstaller#1.2.0",
+                "name": "profileinstaller"
+            },
+            {
+                "group": "androidx.recyclerview",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "recyclerview"
+            },
+            {
+                "group": "androidx.resourceinspection",
+                "userReason": null,
+                "version": "1.0.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/resourceinspection#1.0.1",
+                "name": "resourceinspection-annotation"
+            },
+            {
+                "group": "androidx.savedstate",
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/savedstate#1.2.0",
+                "name": "savedstate"
+            },
+            {
+                "group": "androidx.savedstate",
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/savedstate#1.2.0",
+                "name": "savedstate-ktx"
+            },
+            {
+                "group": "androidx.startup",
+                "userReason": null,
+                "version": "1.1.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/startup#1.1.1",
+                "name": "startup-runtime"
+            },
+            {
+                "group": "androidx.test.espresso",
+                "userReason": null,
+                "version": "3.5.0",
+                "projectUrl": "https://developer.android.com/testing",
+                "name": "espresso-core"
+            },
+            {
+                "group": "androidx.test.ext",
+                "userReason": null,
+                "version": "1.1.4",
+                "projectUrl": "https://developer.android.com/testing",
+                "name": "junit"
+            },
+            {
+                "group": "androidx.tracing",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/tracing#1.0.0",
+                "name": "tracing"
+            },
+            {
+                "group": "androidx.transition",
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "transition"
+            },
+            {
+                "group": "androidx.vectordrawable",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "vectordrawable"
+            },
+            {
+                "group": "androidx.vectordrawable",
+                "userReason": null,
+                "version": "1.1.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "vectordrawable-animated"
+            },
+            {
+                "group": "androidx.versionedparcelable",
+                "userReason": null,
+                "version": "1.1.1",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "versionedparcelable"
+            },
+            {
+                "group": "androidx.viewpager",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "http://developer.android.com/tools/extras/support-library.html",
+                "name": "viewpager"
+            },
+            {
+                "group": "androidx.viewpager2",
+                "userReason": null,
+                "version": "1.0.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx",
+                "name": "viewpager2"
+            },
+            {
+                "group": "junit",
+                "userReason": null,
+                "version": "4.13.2",
+                "projectUrl": "http://junit.org",
+                "name": "junit"
+            },
+            {
+                "group": "nl.littlerobots.version-catalog-update",
+                "userReason": null,
+                "version": "0.7.0",
+                "projectUrl": "https://github.com/littlerobots/version-catalog-update-plugin",
+                "name": "nl.littlerobots.version-catalog-update.gradle.plugin"
+            },
+            {
+                "group": "org.jetbrains",
+                "userReason": null,
+                "version": "13.0",
+                "projectUrl": "http://www.jetbrains.org",
+                "name": "annotations"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-android-extensions-runtime"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-reflect"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.7.10",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.7.10",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib-common"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.6.0",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib-jdk7"
+            },
+            {
+                "group": "org.jetbrains.kotlinx",
+                "userReason": null,
+                "version": "1.6.1",
+                "projectUrl": "https://github.com/Kotlin/kotlinx.coroutines",
+                "name": "kotlinx-coroutines-android"
+            },
+            {
+                "group": "org.jetbrains.kotlinx",
+                "userReason": null,
+                "version": "1.6.1",
+                "projectUrl": "https://github.com/Kotlin/kotlinx.coroutines",
+                "name": "kotlinx-coroutines-bom"
+            },
+            {
+                "group": "org.jetbrains.kotlinx",
+                "userReason": null,
+                "version": "1.6.1",
+                "projectUrl": "https://github.com/Kotlin/kotlinx.coroutines",
+                "name": "kotlinx-coroutines-core"
+            },
+            {
+                "group": "org.jetbrains.kotlinx",
+                "userReason": null,
+                "version": "1.6.1",
+                "projectUrl": "https://github.com/Kotlin/kotlinx.coroutines",
+                "name": "kotlinx-coroutines-core-jvm"
+            }
+        ],
+        "count": 85
+    },
+    "gradle": {
+        "current": {
+            "version": "7.6",
+            "reason": "",
+            "isUpdateAvailable": true,
+            "isFailure": false
+        },
+        "nightly": {
+            "version": "",
+            "reason": "update check disabled",
+            "isUpdateAvailable": false,
+            "isFailure": false
+        },
+        "enabled": true,
+        "releaseCandidate": {
+            "version": "8.0-rc-1",
+            "reason": "",
+            "isUpdateAvailable": true,
+            "isFailure": false
+        },
+        "running": {
+            "version": "7.4.2",
+            "reason": "",
+            "isUpdateAvailable": false,
+            "isFailure": false
+        }
+    },
+    "exceeded": {
+        "dependencies": [
+            {
+                "group": "androidx.core",
+                "latest": "1.8.0-beta01",
+                "userReason": null,
+                "version": "1.8.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/core#1.8.0",
+                "name": "core"
+            }
+        ],
+        "count": 1
+    },
+    "outdated": {
+        "dependencies": [
+            {
+                "group": "androidx.activity",
+                "available": {
+                    "release": null,
+                    "milestone": "1.5.1",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/activity#1.5.1",
+                "name": "activity"
+            },
+            {
+                "group": "androidx.activity",
+                "available": {
+                    "release": null,
+                    "milestone": "1.7.0-alpha02",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/activity#1.5.0-beta01",
+                "name": "activity-compose"
+            },
+            {
+                "group": "androidx.annotation",
+                "available": {
+                    "release": null,
+                    "milestone": "1.3.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.2.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/annotation#1.3.0",
+                "name": "annotation"
+            },
+            {
+                "group": "androidx.appcompat",
+                "available": {
+                    "release": null,
+                    "milestone": "1.7.0-alpha01",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/appcompat#1.7.0-alpha01",
+                "name": "appcompat"
+            },
+            {
+                "group": "androidx.compose.compiler",
+                "available": {
+                    "release": null,
+                    "milestone": "1.4.0-alpha02",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.0.5",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-compiler#1.4.0-alpha02",
+                "name": "compiler"
+            },
+            {
+                "group": "androidx.compose.material",
+                "available": {
+                    "release": null,
+                    "milestone": "1.4.0-alpha03",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.2.1",
+                "name": "material"
+            },
+            {
+                "group": "androidx.compose.material",
+                "available": {
+                    "release": null,
+                    "milestone": "1.4.0-alpha03",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.2.1",
+                "name": "material-icons-extended"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "available": {
+                    "release": null,
+                    "milestone": "1.4.0-alpha03",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "available": {
+                    "release": null,
+                    "milestone": "1.4.0-alpha03",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-tooling"
+            },
+            {
+                "group": "androidx.compose.ui",
+                "available": {
+                    "release": null,
+                    "milestone": "1.4.0-alpha03",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.2.1",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.2.1",
+                "name": "ui-tooling-preview"
+            },
+            {
+                "group": "androidx.core",
+                "available": {
+                    "release": null,
+                    "milestone": "1.9.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.8.0",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/core#1.8.0",
+                "name": "core-ktx"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "available": {
+                    "release": null,
+                    "milestone": "2.5.1",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-common"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "available": {
+                    "release": null,
+                    "milestone": "2.5.1",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-livedata-core"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "available": {
+                    "release": null,
+                    "milestone": "2.5.1",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-runtime"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "available": {
+                    "release": null,
+                    "milestone": "2.6.0-alpha03",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.0-beta01",
+                "name": "lifecycle-runtime-ktx"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "available": {
+                    "release": null,
+                    "milestone": "2.5.1",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-viewmodel"
+            },
+            {
+                "group": "androidx.lifecycle",
+                "available": {
+                    "release": null,
+                    "milestone": "2.5.1",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1",
+                "name": "lifecycle-viewmodel-savedstate"
+            },
+            {
+                "group": "androidx.navigation",
+                "available": {
+                    "release": null,
+                    "milestone": "2.6.0-alpha04",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.5.0-beta01",
+                "projectUrl": "https://developer.android.com/jetpack/androidx/releases/navigation#2.5.0-beta01",
+                "name": "navigation-compose"
+            },
+            {
+                "group": "androidx.test.espresso",
+                "available": {
+                    "release": null,
+                    "milestone": "3.5.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "3.4.0",
+                "projectUrl": "https://developer.android.com/testing",
+                "name": "espresso-core"
+            },
+            {
+                "group": "androidx.test.ext",
+                "available": {
+                    "release": null,
+                    "milestone": "1.1.4",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.1.3",
+                "projectUrl": "https://developer.android.com/testing",
+                "name": "junit"
+            },
+            {
+                "group": "com.github.ben-manes.versions",
+                "available": {
+                    "release": null,
+                    "milestone": "0.44.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "0.41.0",
+                "projectUrl": null,
+                "name": "com.github.ben-manes.versions.gradle.plugin"
+            },
+            {
+                "group": "com.google.android.material",
+                "available": {
+                    "release": null,
+                    "milestone": "1.8.0-beta01",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.7.0",
+                "projectUrl": "https://github.com/material-components/material-components-android",
+                "name": "material"
+            },
+            {
+                "group": "org.apache.logging.log4j",
+                "available": {
+                    "release": null,
+                    "milestone": "2.19.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "2.17.1",
+                "projectUrl": "https://logging.apache.org/log4j/2.x/",
+                "name": "log4j-core"
+            },
+            {
+                "group": "org.jacoco",
+                "available": {
+                    "release": null,
+                    "milestone": "0.8.8",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "0.8.3",
+                "projectUrl": "http://jacoco.org",
+                "name": "org.jacoco.ant"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.8.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-annotation-processing-gradle"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.8.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-gradle-plugin"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.8.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-parcelize-compiler"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.8.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-scripting-compiler-embeddable"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.7.10",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.6.21",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.7.10",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.6.21",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib-common"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.6.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.5.31",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib-jdk7"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "available": {
+                    "release": null,
+                    "milestone": "1.8.0",
+                    "integration": null
+                },
+                "userReason": null,
+                "version": "1.6.0",
+                "projectUrl": "https://kotlinlang.org/",
+                "name": "kotlin-stdlib-jdk8"
+            }
+        ],
+        "count": 32
+    },
+    "unresolved": {
+        "dependencies": [
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.5.31",
+                "reason": "org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve org.jetbrains.kotlin:kotlin-parcelize-runtime:1.5.31.\r\nRequired by:\r\n    project :builder\r\nCaused by: org.gradle.internal.component.NoMatchingConfigurationSelectionException: No matching variant of org.jetbrains.kotlin:kotlin-parcelize-runtime:1.5.31 was found. The consumer was configured to find a runtime of a library, with the library elements 'aar', and its dependencies declared externally, as well as attribute 'com.android.build.api.attributes.BuildTypeAttr' with value 'debug', attribute 'com.android.build.api.attributes.ProductFlavor:mode' with value 'mock' but:\r\n  - Variant 'compile' capability org.jetbrains.kotlin:kotlin-parcelize-runtime:1.5.31 declares a library:\r\n      - Incompatible because this component declares an API of a component, packaged as a jar and the consumer needed a runtime of a component, with the library elements 'aar'\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n  - Variant 'enforced-platform-compile' capability org.jetbrains.kotlin:kotlin-parcelize-runtime-derived-enforced-platform:1.5.31:\r\n      - Incompatible because this component declares an API of an enforced platform and the consumer needed a runtime of a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'enforced-platform-runtime' capability org.jetbrains.kotlin:kotlin-parcelize-runtime-derived-enforced-platform:1.5.31 declares a runtime of a component:\r\n      - Incompatible because this component declares an enforced platform and the consumer needed a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'platform-compile' capability org.jetbrains.kotlin:kotlin-parcelize-runtime-derived-platform:1.5.31:\r\n      - Incompatible because this component declares an API of a platform and the consumer needed a runtime of a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'platform-runtime' capability org.jetbrains.kotlin:kotlin-parcelize-runtime-derived-platform:1.5.31 declares a runtime of a component:\r\n      - Incompatible because this component declares a platform and the consumer needed a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'runtime' capability org.jetbrains.kotlin:kotlin-parcelize-runtime:1.5.31 declares a runtime of a library:\r\n      - Incompatible because this component declares a component, packaged as a jar and the consumer needed a component, with the library elements 'aar'\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n\tat org.gradle.internal.component.model.AttributeConfigurationSelector.selectConfigurationUsingAttributeMatching(AttributeConfigurationSelector.java:112)\r\n\tat org.gradle.internal.component.model.AttributeConfigurationSelector.selectConfigurationUsingAttributeMatching(AttributeConfigurationSelector.java:51)\r\n\tat org.gradle.internal.component.model.LocalComponentDependencyMetadata.selectConfigurations(LocalComponentDependencyMetadata.java:144)\r\n\tat org.gradle.internal.component.local.model.DslOriginDependencyMetadataWrapper.selectConfigurations(DslOriginDependencyMetadataWrapper.java:71)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.EdgeState.calculateTargetConfigurations(EdgeState.java:265)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.EdgeState.attachToTargetConfigurations(EdgeState.java:150)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.attachToTargetRevisionsSerially(DependencyGraphBuilder.java:380)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.resolveEdges(DependencyGraphBuilder.java:263)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.traverseGraph(DependencyGraphBuilder.java:200)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.resolve(DependencyGraphBuilder.java:151)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver.resolve(DefaultArtifactDependencyResolver.java:141)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.DefaultConfigurationResolver.resolveGraph(DefaultConfigurationResolver.java:187)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.ShortCircuitEmptyConfigurationResolver.resolveGraph(ShortCircuitEmptyConfigurationResolver.java:85)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.ErrorHandlingConfigurationResolver.resolveGraph(ErrorHandlingConfigurationResolver.java:76)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$1.call(DefaultConfiguration.java:655)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$1.call(DefaultConfiguration.java:646)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveGraphIfRequired(DefaultConfiguration.java:646)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.lambda$resolveExclusively$4(DefaultConfiguration.java:626)\r\n\tat org.gradle.api.internal.project.DefaultProjectStateRegistry$CalculatedModelValueImpl.update(DefaultProjectStateRegistry.java:464)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveExclusively(DefaultConfiguration.java:623)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveToStateOrLater(DefaultConfiguration.java:610)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.getResolvedConfiguration(DefaultConfiguration.java:585)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration_Decorated.getResolvedConfiguration(Unknown Source)\r\n\tat com.github.benmanes.gradle.versions.updates.Resolver.resolve(Resolver.groovy:80)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.resolve(DependencyUpdates.groovy:116)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.access$0(DependencyUpdates.groovy)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates$_resolveProjects_closure7.doCall(DependencyUpdates.groovy:83)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\r\n\tat org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)\r\n\tat groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)\r\n\tat org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)\r\n\tat groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)\r\n\tat groovy.lang.Closure.call(Closure.java:412)\r\n\tat org.codehaus.groovy.runtime.DefaultGroovyMethods.callClosureForMapEntry(DefaultGroovyMethods.java:6082)\r\n\tat org.codehaus.groovy.runtime.DefaultGroovyMethods.each(DefaultGroovyMethods.java:2435)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.resolveProjects(DependencyUpdates.groovy:80)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.run(DependencyUpdates.groovy:58)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask.dependencyUpdates(DependencyUpdatesTask.groovy:106)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\r\n\tat org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:104)\r\n\tat org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)\r\n\tat org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)\r\n\tat org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:242)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:227)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:210)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:193)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:171)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:89)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:40)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:53)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:50)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:50)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:40)\r\n\tat org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)\r\n\tat org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)\r\n\tat org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:48)\r\n\tat org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:36)\r\n\tat org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)\r\n\tat org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)\r\n\tat org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)\r\n\tat org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:51)\r\n\tat org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:29)\r\n\tat org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:61)\r\n\tat org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:42)\r\n\tat org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:60)\r\n\tat org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:27)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:180)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)\r\n\tat org.gradle.internal.Either$Right.fold(Either.java:175)\r\n\tat org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:59)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)\r\n\tat org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:36)\r\n\tat org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:25)\r\n\tat org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:36)\r\n\tat org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:22)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:110)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:56)\r\n\tat java.base/java.util.Optional.orElseGet(Optional.java:369)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:56)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:38)\r\n\tat org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:73)\r\n\tat org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:44)\r\n\tat org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)\r\n\tat org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)\r\n\tat org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:89)\r\n\tat org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:50)\r\n\tat org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:114)\r\n\tat org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:57)\r\n\tat org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:76)\r\n\tat org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:50)\r\n\tat org.gradle.internal.execution.steps.SkipEmptyWorkStep.executeWithNoEmptySources(SkipEmptyWorkStep.java:249)\r\n\tat org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:86)\r\n\tat org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:54)\r\n\tat org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:32)\r\n\tat org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:21)\r\n\tat org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)\r\n\tat org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:43)\r\n\tat org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:31)\r\n\tat org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:40)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:287)\r\n\tat org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:40)\r\n\tat org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)\r\n\tat org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)\r\n\tat org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)\r\n\tat org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)\r\n\tat org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)\r\n\tat org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)\r\n\tat org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:144)\r\n\tat org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:133)\r\n\tat org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:77)\r\n\tat org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)\r\n\tat org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)\r\n\tat org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)\r\n\tat org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)\r\n\tat org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)\r\n\tat org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:74)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:333)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:320)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:313)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:299)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$run$0(DefaultPlanExecutor.java:143)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:227)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.executeNextNode(DefaultPlanExecutor.java:218)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:140)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:72)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:144)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:129)\r\n\tat org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:42)\r\n\tat org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)\r\n\tat org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)\r\n\tat org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)\r\n\tat org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$7(DefaultBuildLifecycleController.java:165)\r\n\tat org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:238)\r\n\tat org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:174)\r\n\tat org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)\r\n\tat org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:174)\r\n\tat org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:165)\r\n\tat org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:142)\r\n\tat org.gradle.composite.internal.DefaultBuildController.doBuild(DefaultBuildController.java:231)\r\n\tat org.gradle.internal.Factories$1.create(Factories.java:31)\r\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:270)\r\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:119)\r\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:124)\r\n\tat org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:204)\r\n\tat org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:51)\r\n\tat org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:264)\r\n\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\r\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\r\n\tat org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)\r\n\tat org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\r\n\tat java.base/java.lang.Thread.run(Thread.java:829)\r\n",
+                "projectUrl": "1.8.0",
+                "name": "kotlin-parcelize-runtime"
+            },
+            {
+                "group": "org.jetbrains.kotlin",
+                "userReason": null,
+                "version": "1.6.0",
+                "reason": "org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0.\r\nRequired by:\r\n    project :builder\r\nCaused by: org.gradle.internal.component.NoMatchingConfigurationSelectionException: No matching variant of org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0 was found. The consumer was configured to find a runtime of a library, with the library elements 'aar', and its dependencies declared externally, as well as attribute 'com.android.build.api.attributes.BuildTypeAttr' with value 'debug', attribute 'com.android.build.api.attributes.ProductFlavor:mode' with value 'mock' but:\r\n  - Variant 'compile' capability org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0 declares a library:\r\n      - Incompatible because this component declares an API of a component, packaged as a jar and the consumer needed a runtime of a component, with the library elements 'aar'\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n  - Variant 'enforced-platform-compile' capability org.jetbrains.kotlin:kotlin-stdlib-jdk8-derived-enforced-platform:1.5.0:\r\n      - Incompatible because this component declares an API of an enforced platform and the consumer needed a runtime of a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'enforced-platform-runtime' capability org.jetbrains.kotlin:kotlin-stdlib-jdk8-derived-enforced-platform:1.5.0 declares a runtime of a component:\r\n      - Incompatible because this component declares an enforced platform and the consumer needed a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'platform-compile' capability org.jetbrains.kotlin:kotlin-stdlib-jdk8-derived-platform:1.5.0:\r\n      - Incompatible because this component declares an API of a platform and the consumer needed a runtime of a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'platform-runtime' capability org.jetbrains.kotlin:kotlin-stdlib-jdk8-derived-platform:1.5.0 declares a runtime of a component:\r\n      - Incompatible because this component declares a platform and the consumer needed a library\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n          - Doesn't say anything about its elements (required them with the library elements 'aar')\r\n  - Variant 'runtime' capability org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0 declares a runtime of a library:\r\n      - Incompatible because this component declares a component, packaged as a jar and the consumer needed a component, with the library elements 'aar'\r\n      - Other compatible attributes:\r\n          - Doesn't say anything about com.android.build.api.attributes.BuildTypeAttr (required 'debug')\r\n          - Doesn't say anything about com.android.build.api.attributes.ProductFlavor:mode (required 'mock')\r\n          - Doesn't say anything about how its dependencies are found (required its dependencies declared externally)\r\n\tat org.gradle.internal.component.model.AttributeConfigurationSelector.selectConfigurationUsingAttributeMatching(AttributeConfigurationSelector.java:112)\r\n\tat org.gradle.internal.component.model.AttributeConfigurationSelector.selectConfigurationUsingAttributeMatching(AttributeConfigurationSelector.java:51)\r\n\tat org.gradle.internal.component.model.LocalComponentDependencyMetadata.selectConfigurations(LocalComponentDependencyMetadata.java:144)\r\n\tat org.gradle.internal.component.local.model.DslOriginDependencyMetadataWrapper.selectConfigurations(DslOriginDependencyMetadataWrapper.java:71)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.EdgeState.calculateTargetConfigurations(EdgeState.java:265)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.EdgeState.attachToTargetConfigurations(EdgeState.java:150)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.attachToTargetRevisionsSerially(DependencyGraphBuilder.java:380)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.resolveEdges(DependencyGraphBuilder.java:263)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.traverseGraph(DependencyGraphBuilder.java:200)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DependencyGraphBuilder.resolve(DependencyGraphBuilder.java:151)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver.resolve(DefaultArtifactDependencyResolver.java:141)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.DefaultConfigurationResolver.resolveGraph(DefaultConfigurationResolver.java:187)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.ShortCircuitEmptyConfigurationResolver.resolveGraph(ShortCircuitEmptyConfigurationResolver.java:85)\r\n\tat org.gradle.api.internal.artifacts.ivyservice.ErrorHandlingConfigurationResolver.resolveGraph(ErrorHandlingConfigurationResolver.java:76)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$1.call(DefaultConfiguration.java:655)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$1.call(DefaultConfiguration.java:646)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveGraphIfRequired(DefaultConfiguration.java:646)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.lambda$resolveExclusively$4(DefaultConfiguration.java:626)\r\n\tat org.gradle.api.internal.project.DefaultProjectStateRegistry$CalculatedModelValueImpl.update(DefaultProjectStateRegistry.java:464)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveExclusively(DefaultConfiguration.java:623)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveToStateOrLater(DefaultConfiguration.java:610)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.getResolvedConfiguration(DefaultConfiguration.java:585)\r\n\tat org.gradle.api.internal.artifacts.configurations.DefaultConfiguration_Decorated.getResolvedConfiguration(Unknown Source)\r\n\tat com.github.benmanes.gradle.versions.updates.Resolver.resolve(Resolver.groovy:80)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.resolve(DependencyUpdates.groovy:116)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.access$0(DependencyUpdates.groovy)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates$_resolveProjects_closure7.doCall(DependencyUpdates.groovy:83)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\r\n\tat org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)\r\n\tat groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)\r\n\tat org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)\r\n\tat groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)\r\n\tat groovy.lang.Closure.call(Closure.java:412)\r\n\tat org.codehaus.groovy.runtime.DefaultGroovyMethods.callClosureForMapEntry(DefaultGroovyMethods.java:6082)\r\n\tat org.codehaus.groovy.runtime.DefaultGroovyMethods.each(DefaultGroovyMethods.java:2435)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.resolveProjects(DependencyUpdates.groovy:80)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdates.run(DependencyUpdates.groovy:58)\r\n\tat com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask.dependencyUpdates(DependencyUpdatesTask.groovy:106)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\r\n\tat org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:104)\r\n\tat org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)\r\n\tat org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)\r\n\tat org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:242)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:227)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:210)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:193)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:171)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:89)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:40)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:53)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:50)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:50)\r\n\tat org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:40)\r\n\tat org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)\r\n\tat org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)\r\n\tat org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:48)\r\n\tat org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:36)\r\n\tat org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)\r\n\tat org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)\r\n\tat org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)\r\n\tat org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:51)\r\n\tat org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:29)\r\n\tat org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:61)\r\n\tat org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:42)\r\n\tat org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:60)\r\n\tat org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:27)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:180)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)\r\n\tat org.gradle.internal.Either$Right.fold(Either.java:175)\r\n\tat org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:59)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)\r\n\tat org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)\r\n\tat org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:36)\r\n\tat org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:25)\r\n\tat org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:36)\r\n\tat org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:22)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:110)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:56)\r\n\tat java.base/java.util.Optional.orElseGet(Optional.java:369)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:56)\r\n\tat org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:38)\r\n\tat org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:73)\r\n\tat org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:44)\r\n\tat org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)\r\n\tat org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)\r\n\tat org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:89)\r\n\tat org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:50)\r\n\tat org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:114)\r\n\tat org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:57)\r\n\tat org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:76)\r\n\tat org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:50)\r\n\tat org.gradle.internal.execution.steps.SkipEmptyWorkStep.executeWithNoEmptySources(SkipEmptyWorkStep.java:249)\r\n\tat org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:86)\r\n\tat org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:54)\r\n\tat org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:32)\r\n\tat org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:21)\r\n\tat org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)\r\n\tat org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:43)\r\n\tat org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:31)\r\n\tat org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:40)\r\n\tat org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:287)\r\n\tat org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:40)\r\n\tat org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)\r\n\tat org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)\r\n\tat org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)\r\n\tat org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)\r\n\tat org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)\r\n\tat org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)\r\n\tat org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:144)\r\n\tat org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:133)\r\n\tat org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:77)\r\n\tat org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)\r\n\tat org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)\r\n\tat org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)\r\n\tat org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)\r\n\tat org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)\r\n\tat org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:74)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:333)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:320)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:313)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:299)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$run$0(DefaultPlanExecutor.java:143)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:227)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.executeNextNode(DefaultPlanExecutor.java:218)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:140)\r\n\tat org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:72)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:144)\r\n\tat org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:129)\r\n\tat org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:42)\r\n\tat org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)\r\n\tat org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)\r\n\tat org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)\r\n\tat org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)\r\n\tat org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)\r\n\tat org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$7(DefaultBuildLifecycleController.java:165)\r\n\tat org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:238)\r\n\tat org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:174)\r\n\tat org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)\r\n\tat org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:174)\r\n\tat org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:165)\r\n\tat org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:142)\r\n\tat org.gradle.composite.internal.DefaultBuildController.doBuild(DefaultBuildController.java:231)\r\n\tat org.gradle.internal.Factories$1.create(Factories.java:31)\r\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:270)\r\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:119)\r\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:124)\r\n\tat org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:204)\r\n\tat org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:51)\r\n\tat org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:264)\r\n\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\r\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\r\n\tat org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)\r\n\tat org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\r\n\tat java.base/java.lang.Thread.run(Thread.java:829)\r\n",
+                "projectUrl": "1.8.0",
+                "name": "kotlin-stdlib-jdk8"
+            }
+        ],
+        "count": 2
+    },
+    "undeclared": {
+        "dependencies": [
+            
+        ],
+        "count": 0
+    },
+    "count": 120
+}

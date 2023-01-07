@@ -1,0 +1,246 @@
+Index: data-previewJobs/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/proguard-rules.pro b/data-previewJobs/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1671609633109)
++++ b/data-previewJobs/proguard-rules.pro	(date 1671609633109)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: data-previewJobs/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/build.gradle b/data-previewJobs/build.gradle
+new file mode 100644
+--- /dev/null	(date 1671610064587)
++++ b/data-previewJobs/build.gradle	(date 1671610064587)
+@@ -0,0 +1,43 @@
++plugins {
++    id 'com.android.library'
++    id 'org.jetbrains.kotlin.android'
++}
++
++android {
++    compileSdk 32
++
++    defaultConfig {
++        minSdk 21
++        targetSdk 32
++
++        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
++        consumerProguardFiles "consumer-rules.pro"
++    }
++
++    buildTypes {
++        release {
++            minifyEnabled false
++            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
++        }
++    }
++    compileOptions {
++        sourceCompatibility JavaVersion.VERSION_1_8
++        targetCompatibility JavaVersion.VERSION_1_8
++    }
++    kotlinOptions {
++        jvmTarget = '1.8'
++    }
++}
++
++dependencies {
++
++    implementation 'androidx.core:core-ktx:1.7.0'
++    implementation 'androidx.appcompat:appcompat:1.5.1'
++    implementation 'com.google.android.material:material:1.7.0'
++    testImplementation 'junit:junit:4.13.2'
++    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
++    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
++
++    //Retrofit
++
++}
+\ No newline at end of file
+Index: data-previewJobs/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/src/main/AndroidManifest.xml b/data-previewJobs/src/main/AndroidManifest.xml
+new file mode 100644
+--- /dev/null	(date 1671609633266)
++++ b/data-previewJobs/src/main/AndroidManifest.xml	(date 1671609633266)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.example.data_previewjobs">
++
++</manifest>
+\ No newline at end of file
+Index: data-previewJobs/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/.gitignore b/data-previewJobs/.gitignore
+new file mode 100644
+--- /dev/null	(date 1671609633060)
++++ b/data-previewJobs/.gitignore	(date 1671609633060)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: data-previewJobs/src/main/java/com/example/data_previewjobs/repositories/PreviewJobsService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/src/main/java/com/example/data_previewjobs/repositories/PreviewJobsService.kt b/data-previewJobs/src/main/java/com/example/data_previewjobs/repositories/PreviewJobsService.kt
+new file mode 100644
+--- /dev/null	(date 1671610062314)
++++ b/data-previewJobs/src/main/java/com/example/data_previewjobs/repositories/PreviewJobsService.kt	(date 1671610062314)
+@@ -0,0 +1,6 @@
++package com.example.data_previewjobs.repositories
++
++interface PreviewJobsService {
++
++
++}
+\ No newline at end of file
+Index: data-previewJobs/src/androidTest/java/com/example/data_previewjobs/ExampleInstrumentedTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/src/androidTest/java/com/example/data_previewjobs/ExampleInstrumentedTest.kt b/data-previewJobs/src/androidTest/java/com/example/data_previewjobs/ExampleInstrumentedTest.kt
+new file mode 100644
+--- /dev/null	(date 1671609633292)
++++ b/data-previewJobs/src/androidTest/java/com/example/data_previewjobs/ExampleInstrumentedTest.kt	(date 1671609633292)
+@@ -0,0 +1,24 @@
++package com.example.data_previewjobs
++
++import androidx.test.platform.app.InstrumentationRegistry
++import androidx.test.ext.junit.runners.AndroidJUnit4
++
++import org.junit.Test
++import org.junit.runner.RunWith
++
++import org.junit.Assert.*
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++@RunWith(AndroidJUnit4::class)
++class ExampleInstrumentedTest {
++    @Test
++    fun useAppContext() {
++        // Context of the app under test.
++        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
++        assertEquals("com.example.data_previewjobs.test", appContext.packageName)
++    }
++}
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision e39ad4de5a9083ebd3a5b1ceb00abd26d868bae0)
++++ b/.idea/gradle.xml	(date 1671609638848)
+@@ -11,6 +11,7 @@
+           <set>
+             <option value="$PROJECT_DIR$" />
+             <option value="$PROJECT_DIR$/app" />
++            <option value="$PROJECT_DIR$/data-previewJobs" />
+           </set>
+         </option>
+       </GradleProjectSettings>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1671610620920)
++++ b/.idea/vcs.xml	(date 1671610620920)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>pluginManagement {\r\n    repositories {\r\n        gradlePluginPortal()\r\n        google()\r\n        mavenCentral()\r\n    }\r\n}\r\ndependencyResolutionManagement {\r\n    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)\r\n    repositories {\r\n        google()\r\n        mavenCentral()\r\n    }\r\n}\r\nrootProject.name = \"Jobs\"\r\ninclude ':app'\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle b/settings.gradle
+--- a/settings.gradle	(revision e39ad4de5a9083ebd3a5b1ceb00abd26d868bae0)
++++ b/settings.gradle	(date 1671609633220)
+@@ -14,3 +14,4 @@
+ }
+ rootProject.name = "Jobs"
+ include ':app'
++include ':data-previewJobs'
+Index: data-previewJobs/src/test/java/com/example/data_previewjobs/ExampleUnitTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data-previewJobs/src/test/java/com/example/data_previewjobs/ExampleUnitTest.kt b/data-previewJobs/src/test/java/com/example/data_previewjobs/ExampleUnitTest.kt
+new file mode 100644
+--- /dev/null	(date 1671609633312)
++++ b/data-previewJobs/src/test/java/com/example/data_previewjobs/ExampleUnitTest.kt	(date 1671609633312)
+@@ -0,0 +1,17 @@
++package com.example.data_previewjobs
++
++import org.junit.Test
++
++import org.junit.Assert.*
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++class ExampleUnitTest {
++    @Test
++    fun addition_isCorrect() {
++        assertEquals(4, 2 + 2)
++    }
++}
+\ No newline at end of file
+diff --git a/data-previewJobs/consumer-rules.pro b/data-previewJobs/consumer-rules.pro
+new file mode 100644
