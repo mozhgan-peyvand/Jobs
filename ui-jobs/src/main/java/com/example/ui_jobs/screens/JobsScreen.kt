@@ -2,7 +2,6 @@ package com.example.ui_jobs.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,7 +14,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -31,7 +29,7 @@ import kotlin.math.absoluteValue
 @Composable
 fun JobScreen(navigateToJobDetailScreen: () -> Unit) {
     var jobList = listOf(
-        JobInfoModel(1, "android1", "description1", 1),
+        JobInfoModel(1, "android1", "desceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeripfffffffffffffffffffffffffffftion1", 1),
         JobInfoModel(2, "android2", "description2", 1),
         JobInfoModel(3, "android3", "description3", 1),
         JobInfoModel(4, "android4", "description4", 1),
@@ -70,8 +68,8 @@ private fun ScaleFadeImageCardRow(
                         scaleX = value
                         scaleY = value
                     },
-                imageModifier = Modifier
-            )
+                imageModifier = Modifier)
+
         }
     }
 }
@@ -81,11 +79,12 @@ private fun ImageCard(
     navigateToJobDetailScreen: () -> Unit,
     item: JobInfoModel,
     modifier: Modifier = Modifier,
-    imageModifier: Modifier = Modifier
+    imageModifier: Modifier = Modifier,
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(top = 8.dp)
             .wrapContentHeight()
             .clickable {
                 navigateToJobDetailScreen.invoke()
@@ -115,32 +114,20 @@ private fun ImageCard(
                     text = item.name,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(
-                            Brush.verticalGradient(
-                                0f to Color.Transparent,
-                                1f to Color.Black
-                            )
-                        )
-                        .padding(start = 8.dp, end = 8.dp, bottom = 8.dp, top = 32.dp),
-                    color = Color.White,
+                        .padding(start = 8.dp, end = 8.dp, bottom = 8.dp, top = 8.dp),
+                    color = Color.Black,
                     maxLines = 1,
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.subtitle2,
                     textAlign = TextAlign.Center,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = item.name,
+                    text = item.description,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(
-                            Brush.verticalGradient(
-                                0f to Color.Transparent,
-                                1f to Color.Black
-                            )
-                        )
-                        .padding(start = 8.dp, end = 8.dp, bottom = 8.dp, top = 32.dp),
-                    color = Color.White,
-                    maxLines = 1,
+                        .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 8.dp),
+                    color = Color.Black,
+                    maxLines = 2,
                     style = MaterialTheme.typography.body1,
                     textAlign = TextAlign.Center,
                     overflow = TextOverflow.Ellipsis
