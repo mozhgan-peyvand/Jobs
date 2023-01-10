@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.base.routers.AppRouters
+import com.example.base.shape.Punched
+import com.example.base.shape.neumorphic
 import com.example.builder.R
 
 sealed class BottomBarScreen(
@@ -60,11 +62,12 @@ fun BottomBar(navController: NavHostController) {
 
     Row(
         modifier = Modifier
+            .background(Color(236, 234, 235))
             .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
-            .background(Color.Transparent)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            ,
         horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         screens.forEach { screen ->
             AddItem(

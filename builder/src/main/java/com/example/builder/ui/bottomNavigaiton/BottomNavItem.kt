@@ -19,6 +19,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.example.base.shape.*
 
 @Composable
 fun RowScope.AddItem(
@@ -29,22 +30,28 @@ fun RowScope.AddItem(
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
 
     val background =
-        if (selected) MaterialTheme.colors.primary.copy(alpha = 0.6f) else Color.Transparent
-
+        if (selected) Color(165, 241, 241, 255) else Color.Transparent
+    val shape = if (selected) Pressed.Rounded(radius = 32.dp) else Pressed.Oval()
     val contentColor =
-        if (selected) Color.White else Color.Black
+        Color.Black
 
     Box(
         modifier = Modifier
-            .height(40.dp)
             .clip(CircleShape)
             .background(background)
+            .neumorphic(
+
+                strokeWidth = 7.dp,
+                neuShape = shape,
+                neuInsets = NeuInsets(1.dp),
+            )
+            .padding(4.dp)
             .clickable(onClick = {
                 navController.navigate(screen.route) {
                     popUpTo(navController.graph.findStartDestination().id)
                     launchSingleTop = true
                 }
-            })
+            }),
     ) {
         Row(
             modifier = Modifier

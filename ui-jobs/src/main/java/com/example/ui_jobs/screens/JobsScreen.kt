@@ -1,13 +1,13 @@
 package com.example.ui_jobs.screens
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -24,12 +24,19 @@ import androidx.compose.ui.unit.dp
 import com.example.common_ui_view.JobInfoModel
 import com.example.common_ui_view.R
 import com.example.common_ui_view.normalizedItemPosition
+import com.example.base.shape.Punched
+import com.example.base.shape.neumorphic
 import kotlin.math.absoluteValue
 
 @Composable
 fun JobScreen(navigateToJobDetailScreen: () -> Unit) {
     var jobList = listOf(
-        JobInfoModel(1, "android1", "desceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeripfffffffffffffffffffffffffffftion1", 1),
+        JobInfoModel(
+            1,
+            "android1",
+            "desceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeripfffffffffffffffffffffffffffftion1",
+            1
+        ),
         JobInfoModel(2, "android2", "description2", 1),
         JobInfoModel(3, "android3", "description3", 1),
         JobInfoModel(4, "android4", "description4", 1),
@@ -51,9 +58,10 @@ private fun ScaleFadeImageCardRow(
 ) {
     val state: LazyListState = rememberLazyListState()
     LazyColumn(
+        modifier= Modifier.background(Color(236, 234, 235)),
         state = state,
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(start = 16.dp, end = 16.dp)
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp)
     ) {
         items(items, key = { it.id }) { item ->
             ImageCard(
@@ -68,7 +76,8 @@ private fun ScaleFadeImageCardRow(
                         scaleX = value
                         scaleY = value
                     },
-                imageModifier = Modifier)
+                imageModifier = Modifier
+            )
 
         }
     }
@@ -81,17 +90,32 @@ private fun ImageCard(
     modifier: Modifier = Modifier,
     imageModifier: Modifier = Modifier,
 ) {
+
     Card(
+        backgroundColor = Color(236, 234, 235),
+        border = BorderStroke(2.dp, Color(236, 234, 235)),
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 8.dp)
-            .wrapContentHeight()
+            .padding( top = 16.dp)
             .clickable {
                 navigateToJobDetailScreen.invoke()
-            },
-        shape = MaterialTheme.shapes.medium,
-        elevation = 5.dp,
-        backgroundColor = MaterialTheme.colors.surface
+            }
+            .neumorphic(
+                neuShape =
+//                // Punched shape
+                Punched.Rounded(radius = 16.dp)
+//
+////                        Punched.Oval()
+////
+////                        // Presssed Shape
+//                        Pressed.Rounded(radius =4.dp)
+////                        Pressed.Oval()
+////
+////                        // Pot shape
+//                        Pot.Rounded(radius = 8.dp)
+//                        Pot.Oval()
+            ),
+        shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+        elevation = 0.dp
     ) {
 //        val painter = rememberCoilPainter(item.imageUrl)
         Row(
