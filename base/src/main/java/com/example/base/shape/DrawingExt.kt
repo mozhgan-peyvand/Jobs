@@ -1,4 +1,4 @@
-package com.example.base.shape2
+package com.example.base.shape
 
 import android.graphics.BlurMaskFilter
 import android.os.Build

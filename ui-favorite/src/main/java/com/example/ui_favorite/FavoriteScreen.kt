@@ -20,22 +20,22 @@ import com.example.common_ui_view.SlideState
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun FavoriteScreen() {
-    var jobList = arrayOf(
-        JobInfoModel(1, "android1", "description1", 1),
-        JobInfoModel(2, "android2", "description2", 1),
-        JobInfoModel(3, "android3", "description3", 1)
-        )
-    val shoesArticles = remember { mutableStateListOf(*jobList) }
-    val slideStates = remember {
-        mutableStateMapOf<JobInfoModel, SlideState>()
-            .apply {
-                shoesArticles.map { shoesArticle ->
-                    shoesArticle to SlideState.NONE
-                }.toMap().also {
-                    putAll(it)
-                }
-            }
-    }
+//    var jobList = arrayOf(
+////        JobInfoModel(1, "android1", "description1", 1),
+////        JobInfoModel(2, "android2", "description2", 1),
+////        JobInfoModel(3, "android3", "description3", 1)
+//        )
+//    val shoesArticles = remember { mutableStateListOf(*jobList) }
+//    val slideStates = remember {
+//        mutableStateMapOf<JobInfoModel, SlideState>()
+//            .apply {
+//                shoesArticles.map { shoesArticle ->
+//                    shoesArticle to SlideState.NONE
+//                }.toMap().also {
+//                    putAll(it)
+//                }
+//            }
+//    }
 //    ShoesList(
 //        shoesArticles = shoesArticles,
 //        slideStates = slideStates,

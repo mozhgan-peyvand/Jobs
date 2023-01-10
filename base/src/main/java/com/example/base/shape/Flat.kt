@@ -1,4 +1,4 @@
-package com.example.base.shape2
+package com.example.base.shape
 
 import android.os.Build
 import androidx.annotation.RequiresApi

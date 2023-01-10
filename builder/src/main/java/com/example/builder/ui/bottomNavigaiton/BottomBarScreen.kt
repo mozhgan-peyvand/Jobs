@@ -16,8 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.base.routers.AppRouters
-import com.example.base.shape2.neu
-import com.example.builder.R
+import com.example.common_ui_view.R
 
 sealed class BottomBarScreen(
     val route: String,

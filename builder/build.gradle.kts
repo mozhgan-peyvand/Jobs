@@ -11,6 +11,7 @@ dependencies {
 
     implementation(project(":ui-favorite"))
     implementation(project(":ui-jobs"))
+    implementation(project(":common-ui-view"))
     implementation(project(":ui-user"))
     implementation(project(":base"))
     addCompose()

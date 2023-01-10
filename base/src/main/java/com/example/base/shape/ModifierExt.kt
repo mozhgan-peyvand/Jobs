@@ -1,6 +1,5 @@
-package com.example.base.shape2
+package com.example.base.shape
 
-import android.view.RoundedCorner
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.DrawModifier
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope

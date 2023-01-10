@@ -104,27 +104,21 @@ fun JobCard(
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .clickable { navigateToJobDetailScreen?.invoke() }
-                .graphicsLayer {
-                    val value =
-                        1 - (lazyListState.layoutInfo.normalizedItemPosition(shoesArticle.id).absoluteValue * 0.15F)
-                    alpha = value
-                    scaleX = value
-                    scaleY = value
-                },
+               ,
             shape = MaterialTheme.shapes.medium,
             elevation = 5.dp,
             backgroundColor = MaterialTheme.colors.surface
         ) {
             Row(
                 modifier = Modifier
-                    .padding(1.dp)
-                    .graphicsLayer {
-                        val value =
-                            1 - (lazyListState.layoutInfo.normalizedItemPosition(shoesArticle.id).absoluteValue * 0.15F)
-                        alpha = value
-                        scaleX = value
-                        scaleY = value
-                    },
+                    .padding(1.dp),
+//                    .graphicsLayer {
+//                        val value =
+//                            1 - (lazyListState.layoutInfo.normalizedItemPosition(shoesArticle.id).absoluteValue * 0.15F)
+//                        alpha = value
+//                        scaleX = value
+//                        scaleY = value
+//                    },
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
@@ -137,12 +131,12 @@ fun JobCard(
                 )
                 Column(Modifier.padding(8.dp)) {
                     Text(
-                        text = shoesArticle.name,
+                        text = shoesArticle.companyName ?: "",
                         style = MaterialTheme.typography.h4,
                         color = MaterialTheme.colors.onSurface,
                     )
                     Text(
-                        text = shoesArticle.description,
+                        text = shoesArticle.description ?: "",
                         style = MaterialTheme.typography.body2,
                     )
                 }

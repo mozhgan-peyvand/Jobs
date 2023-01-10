@@ -1,4 +1,4 @@
-package com.example.base.shape2
+package com.example.base.shape
 
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 

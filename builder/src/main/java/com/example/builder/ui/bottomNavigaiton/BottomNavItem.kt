@@ -18,10 +18,10 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.base.shape2.LightSource
-import com.example.base.shape2.Pressed
-import com.example.base.shape2.RoundedCorner
-import com.example.base.shape2.neu
+import com.example.base.shape.LightSource
+import com.example.base.shape.Pressed
+import com.example.base.shape.RoundedCorner
+import com.example.base.shape.neu
 
 @Composable
 fun RowScope.AddItem(
