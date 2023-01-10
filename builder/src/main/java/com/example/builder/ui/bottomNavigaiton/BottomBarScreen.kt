@@ -1,6 +1,8 @@
 package com.example.builder.ui.bottomNavigaiton
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,8 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.base.routers.AppRouters
-import com.example.base.shape.Punched
-import com.example.base.shape.neumorphic
+import com.example.base.shape2.neu
 import com.example.builder.R
 
 sealed class BottomBarScreen(
@@ -63,9 +64,10 @@ fun BottomBar(navController: NavHostController) {
     Row(
         modifier = Modifier
             .background(Color(236, 234, 235))
-            .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
             .fillMaxWidth()
-            ,
+            .border(BorderStroke(2.dp, Color(236, 234, 235)))
+            .padding( 8.dp)
+        ,
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {

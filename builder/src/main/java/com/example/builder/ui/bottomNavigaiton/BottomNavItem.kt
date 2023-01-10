@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,7 +18,10 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.base.shape.*
+import com.example.base.shape2.LightSource
+import com.example.base.shape2.Pressed
+import com.example.base.shape2.RoundedCorner
+import com.example.base.shape2.neu
 
 @Composable
 fun RowScope.AddItem(
@@ -31,7 +33,6 @@ fun RowScope.AddItem(
 
     val background =
         if (selected) Color(165, 241, 241, 255) else Color.Transparent
-    val shape = if (selected) Pressed.Rounded(radius = 32.dp) else Pressed.Oval()
     val contentColor =
         Color.Black
 
@@ -39,20 +40,21 @@ fun RowScope.AddItem(
         modifier = Modifier
             .clip(CircleShape)
             .background(background)
-            .neumorphic(
-
-                strokeWidth = 7.dp,
-                neuShape = shape,
-                neuInsets = NeuInsets(1.dp),
-            )
-            .padding(4.dp)
             .clickable(onClick = {
                 navController.navigate(screen.route) {
                     popUpTo(navController.graph.findStartDestination().id)
                     launchSingleTop = true
                 }
-            }),
-    ) {
+            })
+            .neu(
+                lightShadowColor = Color.White,
+                darkShadowColor = Color.LightGray,
+                lightSource = LightSource.LEFT_TOP,
+                shape = Pressed(RoundedCorner(24.dp)),
+            )
+            .padding(2.dp)
+        ,
+        ) {
         Row(
             modifier = Modifier
                 .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),

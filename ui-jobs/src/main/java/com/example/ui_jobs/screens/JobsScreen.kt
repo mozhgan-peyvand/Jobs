@@ -15,18 +15,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.base.shape2.Flat
+import com.example.base.shape2.LightSource
+import com.example.base.shape2.RoundedCorner
+import com.example.base.shape2.neu
 import com.example.common_ui_view.JobInfoModel
 import com.example.common_ui_view.R
-import com.example.common_ui_view.normalizedItemPosition
-import com.example.base.shape.Punched
-import com.example.base.shape.neumorphic
-import kotlin.math.absoluteValue
 
 @Composable
 fun JobScreen(navigateToJobDetailScreen: () -> Unit) {
@@ -68,14 +67,7 @@ private fun ScaleFadeImageCardRow(
                 navigateToJobDetailScreen,
                 item,
                 modifier = Modifier
-                    .animateItemPlacement()
-                    .graphicsLayer {
-                        val value =
-                            1 - (state.layoutInfo.normalizedItemPosition(item.id).absoluteValue * 0.099F)
-                        alpha = value
-                        scaleX = value
-                        scaleY = value
-                    },
+                ,
                 imageModifier = Modifier
             )
 
@@ -98,24 +90,14 @@ private fun ImageCard(
             .padding( top = 16.dp)
             .clickable {
                 navigateToJobDetailScreen.invoke()
-            }
-            .neumorphic(
-                neuShape =
-//                // Punched shape
-                Punched.Rounded(radius = 16.dp)
-//
-////                        Punched.Oval()
-////
-////                        // Presssed Shape
-//                        Pressed.Rounded(radius =4.dp)
-////                        Pressed.Oval()
-////
-////                        // Pot shape
-//                        Pot.Rounded(radius = 8.dp)
-//                        Pot.Oval()
-            ),
-        shape = RoundedCornerShape(corner = CornerSize(16.dp)),
-        elevation = 0.dp
+            }.neu(
+                lightShadowColor = Color.White,
+                darkShadowColor =Color.LightGray,
+                lightSource = LightSource.LEFT_TOP,
+                shape = Flat(RoundedCorner(24.dp)),
+                )
+            ,
+        shape = RoundedCornerShape(corner = CornerSize(24.dp)),
     ) {
 //        val painter = rememberCoilPainter(item.imageUrl)
         Row(
