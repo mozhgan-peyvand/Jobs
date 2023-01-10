@@ -9,8 +9,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldColors
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.CornerRadius
@@ -22,15 +27,19 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.common_ui_view.JobInfoModel
 import com.example.base.R
+import com.example.base.shape.LightSource
+import com.example.base.shape.Pressed
+import com.example.base.shape.RoundedCorner
+import com.example.base.shape.neu
 
 @Composable
-fun JobScreen(navigateToJobDetailScreen: () -> Unit) {
+fun JobScreen() {
     var jobList = listOf(
         JobInfoModel(
             1,
             "part",
             "london",
-            "part|_time",
+            "part_time",
             "android_Developer",
             "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
         ),
@@ -41,40 +50,102 @@ fun JobScreen(navigateToJobDetailScreen: () -> Unit) {
             "part_time",
             "android_Developer",
             "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),   JobInfoModel(
+        ),
+        JobInfoModel(
             3,
             "part",
             "london",
-            "part|_time",
+            "part_time",
             "android_Developer",
             "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),   JobInfoModel(
+        ),
+        JobInfoModel(
             4,
             "part",
             "london",
-            "part|_time",
+            "part_time",
             "android_Developer",
             "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
         ),
 
+        JobInfoModel(
+            4,
+            "part",
+            "london",
+            "part_time",
+            "android_Developer",
+            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        ),
+        JobInfoModel(
+            4,
+            "part",
+            "london",
+            "part_time",
+            "android_Developer",
+            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        ),
+        JobInfoModel(
+            4,
+            "part",
+            "london",
+            "part_time",
+            "android_Developer",
+            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        ),
+    )
 
-        )
+    Column(
+        modifier = Modifier
+            .background(Color(236, 234, 235))
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(id =R.dimen.spacing_2x)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
 
-    JobList(jobList, navigateToJobDetailScreen)
+            Text(
+                modifier = Modifier
+                    .background(Color.Transparent)
+                    .neu(
+                        lightShadowColor = Color.White,
+                        darkShadowColor = Color.LightGray,
+                        lightSource = LightSource.LEFT_TOP,
+                        shape = Pressed(RoundedCorner(24.dp)),
+                    ).weight(1f)
+                    .padding(dimensionResource(id = R.dimen.spacing_4x)),
+                text = "EnterCity",
+            )
 
+
+            Text(
+                modifier = Modifier
+                    .background(Color.Transparent)
+                    .neu(
+                        lightShadowColor = Color.White,
+                        darkShadowColor = Color.LightGray,
+                        lightSource = LightSource.LEFT_TOP,
+                        shape = Pressed(RoundedCorner(24.dp)),
+                    ).weight(1f)
+                    .padding(dimensionResource(id = R.dimen.spacing_4x)),
+                text = "EnterRole"
+            )
+        }
+        JobList(jobList)
+    }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun JobList(
-    items: List<JobInfoModel>,
-    navigateToJobDetailScreen: () -> Unit
+    items: List<JobInfoModel>
 ) {
     val state: LazyListState = rememberLazyListState()
     LazyColumn(
         modifier = Modifier
-            .background(Color(236, 234, 235))
-            .scrollbar(state = state, horizontal = false),
+            .fillMaxSize()
+            .background(Color(236, 234, 235)),
         state = state,
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(
@@ -85,7 +156,6 @@ private fun JobList(
     ) {
         items(items) { item ->
             JobItem(
-                navigateToJobDetailScreen = navigateToJobDetailScreen,
                 item = item,
                 modifier = Modifier,
                 imageModifier = Modifier
@@ -137,7 +207,8 @@ fun Modifier.scrollbar(
     animateFloatAsState(
         targetValue = targetAlpha,
         animationSpec =
-        tween(delayMillis = animationDelayMs, durationMillis = animationDurationMs))
+        tween(delayMillis = animationDelayMs, durationMillis = animationDurationMs)
+    )
 
     return drawWithContent {
         drawContent()
@@ -182,8 +253,7 @@ fun Modifier.scrollbar(
                 // Draw the track
                 drawRoundRect(
                     color = trackColor,
-                    topLeft = Offset(padding.toPx(), 0f)
-                    ,
+                    topLeft = Offset(padding.toPx(), 0f),
                     size =
                     if (horizontal) {
                         Size(size.width - padding.toPx() * 2, thickness.toPx())
@@ -191,7 +261,10 @@ fun Modifier.scrollbar(
                         Size(thickness.toPx(), size.height - padding.toPx() * 2)
                     },
                     alpha = alpha,
-                    cornerRadius = CornerRadius(x = trackCornerRadius.toPx(), y = trackCornerRadius.toPx()),
+                    cornerRadius = CornerRadius(
+                        x = trackCornerRadius.toPx(),
+                        y = trackCornerRadius.toPx()
+                    ),
                 )
 
                 // Draw the knob
@@ -205,10 +278,12 @@ fun Modifier.scrollbar(
                         else -> Offset(0f, knobPosition)
                     },
                     size =
-                        Size(thickness.toPx(), knobSize)
-                    ,
+                    Size(thickness.toPx(), knobSize),
                     alpha = alpha,
-                    cornerRadius = CornerRadius(x = knobCornerRadius.toPx(), y = knobCornerRadius.toPx())
+                    cornerRadius = CornerRadius(
+                        x = knobCornerRadius.toPx(),
+                        y = knobCornerRadius.toPx()
+                    )
                 )
             }
         }
