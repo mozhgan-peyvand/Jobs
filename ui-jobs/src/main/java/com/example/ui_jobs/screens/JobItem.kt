@@ -35,7 +35,7 @@ fun JobItem(
         backgroundColor = Color(236, 234, 235),
         border = BorderStroke(2.dp, Color(236, 234, 235)),
         modifier = Modifier
-            .padding(top = 16.dp)
+            .padding(top = 4.dp)
             .neu(
                 lightShadowColor = Color.White,
                 darkShadowColor = Color.LightGray,

@@ -8,9 +8,4 @@ data class JobInfoModel(
     val role: String? = null,
     val description: String? = null,
     val imageRes : Int? = null,
-
-    ){
-    companion object {
-        var ID = 0
-    }
-}
+    )
