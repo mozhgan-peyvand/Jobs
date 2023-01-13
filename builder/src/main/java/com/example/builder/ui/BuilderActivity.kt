@@ -36,16 +36,13 @@ class BuilderActivity : ComponentActivity() {
             navController = rememberAnimatedNavController()
             // create a scaffold state, set it to close by default
             val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-
             // Create a coroutine scope. Opening of Drawer
             // and snackbar should happen in background
             // thread without blocking main thread
             val coroutineScope = rememberCoroutineScope()
             Scaffold(
-
                 // pass the scaffold state
                 scaffoldState = scaffoldState,
-
                 // pass the topbar we created
                 topBar = {
                     TopBar(
@@ -81,7 +78,4 @@ class BuilderActivity : ComponentActivity() {
             }
         }
     }
-
-
-
 }

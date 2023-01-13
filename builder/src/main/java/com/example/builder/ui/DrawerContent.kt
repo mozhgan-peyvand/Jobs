@@ -5,14 +5,18 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -47,19 +51,22 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
     BackHandler(sheetState.isVisible) {
         coroutineScope.launch { sheetState.hide() }
     }
-
+    var selectedItem by remember {
+        mutableStateOf(0)
+    }
+    var cityText by remember {
+        mutableStateOf("OptionA")
+    }
+    var roleText by remember {
+        mutableStateOf("OptionA")
+    }
     ModalBottomSheetLayout(
         sheetState = sheetState,
-        sheetContent = { BottomSheet() },
+        sheetContent = {if (selectedItem == 0) RoleContentBottomSheet (roleText){ roleText = it } else CityContentBottomSheet(cityText){cityText = it} },
         modifier = Modifier.fillMaxSize()
     ) {
 
-        var roleText by remember {
-            mutableStateOf("")
-        }
-        var cityText by remember {
-            mutableStateOf("")
-        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -87,6 +94,7 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
                     .height(50.dp)
                     .clickable {
                         coroutineScope.launch {
+                            selectedItem = 0
                             if (sheetState.isVisible) sheetState.hide()
                             else sheetState.show()
                         }
@@ -124,6 +132,7 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
                     .height(50.dp)
                     .clickable {
                         coroutineScope.launch {
+                            selectedItem = 1
                             if (sheetState.isVisible) sheetState.hide()
                             else sheetState.show()
                         }
@@ -167,19 +176,117 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
 }
 
 @Composable
-fun BottomSheet() {
-    Column(
-        modifier = Modifier.padding(32.dp)
-    ) {
+fun CityContentBottomSheet(cityText: String, function: (String) -> Unit) {
+    val radioOptions = listOf("OptionA", "OptionB", "OptionC")
+
+    val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
+        mutableStateOf(
+            radioOptions[radioOptions.indexOf(cityText)]
+        )
+    }
+    function(selectedOption)
+    Column(Modifier.selectableGroup().padding(32.dp)) {
         Text(
-            text = "Bottom sheet",
+            text = "City",
             style = MaterialTheme.typography.h6
         )
-        Spacer(modifier = Modifier.height(32.dp))
-        Text(
-            text = "Click outside the bottom sheet to hide it",
-            style = MaterialTheme.typography.body1
+        Spacer(modifier = Modifier.height(16.dp))
+        radioOptions.forEach { text ->
+            SelectOptionsCheckoutCity(
+                text = text,
+                isSelectedOption = selectedOption == text,
+                onSelectOption = onOptionSelected
+            )
+        }
+    }
+}
+
+@Composable
+fun RoleContentBottomSheet(roleText: String,param: (String) -> Unit) {
+    val radioOptions1 = listOf("OptionA", "OptionB", "OptionC")
+
+    val(selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
+        mutableStateOf(
+            radioOptions1[radioOptions1.indexOf(roleText)]
         )
+    }
+    param(selectedOption)
+    Column(Modifier.selectableGroup().padding(32.dp)) {
+        Text(
+            text = "Role",
+            style = MaterialTheme.typography.h6
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        radioOptions1.forEach { text ->
+            SelectOptionsCheckout(
+                text = text,
+                isSelectedOption = selectedOption == text,
+                onSelectOption = onOptionSelected
+            )
+        }
+    }
+}
+
+@Composable
+fun CheckboxResource1(isSelected: Boolean): ImageVector {
+    return if (isSelected) {
+        Icons.Default.RadioButtonChecked
+    } else {
+        Icons.Default.RadioButtonUnchecked
+    }
+}
+@Composable
+fun CheckboxResource(isSelected: Boolean): ImageVector {
+    return if (isSelected) {
+        Icons.Default.RadioButtonChecked
+    } else {
+        Icons.Default.RadioButtonUnchecked
+    }
+}
+
+
+@Composable
+fun SelectOptionsCheckoutCity(
+    text: String,
+    isSelectedOption: Boolean,
+    onSelectOption: (String) -> Unit
+) {
+
+    Row (modifier = Modifier.padding(8.dp).fillMaxWidth().clickable {
+        onSelectOption(text)
+    }){
+        Icon(
+            imageVector = CheckboxResource(isSelected = isSelectedOption),
+            contentDescription = "Checkbox",
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp)
+            ,
+        )
+        Text(text, style = MaterialTheme.typography.body1)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+    }
+}
+@Composable
+fun SelectOptionsCheckout(
+    text: String,
+    isSelectedOption: Boolean,
+    onSelectOption: (String) -> Unit
+) {
+
+    Row (modifier = Modifier.padding(8.dp).fillMaxWidth().clickable {
+        onSelectOption(text)
+    }){
+        Icon(
+            imageVector = CheckboxResource1(isSelected = isSelectedOption),
+            contentDescription = "Checkbox",
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp)
+                ,
+        )
+        Text(text, style = MaterialTheme.typography.body1)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
     }
 }
 
