@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,14 +22,12 @@ import com.example.base.shape.RoundedCorner
 import com.example.base.shape.neu
 
 @Composable
-fun TopBar(onMenuClicked: () -> Unit) {
+fun TopBar(
+    onMenuClicked: () -> Unit,
+    filterResultList: SnapshotStateList<String>,
+    param: (String) -> Boolean
+) {
 
-    var filterResultList = remember {
-        mutableStateListOf<String>(
-            "Android developer",
-            "iran"
-        )
-    }
     var searchText: String by remember {
         mutableStateOf("")
     }
@@ -132,7 +131,7 @@ fun TopBar(onMenuClicked: () -> Unit) {
                             backgroundColor =  Color(165, 241, 241, 255)
                         ),
                         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
-                        onClick = { filterResultList.remove(item) }) {
+                        onClick = { param(item) }) {
 
                         Text(text = item)
                         Icon(
