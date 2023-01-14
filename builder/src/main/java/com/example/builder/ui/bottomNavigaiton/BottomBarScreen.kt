@@ -24,13 +24,6 @@ sealed class BottomBarScreen(
     val icon: Int,
     val icon_focused: Int
 ) {
-    // for favorite
-    object Favorite : BottomBarScreen(
-        route = AppRouters.FavoriteScreen.routers,
-        title = "Favorite",
-        icon = R.drawable.ic_bottom_favorite,
-        icon_focused = R.drawable.ic_bottom_favorite_focused
-    )
 
     // for home
     object Home : BottomBarScreen(
@@ -52,7 +45,6 @@ sealed class BottomBarScreen(
 @Composable
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
-        BottomBarScreen.Favorite,
         BottomBarScreen.Home,
         BottomBarScreen.Profile
     )
