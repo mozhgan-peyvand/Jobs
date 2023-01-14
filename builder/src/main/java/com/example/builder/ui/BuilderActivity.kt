@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.base.routers.AppRouters
 import com.example.builder.ui.bottomNavigaiton.BottomBar
-import com.example.ui_favorite.util.navigation.addFavoriteGraph
 import com.example.ui_jobs.util.navigation.addJobsGraph
 import com.example.ui_user.util.navigation.addUserNavGraph
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -86,7 +85,6 @@ class BuilderActivity : ComponentActivity() {
                 ) {
                     addJobsGraph(navController)
                     addUserNavGraph(navController)
-                    addFavoriteGraph(navController)
                 }
             }
         }
