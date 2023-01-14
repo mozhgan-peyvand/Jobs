@@ -30,7 +30,11 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
+fun BottomSheetLayout(
+    onCloseDrawer: () -> Unit,
+    param: (List<String>) -> Boolean,
+    clear: () -> Unit
+) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
@@ -62,7 +66,19 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
     }
     ModalBottomSheetLayout(
         sheetState = sheetState,
-        sheetContent = {if (selectedItem == 0) RoleContentBottomSheet (roleText){ roleText = it } else CityContentBottomSheet(cityText){cityText = it} },
+        sheetContent = {
+            if (selectedItem == 0)
+                RoleContentBottomSheet(
+                roleText,
+                { coroutineScope.launch { sheetState.hide() } },
+                { roleText = it })
+            else
+                CityContentBottomSheet(
+                    cityText,
+                    { coroutineScope.launch { sheetState.hide() } },
+                    { cityText = it }
+                )
+        },
         modifier = Modifier.fillMaxSize()
     ) {
 
@@ -161,6 +177,8 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
             Button(
                 modifier = Modifier,
                 onClick = {
+                    clear.invoke()
+                    param(listOf(roleText, cityText))
                     onCloseDrawer.invoke()
                 },
                 shape = RoundedCornerShape(CornerSize(24.dp)),
@@ -176,7 +194,7 @@ fun BottomSheetLayout(onCloseDrawer: () -> Unit) {
 }
 
 @Composable
-fun CityContentBottomSheet(cityText: String, function: (String) -> Unit) {
+fun CityContentBottomSheet(cityText: String,sheetStateHide: () -> Unit, function: (String) -> Unit) {
     val radioOptions = listOf("OptionA", "OptionB", "OptionC")
 
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
@@ -185,7 +203,10 @@ fun CityContentBottomSheet(cityText: String, function: (String) -> Unit) {
         )
     }
     function(selectedOption)
-    Column(Modifier.selectableGroup().padding(32.dp)) {
+    Column(
+        Modifier
+            .selectableGroup()
+            .padding(32.dp)) {
         Text(
             text = "City",
             style = MaterialTheme.typography.h6
@@ -195,23 +216,27 @@ fun CityContentBottomSheet(cityText: String, function: (String) -> Unit) {
             SelectOptionsCheckoutCity(
                 text = text,
                 isSelectedOption = selectedOption == text,
-                onSelectOption = onOptionSelected
+                onSelectOption = onOptionSelected,
+                sheetStateHide
             )
         }
     }
 }
 
 @Composable
-fun RoleContentBottomSheet(roleText: String,param: (String) -> Unit) {
+fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: (String) -> Unit) {
     val radioOptions1 = listOf("OptionA", "OptionB", "OptionC")
 
-    val(selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
+    val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(
             radioOptions1[radioOptions1.indexOf(roleText)]
         )
     }
     param(selectedOption)
-    Column(Modifier.selectableGroup().padding(32.dp)) {
+    Column(
+        Modifier
+            .selectableGroup()
+            .padding(32.dp)) {
         Text(
             text = "Role",
             style = MaterialTheme.typography.h6
@@ -221,7 +246,8 @@ fun RoleContentBottomSheet(roleText: String,param: (String) -> Unit) {
             SelectOptionsCheckout(
                 text = text,
                 isSelectedOption = selectedOption == text,
-                onSelectOption = onOptionSelected
+                onSelectOption = onOptionSelected,
+                sheetStateHide
             )
         }
     }
@@ -235,6 +261,7 @@ fun CheckboxResource1(isSelected: Boolean): ImageVector {
         Icons.Default.RadioButtonUnchecked
     }
 }
+
 @Composable
 fun CheckboxResource(isSelected: Boolean): ImageVector {
     return if (isSelected) {
@@ -249,17 +276,21 @@ fun CheckboxResource(isSelected: Boolean): ImageVector {
 fun SelectOptionsCheckoutCity(
     text: String,
     isSelectedOption: Boolean,
-    onSelectOption: (String) -> Unit
+    onSelectOption: (String) -> Unit,
+    sheetStateHide: () -> Unit
 ) {
 
-    Row (modifier = Modifier.padding(8.dp).fillMaxWidth().clickable {
-        onSelectOption(text)
-    }){
+    Row(modifier = Modifier
+        .padding(8.dp)
+        .fillMaxWidth()
+        .clickable {
+            onSelectOption(text)
+            sheetStateHide.invoke()
+        }) {
         Icon(
             imageVector = CheckboxResource(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
-            modifier = Modifier.padding(start = 8.dp, end = 8.dp)
-            ,
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp),
         )
         Text(text, style = MaterialTheme.typography.body1)
 
@@ -267,21 +298,26 @@ fun SelectOptionsCheckoutCity(
 
     }
 }
+
 @Composable
 fun SelectOptionsCheckout(
     text: String,
     isSelectedOption: Boolean,
-    onSelectOption: (String) -> Unit
+    onSelectOption: (String) -> Unit,
+    sheetStateHide: () -> Unit
 ) {
 
-    Row (modifier = Modifier.padding(8.dp).fillMaxWidth().clickable {
-        onSelectOption(text)
-    }){
+    Row(modifier = Modifier
+        .padding(8.dp)
+        .fillMaxWidth()
+        .clickable {
+            onSelectOption(text)
+            sheetStateHide.invoke()
+        }) {
         Icon(
             imageVector = CheckboxResource1(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
-            modifier = Modifier.padding(start = 8.dp, end = 8.dp)
-                ,
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp),
         )
         Text(text, style = MaterialTheme.typography.body1)
 

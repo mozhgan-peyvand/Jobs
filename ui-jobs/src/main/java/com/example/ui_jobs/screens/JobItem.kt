@@ -35,14 +35,9 @@ fun JobItem(
         backgroundColor = Color(236, 234, 235),
         border = BorderStroke(2.dp, Color(236, 234, 235)),
         modifier = Modifier
-            .padding(top = 4.dp)
-            .neu(
-                lightShadowColor = Color.White,
-                darkShadowColor = Color.LightGray,
-                lightSource = LightSource.LEFT_TOP,
-                shape = Flat(RoundedCorner(24.dp)),
-            ),
+            .padding(top = 4.dp),
         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
+        elevation = 4.dp
     ) {
         Box(modifier = modifier.fillMaxWidth()) {
             Icon(

@@ -9,6 +9,8 @@ import androidx.compose.material.DrawerValue
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberDrawerState
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -33,6 +35,10 @@ class BuilderActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            var filterResultList = remember {
+                mutableStateListOf<String>()
+            }
             navController = rememberAnimatedNavController()
             // create a scaffold state, set it to close by default
             val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
@@ -53,16 +59,23 @@ class BuilderActivity : ComponentActivity() {
                                 // to close use -> scaffoldState.drawerState.close()
                                 scaffoldState.drawerState.open()
                             }
-                        }
+                        },
+                        filterResultList,
+                        { filterResultList.remove(it) }
                     )
                 },
                 bottomBar = { BottomBar(navController = navController) },
-                drawerContent = { BottomSheetLayout {
-                    coroutineScope.launch {
-                        // to close use -> scaffoldState.drawerState.close()
-                        scaffoldState.drawerState.close()
-                    }
-                }
+                drawerContent = {
+                    BottomSheetLayout(
+                        {
+                            coroutineScope.launch {
+                                // to close use -> scaffoldState.drawerState.close()
+                                scaffoldState.drawerState.close()
+                            }
+                        },
+                        { filterResultList.addAll(it) },
+                        { filterResultList.clear() }
+                    )
                 }
             ) { paddingValue ->
 
