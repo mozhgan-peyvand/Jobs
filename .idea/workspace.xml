@@ -15,43 +15,34 @@
   <component name="ChangeListManager">
     <list default="true" id="9c64ec96-be44-44fe-b87b-ec052eee6692" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Jobs.buildSrc.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Jobs.buildSrc.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Jobs.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Jobs.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Jobs.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Jobs.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Jobs.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Jobs.app.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/base/Jobs.base.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/base/Jobs.base.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/base/Jobs.base.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/base/Jobs.base.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/base/Jobs.base.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/base/Jobs.base.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/builder/Jobs.builder.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/builder/Jobs.builder.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/builder/Jobs.builder.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/builder/Jobs.builder.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/builder/Jobs.builder.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/builder/Jobs.builder.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-favorite/Jobs.data-favorite.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-favorite/Jobs.data-favorite.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-favorite/Jobs.data-favorite.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-favorite/Jobs.data-favorite.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-favorite/Jobs.data-favorite.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-favorite/Jobs.data-favorite.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-jobs/Jobs.data-jobs.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-jobs/Jobs.data-jobs.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-jobs/Jobs.data-jobs.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-jobs/Jobs.data-jobs.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-jobs/Jobs.data-jobs.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-jobs/Jobs.data-jobs.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-user/Jobs.data-user.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-user/Jobs.data-user.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-user/Jobs.data-user.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-user/Jobs.data-user.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/data-user/Jobs.data-user.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/data-user/Jobs.data-user.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-favorite/Jobs.ui-favorite.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-favorite/Jobs.ui-favorite.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-favorite/Jobs.ui-favorite.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-favorite/Jobs.ui-favorite.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-favorite/Jobs.ui-favorite.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-favorite/Jobs.ui-favorite.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-jobs/Jobs.ui-jobs.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-jobs/Jobs.ui-jobs.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-jobs/Jobs.ui-jobs.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-jobs/Jobs.ui-jobs.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-jobs/Jobs.ui-jobs.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-jobs/Jobs.ui-jobs.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-user/Jobs.ui-user.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-user/Jobs.ui-user.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-user/Jobs.ui-user.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-user/Jobs.ui-user.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ui-user/Jobs.ui-user.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ui-user/Jobs.ui-user.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2023_9_16_AM_[Changes]/buildSrc.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2023_9_16_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2023_9_16_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2023_9_35_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2023_9_35_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2023_5_10_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2023_5_10_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/create_request_for_get_jobs_do_after_dsl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/create_request_for_get_jobs_do_after_dsl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/get_update_to_dependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/get_update_to_dependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2023_9_35_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2023_9_35_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2023_5_10_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2023_5_10_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui_jobs/util/navigation/JobsNavGraph.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui_jobs/util/navigation/JobsNavGraph.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-ui-view/src/main/res/drawable/ic_bottom_favorite.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-ui-view/src/main/res/drawable/ic_bottom_favorite_focused.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/consumer-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/src/androidTest/java/com/example/data_favorite/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-favorite/src/test/java/com/example/data_favorite/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-favorite/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-favorite/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-favorite/src/main/java/com/example/domain_favorite/MyClass.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/consumer-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/src/androidTest/java/com/example/ui_favorite/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/src/main/java/com/example/ui_favorite/FavoriteScreen.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/src/main/java/com/example/ui_favorite/util/navigation/FavoriteNavGraph.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-favorite/src/test/java/com/example/ui_favorite/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui_jobs/screens/JobItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui_jobs/screens/JobItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-jobs/src/main/res/drawable/ic_baseline_star_border_24.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +92,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="24-drag-items-in-list-job-ad" />
+        <entry key="$PROJECT_DIR$" value="44-delete-favorite-module" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -371,7 +362,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672839435426</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="create action for bottom sheet (#42)">
+      <created>1673688330654</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673688330654</updated>
+    </task>
+    <task id="LOCAL-00010" summary="delete favorite module (#44)">
+      <created>1673705576056</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673705576056</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -410,6 +415,8 @@
     <MESSAGE value="change favorite icon and animation (#16)" />
     <MESSAGE value="change bottom bar animation (#22)" />
     <MESSAGE value="drag items in list job ad (#24)" />
-    <option name="LAST_COMMIT_MESSAGE" value="drag items in list job ad (#24)" />
+    <MESSAGE value="create action for bottom sheet (#42)" />
+    <MESSAGE value="delete favorite module (#44)" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete favorite module (#44)" />
   </component>
 </project>

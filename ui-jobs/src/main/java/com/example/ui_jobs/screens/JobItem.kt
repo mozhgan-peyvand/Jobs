@@ -39,21 +39,6 @@ fun JobItem(
         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
         elevation = 4.dp
     ) {
-        Box(modifier = modifier.fillMaxWidth()) {
-            Icon(
-                modifier = modifier
-                    .align(Alignment.TopEnd)
-                    .padding(dimensionResource(id = com.example.base.R.dimen.spacing_3x))
-                    .graphicsLayer {
-                        scaleX = 1.3f
-                        scaleY = 1.3f
-                    }
-                    .clickable { },
-                painter = painterResource(id = com.example.ui_jobs.R.drawable.ic_baseline_star_border_24),
-                contentDescription = "",
-                tint = Color(177, 171, 174, 255),
-            )
-        }
 //        val painter = rememberCoilPainter(item.imageUrl)
         Row(
             modifier = modifier
