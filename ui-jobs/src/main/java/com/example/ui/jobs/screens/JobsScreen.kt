@@ -20,7 +20,7 @@ import com.example.common.ui.view.JobInfoModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun JobScreen(function: () -> Unit) {
+fun JobScreen(changeTheme: () -> Unit) {
 
     var filterResultList = remember {
         mutableStateListOf<String>()
@@ -101,7 +101,8 @@ fun JobScreen(function: () -> Unit) {
                     }
                 },
                 filterResultList,
-                { filterResultList.remove(it) }
+                { filterResultList.remove(it) },
+                changeTheme = changeTheme
             )
         },
         drawerContent = {

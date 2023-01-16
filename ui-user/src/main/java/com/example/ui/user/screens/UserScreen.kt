@@ -13,8 +13,7 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 fun UserScreen(function: () -> Unit) {
     function.invoke()
     Column(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Blue))
+        .fillMaxSize())
     {
         Text("im user screen")
     }

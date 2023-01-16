@@ -1,6 +1,8 @@
 package com.example.ui.jobs.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -25,7 +27,8 @@ import com.example.base.shape.neu
 fun TopBar(
     onMenuClicked: () -> Unit,
     filterResultList: SnapshotStateList<String>,
-    param: (String) -> Boolean
+    param: (String) -> Boolean,
+    changeTheme: () -> Unit
 ) {
 
     var searchText: String by remember {
@@ -58,6 +61,10 @@ fun TopBar(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
+                TitleWithThemeToggle(
+                    isDarkTheme = false,
+                    onThemeToggle = changeTheme
+                )
                 TextField(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -70,7 +77,6 @@ fun TopBar(
                         )
                         .height(50.dp),
                     colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = Color(236, 234, 235),
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent//hide the indicator
                     ),
@@ -129,7 +135,7 @@ fun TopBar(
                             end = dimensionResource(id = R.dimen.spacing_quarter_base)
                         ),
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor =  Color(165, 241, 241, 255)
+                            backgroundColor = Color(165, 241, 241, 255)
                         ),
                         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
                         onClick = { param(item) }) {
@@ -144,5 +150,21 @@ fun TopBar(
                 }
             }
         }
+    }
+}
+@Composable
+fun TitleWithThemeToggle(isDarkTheme: Boolean, onThemeToggle: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+        Image(
+            modifier = Modifier.padding(16.dp).clickable {
+                { onThemeToggle }
+            },
+            painter = if (isDarkTheme) painterResource(id = com.example.ui.jobs.R.drawable.ic_baseline_light_mode)
+            else painterResource(id = com.example.ui.jobs.R.drawable.ic_baseline_dark_mode_24),
+            contentDescription = "Toggle theme"
+        )
     }
 }

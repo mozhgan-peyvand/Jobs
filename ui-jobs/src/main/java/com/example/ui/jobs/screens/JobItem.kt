@@ -91,7 +91,6 @@ fun JobItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 16.dp, top = 4.dp),
-                    color = Color.Black,
                     maxLines = 2,
                     style = MaterialTheme.typography.body1,
                     overflow = TextOverflow.Ellipsis
@@ -101,7 +100,6 @@ fun JobItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 16.dp, bottom = 8.dp, top = 4.dp),
-                    color = Color.Black,
                     maxLines = 2,
                     style = MaterialTheme.typography.body1,
                     overflow = TextOverflow.Ellipsis

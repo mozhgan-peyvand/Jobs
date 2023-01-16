@@ -10,14 +10,14 @@ import com.google.accompanist.navigation.animation.composable
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.addJobsGraph(
     navHostController: NavHostController,
-    function: () -> Unit
+    changeTheme: () -> Unit
 ) {
     navigation(
         startDestination = AppRouters.JobScreen.routers,
         route = AppRouters.JobGraph.routers
     ) {
         composable(AppRouters.JobScreen.routers) {
-            JobScreen(function)
+            JobScreen(changeTheme)
         }
     }
 }

@@ -102,7 +102,7 @@ fun FilterJobs(
                     .fillMaxWidth()
                     .background(Color(236, 234, 235))
                     .neu(
-                        lightShadowColor = Color.White,
+                        lightShadowColor = MaterialTheme.colors.primary,
                         darkShadowColor = Color.LightGray,
                         lightSource = LightSource.LEFT_TOP,
                         shape = Pressed(RoundedCorner(24.dp)),
