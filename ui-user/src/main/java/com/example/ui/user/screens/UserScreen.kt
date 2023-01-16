@@ -10,8 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalConsumer
 
 @Composable
-fun UserScreen(function: () -> Unit) {
-    function.invoke()
+fun UserScreen() {
     Column(modifier = Modifier
         .fillMaxSize())
     {

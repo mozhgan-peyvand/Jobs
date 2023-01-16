@@ -1,8 +1,6 @@
 package com.example.ui.jobs.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -18,37 +16,26 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.base.R
-import com.example.base.shape.LightSource
-import com.example.base.shape.Pressed
-import com.example.base.shape.RoundedCorner
-import com.example.base.shape.neu
+import com.example.base.shape.*
+import com.example.base.AppColors
+import com.example.common.ui.view.ImageButton
 
 @Composable
 fun TopBar(
     onMenuClicked: () -> Unit,
     filterResultList: SnapshotStateList<String>,
     param: (String) -> Boolean,
-    changeTheme: () -> Unit
+    changeTheme: () -> Unit,
+    isDarkTheme: MutableState<Boolean>
 ) {
 
     var searchText: String by remember {
         mutableStateOf("")
     }
-    TopAppBar(
-        modifier = Modifier
-            .background(Color(236, 234, 235))
-            .fillMaxWidth()
-            .height(110.dp),
-        backgroundColor = Color(236, 234, 235)
-    ) {
-
         Column(
             modifier = Modifier
-                .background(Color(236, 234, 235))
-                .padding(
-                    start = dimensionResource(id = R.dimen.spacing_2x),
-                    end = dimensionResource(id = R.dimen.spacing_2x)
-                )
+                .background(MaterialTheme.colors.background)
+
         ) {
             Row(
                 modifier = Modifier
@@ -61,110 +48,89 @@ fun TopBar(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                TitleWithThemeToggle(
-                    isDarkTheme = false,
-                    onThemeToggle = changeTheme
+                ImageButton(
+                    modifier = Modifier.padding(4.dp).weight(1f),
+                    drawableResId = com.example.ui.jobs.R.drawable.ic_job_filter,
+                    contentDescription = "filter",
+                    onClick = { onMenuClicked.invoke() }
                 )
-                TextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color(236, 234, 235))
-                        .neu(
-                            lightShadowColor = Color.White,
-                            darkShadowColor = Color.LightGray,
-                            lightSource = LightSource.LEFT_TOP,
-                            shape = Pressed(RoundedCorner(24.dp)),
-                        )
-                        .height(50.dp),
-                    colors = TextFieldDefaults.textFieldColors(
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent//hide the indicator
-                    ),
-                    value = searchText,
-                    onValueChange = { searchText = it },
-                    placeholder = { Text(text = "search your word") },
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = com.example.base.R.drawable.ic_job_search),
-                            contentDescription = "",
-                            tint = Color(32, 184, 184, 255)
-                        )
-                    },
-                    trailingIcon = {
-                        Icon(
-                            painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_close),
-                            contentDescription = "",
-                            tint = Color(32, 184, 184, 255)
-                        )
-                    }
-                )
-            }
-            LazyRow(modifier = Modifier.fillMaxWidth()) {
 
-                item {
-                    Button(modifier = Modifier
-                        .background(Color(236, 234, 235))
-                        .padding(
-                            start = dimensionResource(id = R.dimen.spacing_2x),
-                            end = dimensionResource(id = R.dimen.spacing_2x)
-                        ),
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = Color(
-                                236,
-                                234,
-                                235
+                TextField(
+                    value = searchText, onValueChange = { searchText = it },
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .weight(4f)
+                        .neu(
+                            NeuAttrs(
+                                lightShadowColor = AppColors.lightShadow(),
+                                darkShadowColor = AppColors.darkShadow(),
+                                shadowElevation = 6.dp,
+                                lightSource = LightSource.LEFT_TOP,
+                                shape = Pressed(RoundedCorner(12.dp)),
                             )
                         ),
-                        shape = RoundedCornerShape(corner = CornerSize(24.dp)),
-                        onClick = { onMenuClicked.invoke() }
-                    ) {
-                        Icon(
-                            painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_filter),
-                            contentDescription = "",
-                            tint = Color(32, 184, 184, 255)
-                        )
-                        Text(text = "filter")
-                    }
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        backgroundColor = Color.Transparent,
+                    ),
+                    placeholder = {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_job_search),
+                                contentDescription = "Search",
+                                tint = MaterialTheme.colors.primary
+                            )
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Text(text = "Search")
+                        }
+                    },
+                )
+                TitleWithThemeToggle(
+                    Modifier.weight(1f),
+                    isDarkTheme = isDarkTheme,
+                    onThemeToggle = changeTheme
+                )
 
-                }
+            }
+            LazyRow(modifier = Modifier.fillMaxWidth()) {
                 items(filterResultList) { item ->
                     Button(modifier = Modifier
-                        .background(Color(236, 234, 235))
                         .padding(
                             start = dimensionResource(id = R.dimen.spacing_quarter_base),
                             end = dimensionResource(id = R.dimen.spacing_quarter_base)
                         ),
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = Color(165, 241, 241, 255)
+                            backgroundColor = MaterialTheme.colors.primary
                         ),
                         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
                         onClick = { param(item) }) {
 
-                        Text(text = item)
+                        Text(text = item, color = MaterialTheme.colors.onPrimary)
                         Icon(
                             painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_close),
                             contentDescription = "",
-                            tint = Color(230, 230, 230, 255)
+                            tint = MaterialTheme.colors.onSecondary
                         )
                     }
                 }
             }
         }
-    }
 }
-@Composable
-fun TitleWithThemeToggle(isDarkTheme: Boolean, onThemeToggle: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically
-    ) {
 
-        Image(
-            modifier = Modifier.padding(16.dp).clickable {
-                { onThemeToggle }
-            },
-            painter = if (isDarkTheme) painterResource(id = com.example.ui.jobs.R.drawable.ic_baseline_light_mode)
-            else painterResource(id = com.example.ui.jobs.R.drawable.ic_baseline_dark_mode_24),
-            contentDescription = "Toggle theme"
-        )
-    }
+@Composable
+fun TitleWithThemeToggle(
+    modifier: Modifier,
+    isDarkTheme: MutableState<Boolean>,
+    onThemeToggle: () -> Unit
+) {
+    ImageButton(
+        modifier = modifier.padding(4.dp),
+        drawableResId = if (isDarkTheme.value) com.example.ui.jobs.R.drawable.ic_baseline_light_mode
+        else com.example.ui.jobs.R.drawable.ic_baseline_dark_mode_24,
+        contentDescription = "Toggle theme",
+        onClick = onThemeToggle
+    )
 }

@@ -9,11 +9,10 @@ import com.example.ui.user.screens.UserScreen
 
 fun NavGraphBuilder.addUserNavGraph(
     navHostController: NavHostController,
-    function: () -> Unit
 ) {
     navigation(route = AppRouters.UserGraph.routers, startDestination = AppRouters.UserScreen.routers) {
         composable(route = AppRouters.UserScreen.routers){
-            UserScreen(function)
+            UserScreen()
         }
     }
 }

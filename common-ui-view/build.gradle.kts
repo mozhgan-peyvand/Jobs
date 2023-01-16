@@ -5,6 +5,6 @@ plugins {
 
 
 dependencies {
-
+    implementation(project(":base"))
     addCompose()
 }
