@@ -20,11 +20,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.base.shape.LightSource
-import com.example.base.shape.Pressed
-import com.example.base.shape.RoundedCorner
-import com.example.base.shape.neu
+import com.example.base.AppColors
 import com.example.base.R
+import com.example.base.shape.*
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -86,7 +84,7 @@ fun FilterJobs(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(236, 234, 235))
+                .background(MaterialTheme.colors.background)
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -98,17 +96,19 @@ fun FilterJobs(
             )
             Spacer(modifier = Modifier.height(32.dp))
             TextField(
+                value = roleText, onValueChange = { roleText = it },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(236, 234, 235))
+                    .padding(4.dp)
                     .neu(
-                        lightShadowColor = MaterialTheme.colors.primary,
-                        darkShadowColor = Color.LightGray,
-                        lightSource = LightSource.LEFT_TOP,
-                        shape = Pressed(RoundedCorner(24.dp)),
-                    )
-                    .height(50.dp)
-                    .clickable {
+                        NeuAttrs(
+                            lightShadowColor = AppColors.lightShadow(),
+                            darkShadowColor = AppColors.darkShadow(),
+                            shadowElevation = 6.dp,
+                            lightSource = LightSource.LEFT_TOP,
+                            shape = Pressed(RoundedCorner(12.dp)),
+                        )
+                    ).clickable {
                         coroutineScope.launch {
                             selectedItem = 0
                             if (sheetState.isVisible) sheetState.hide()
@@ -116,37 +116,37 @@ fun FilterJobs(
                         }
                     },
                 colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color(236, 234, 235),
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
+                    backgroundColor = Color.Transparent,
                 ),
-                value = roleText,
-                onValueChange = { roleText = it },
-                placeholder = { Text(text = "Enter role") },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_job_search),
-                        contentDescription = "",
-                        tint = Color(32, 184, 184, 255)
-                    )
+                placeholder = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Icon(painter = painterResource(id = R.drawable.ic_job_search), contentDescription = "Search")
+                        Spacer(modifier = Modifier.size(16.dp))
+                        Text(text = "Enter Role")
+                    }
                 },
                 enabled = false
             )
             Spacer(modifier = Modifier.height(32.dp))
 
             TextField(
+                value = cityText, onValueChange = { cityText = it },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(236, 234, 235))
+                    .padding(4.dp)
                     .neu(
-                        lightShadowColor = Color.White,
-                        darkShadowColor = Color.LightGray,
-                        lightSource = LightSource.LEFT_TOP,
-                        shape = Pressed(RoundedCorner(24.dp)),
-                    )
-                    .height(50.dp)
-                    .clickable {
+                        NeuAttrs(
+                            lightShadowColor = AppColors.lightShadow(),
+                            darkShadowColor = AppColors.darkShadow(),
+                            shadowElevation = 6.dp,
+                            lightSource = LightSource.LEFT_TOP,
+                            shape = Pressed(RoundedCorner(12.dp)),
+                        )
+                    ).clickable {
                         coroutineScope.launch {
                             selectedItem = 1
                             if (sheetState.isVisible) sheetState.hide()
@@ -154,21 +154,18 @@ fun FilterJobs(
                         }
                     },
                 colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color(236, 234, 235),
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
-
+                    backgroundColor = Color.Transparent,
                 ),
-                value = cityText,
-                onValueChange = { cityText = it },
-                placeholder = { Text(text = "Enter city") },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_job_search),
-                        contentDescription = "",
-                        tint = Color(32, 184, 184, 255)
-                    )
+                placeholder = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Icon(painter = painterResource(id = R.drawable.ic_job_search), contentDescription = "Search")
+                        Spacer(modifier = Modifier.size(16.dp))
+                        Text(text = "Enter City")
+                    }
                 },
                 enabled = false
             )
@@ -291,6 +288,7 @@ fun SelectOptionsCheckoutCity(
             imageVector = CheckboxResource(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
             modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+            tint = MaterialTheme.colors.primary
         )
         Text(text, style = MaterialTheme.typography.body1)
 
@@ -318,6 +316,7 @@ fun SelectOptionsCheckout(
             imageVector = CheckboxResource1(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
             modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+            tint = MaterialTheme.colors.primary
         )
         Text(text, style = MaterialTheme.typography.body1)
 

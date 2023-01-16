@@ -6,10 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.DrawerValue
-import androidx.compose.material.Scaffold
-import androidx.compose.material.rememberDrawerState
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,7 +17,7 @@ import com.example.common.ui.view.JobInfoModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun JobScreen(changeTheme: () -> Unit) {
+fun JobScreen(changeTheme: () -> Unit, isDarkTheme: MutableState<Boolean>) {
 
     var filterResultList = remember {
         mutableStateListOf<String>()
@@ -102,7 +99,8 @@ fun JobScreen(changeTheme: () -> Unit) {
                 },
                 filterResultList,
                 { filterResultList.remove(it) },
-                changeTheme = changeTheme
+                changeTheme = changeTheme,
+                isDarkTheme = isDarkTheme
             )
         },
         drawerContent = {
@@ -131,7 +129,7 @@ private fun JobList(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(236, 234, 235))
+            .background(MaterialTheme.colors.background)
             .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
         state = state,
         verticalArrangement = Arrangement.spacedBy(8.dp),

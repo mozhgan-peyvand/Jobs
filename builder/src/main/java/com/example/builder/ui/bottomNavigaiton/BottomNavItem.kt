@@ -6,7 +6,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,6 +20,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.example.base.AppColors
 import com.example.base.shape.LightSource
 import com.example.base.shape.Pressed
 import com.example.base.shape.RoundedCorner
@@ -32,9 +35,7 @@ fun RowScope.AddItem(
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
 
     val background =
-        if (selected) Color(165, 241, 241, 255) else Color.Transparent
-    val contentColor =
-        Color.Black
+        if (selected) MaterialTheme.colors.primary else Color.Transparent
 
     Box(
         modifier = Modifier
@@ -47,14 +48,13 @@ fun RowScope.AddItem(
                 }
             })
             .neu(
-                lightShadowColor = Color.White,
-                darkShadowColor = Color.LightGray,
+                lightShadowColor = AppColors.lightShadow(),
+                darkShadowColor = AppColors.darkShadow(),
                 lightSource = LightSource.LEFT_TOP,
                 shape = Pressed(RoundedCorner(24.dp)),
             )
-            .padding(2.dp)
-        ,
-        ) {
+            .padding(2.dp),
+    ) {
         Row(
             modifier = Modifier
                 .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),
@@ -64,12 +64,12 @@ fun RowScope.AddItem(
             Icon(
                 painter = painterResource(id = if (selected) screen.icon_focused else screen.icon),
                 contentDescription = "icon",
-                tint = contentColor
+                tint = MaterialTheme.colors.onBackground
             )
             AnimatedVisibility(visible = selected) {
                 Text(
                     text = screen.title,
-                    color = contentColor
+                    color = MaterialTheme.colors.onBackground
                 )
             }
         }

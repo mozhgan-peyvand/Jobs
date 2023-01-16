@@ -1,40 +1,34 @@
 package com.example.builder.ui.theme
 
-import android.annotation.SuppressLint
-import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-
-@SuppressLint("ConflictingOnColor")
-private val LightThemeColors = lightColors(
-    primary = Blue600,
-    primaryVariant = Blue400,
-    onPrimary = Black2,
-    secondary = Color.White,
-    secondaryVariant = Teal300,
-    onSecondary = Color.Black,
-    error = RedErrorDark,
-    onError = RedErrorLight,
-    background = Grey1,
-    onBackground = Color.Black,
-    surface = Color.White,
-    onSurface = Black2,
-)
+import com.example.base.AppColors
 
 private val DarkThemeColors = darkColors(
-    primary = Blue700,
-    primaryVariant = Color.White,
+    primary = AppColors.Purple200,
     onPrimary = Color.White,
-    secondary = Black1,
-    onSecondary = Color.White,
-    error = RedErrorLight,
-    background = Color.Black,
+
+    secondary = AppColors.Purple500,
+
+    background = AppColors.Dark.Background,
     onBackground = Color.White,
-    surface = Black1,
+    surface = AppColors.Dark.Background,
     onSurface = Color.White,
+)
+
+private val LightThemeColors = lightColors(
+    primary = AppColors.Purple200,
+    onPrimary = Color.Black,
+
+    secondary = AppColors.Purple500,
+
+    background = AppColors.Light.Background,
+    onBackground = Color.Black,
+    surface = AppColors.Light.Background,
+    onSurface = Color.Black,
 )
 //private val otherThemeColors = Colors(
 //

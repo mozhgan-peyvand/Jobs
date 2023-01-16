@@ -29,14 +29,10 @@ class BuilderActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var appTheme by remember {
+            val appTheme = remember {
                 mutableStateOf(true)
             }
-            AppTheme(darkTheme = appTheme) {
-                var selectedScreen = remember {
-                    mutableStateOf(1)
-                }
-
+            AppTheme(darkTheme = appTheme.value) {
                 navController = rememberAnimatedNavController()
                 // create a scaffold state, set it to close by default
                 val scaffoldState = rememberScaffoldState()
@@ -56,8 +52,8 @@ class BuilderActivity : ComponentActivity() {
                         startDestination = AppRouters.JobGraph.routers,
                         modifier = Modifier.padding(paddingValue)
                     ) {
-                        addJobsGraph(navController) { appTheme = !appTheme }
-                        addUserNavGraph(navController) { selectedScreen.value = 2 }
+                        addJobsGraph(navController, isDarkTheme = appTheme) { appTheme.value = !appTheme.value }
+                        addUserNavGraph(navController)
                     }
                 }
             }

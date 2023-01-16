@@ -28,8 +28,8 @@ fun JobItem(
 ) {
 
     Card(
-        backgroundColor = Color(236, 234, 235),
-        border = BorderStroke(2.dp, Color(236, 234, 235)),
+        backgroundColor = MaterialTheme.colors.surface,
+        border = BorderStroke(2.dp, MaterialTheme.colors.surface),
         modifier = Modifier
             .padding(top = 4.dp),
         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
