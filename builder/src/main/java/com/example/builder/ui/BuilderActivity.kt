@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.base.routers.AppRouters
 import com.example.builder.ui.bottomNavigaiton.BottomBar
+import com.example.builder.ui.theme.AppTheme
 import com.example.ui.jobs.util.navigation.addJobsGraph
 import com.example.ui.user.util.navigation.addUserNavGraph
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -28,32 +29,36 @@ class BuilderActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-            var selectedScreen = remember {
-                mutableStateOf(1)
+            var appTheme by remember {
+                mutableStateOf(true)
             }
+            AppTheme(darkTheme = appTheme) {
+                var selectedScreen = remember {
+                    mutableStateOf(1)
+                }
 
-            navController = rememberAnimatedNavController()
-            // create a scaffold state, set it to close by default
-            val scaffoldState = rememberScaffoldState()
-            // Create a coroutine scope. Opening of Drawer
-            // and snackbar should happen in background
-            // thread without blocking main thread
-            Scaffold(
-                // pass the scaffold state
-                scaffoldState = scaffoldState,
-                // pass the topbar we created
-                bottomBar = { BottomBar(navController = navController) },
+                navController = rememberAnimatedNavController()
+                // create a scaffold state, set it to close by default
+                val scaffoldState = rememberScaffoldState()
+                // Create a coroutine scope. Opening of Drawer
+                // and snackbar should happen in background
+                // thread without blocking main thread
+                Scaffold(
+                    // pass the scaffold state
+                    scaffoldState = scaffoldState,
+                    // pass the topbar we created
+                    bottomBar = { BottomBar(navController = navController) },
 
-            ) { paddingValue ->
+                    ) { paddingValue ->
 
-                AnimatedNavHost(
-                    navController = navController,
-                    startDestination = AppRouters.JobGraph.routers,
-                    modifier = Modifier.padding(paddingValue)
-                ) {
-                    addJobsGraph(navController) { selectedScreen.value = 1 }
-                    addUserNavGraph(navController){selectedScreen.value = 2}
+                    AnimatedNavHost(
+                        navController = navController,
+                        startDestination = AppRouters.JobGraph.routers,
+                        modifier = Modifier.padding(paddingValue)
+                    ) {
+                        addJobsGraph(navController) { appTheme = !appTheme }
+                        addUserNavGraph(navController) { selectedScreen.value = 2 }
+                    }
                 }
             }
         }
