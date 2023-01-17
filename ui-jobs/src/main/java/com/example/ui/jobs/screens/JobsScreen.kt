@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import com.example.base.R
@@ -17,7 +16,7 @@ import com.example.common.ui.view.JobInfoModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun JobScreen(changeTheme: () -> Unit, isDarkTheme: MutableState<Boolean>) {
+fun JobScreen() {
 
     var filterResultList = remember {
         mutableStateListOf<String>()
@@ -88,7 +87,7 @@ fun JobScreen(changeTheme: () -> Unit, isDarkTheme: MutableState<Boolean>) {
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            TopBar(
+            JobTopBar(
                 // When menu is clicked open the
                 // drawer in coroutine scope
                 onMenuClicked = {
@@ -98,9 +97,7 @@ fun JobScreen(changeTheme: () -> Unit, isDarkTheme: MutableState<Boolean>) {
                     }
                 },
                 filterResultList,
-                { filterResultList.remove(it) },
-                changeTheme = changeTheme,
-                isDarkTheme = isDarkTheme
+                { filterResultList.remove(it) }
             )
         },
         drawerContent = {
@@ -126,6 +123,7 @@ private fun JobList(
     modifier: Modifier
 ) {
     val state: LazyListState = rememberLazyListState()
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -148,5 +146,6 @@ private fun JobList(
 
         }
     }
+
 }
 
