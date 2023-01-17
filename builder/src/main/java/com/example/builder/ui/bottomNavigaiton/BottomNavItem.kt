@@ -8,7 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +26,7 @@ import com.example.base.shape.RoundedCorner
 import com.example.base.shape.neu
 
 @Composable
-fun RowScope.AddItem(
+fun AddItem(
     screen: BottomBarScreen,
     currentDestination: NavDestination?,
     navController: NavHostController
@@ -69,7 +68,8 @@ fun RowScope.AddItem(
             AnimatedVisibility(visible = selected) {
                 Text(
                     text = screen.title,
-                    color = MaterialTheme.colors.onBackground
+                    color = MaterialTheme.colors.onBackground,
+                    style = MaterialTheme.typography.body1
                 )
             }
         }

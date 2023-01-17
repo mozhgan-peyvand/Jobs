@@ -62,27 +62,26 @@ fun JobItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 8.dp, top = 8.dp),
-                    color = Color(36, 148, 158, 255),
+                    color = MaterialTheme.colors.secondary,
                     maxLines = 1,
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.h3,
                     overflow = TextOverflow.Ellipsis
                 )
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Text(
                         text = item.locationCompany ?: "",
                         modifier = Modifier.padding(start = 8.dp, end = 16.dp),
-                        color = Color.Black,
                         maxLines = 1,
-                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.onBackground,
+                        style = MaterialTheme.typography.caption,
                     )
 
                     Text(
-
                         text = item.employmentType ?: "",
                         modifier = Modifier.padding(start = 8.dp, end = 16.dp),
-                        color = Color.Black,
                         maxLines = 1,
-                        style = MaterialTheme.typography.subtitle2,
+                        color = MaterialTheme.colors.onBackground,
+                        style = MaterialTheme.typography.caption,
                     )
 
                 }
@@ -92,7 +91,7 @@ fun JobItem(
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 16.dp, top = 4.dp),
                     maxLines = 2,
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.subtitle2,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
@@ -101,7 +100,7 @@ fun JobItem(
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 16.dp, bottom = 8.dp, top = 4.dp),
                     maxLines = 2,
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.overline,
                     overflow = TextOverflow.Ellipsis
                 )
             }

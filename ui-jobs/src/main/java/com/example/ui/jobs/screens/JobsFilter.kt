@@ -16,6 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -25,7 +26,6 @@ import com.example.base.R
 import com.example.base.shape.*
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun FilterJobs(
@@ -77,7 +77,7 @@ fun FilterJobs(
                     { cityText = it }
                 )
         },
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
 
 
@@ -91,7 +91,7 @@ fun FilterJobs(
             Text(
                 text = "Choose your option",
                 modifier = Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.h4,
+                style = MaterialTheme.typography.h1,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(32.dp))
@@ -119,14 +119,15 @@ fun FilterJobs(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     backgroundColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent
                 ),
                 placeholder = {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(painter = painterResource(id = R.drawable.ic_job_search), contentDescription = "Search")
+                        Icon(painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_search), contentDescription = "Search")
                         Spacer(modifier = Modifier.size(16.dp))
-                        Text(text = "Enter Role")
+                        Text(text = "Enter Role", style = MaterialTheme.typography.subtitle1)
                     }
                 },
                 enabled = false
@@ -157,14 +158,15 @@ fun FilterJobs(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     backgroundColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent
                 ),
                 placeholder = {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(painter = painterResource(id = R.drawable.ic_job_search), contentDescription = "Search")
+                        Icon(painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_search), contentDescription = "Search")
                         Spacer(modifier = Modifier.size(16.dp))
-                        Text(text = "Enter City")
+                        Text(text = "Enter City",style = MaterialTheme.typography.subtitle1)
                     }
                 },
                 enabled = false
@@ -180,11 +182,11 @@ fun FilterJobs(
                 },
                 shape = RoundedCornerShape(CornerSize(24.dp)),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(32, 184, 184, 255)
+                    backgroundColor = MaterialTheme.colors.primary
                 ),
                 elevation = ButtonDefaults.elevation(8.dp)
             ) {
-                Text(text = "Filter", style = MaterialTheme.typography.h6)
+                Text(text = "Filter", style = MaterialTheme.typography.h3)
             }
         }
     }
@@ -206,7 +208,7 @@ fun CityContentBottomSheet(cityText: String,sheetStateHide: () -> Unit, function
             .padding(32.dp)) {
         Text(
             text = "City",
-            style = MaterialTheme.typography.h6
+            style = MaterialTheme.typography.h2
         )
         Spacer(modifier = Modifier.height(16.dp))
         radioOptions.forEach { text ->
@@ -236,7 +238,7 @@ fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: 
             .padding(32.dp)) {
         Text(
             text = "Role",
-            style = MaterialTheme.typography.h6
+            style = MaterialTheme.typography.h2
         )
         Spacer(modifier = Modifier.height(16.dp))
         radioOptions1.forEach { text ->
@@ -251,7 +253,7 @@ fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: 
 }
 
 @Composable
-fun CheckboxResource1(isSelected: Boolean): ImageVector {
+fun checkboxResource1(isSelected: Boolean): ImageVector {
     return if (isSelected) {
         Icons.Default.RadioButtonChecked
     } else {
@@ -290,7 +292,7 @@ fun SelectOptionsCheckoutCity(
             modifier = Modifier.padding(start = 8.dp, end = 8.dp),
             tint = MaterialTheme.colors.primary
         )
-        Text(text, style = MaterialTheme.typography.body1)
+        Text(text, style = MaterialTheme.typography.subtitle1)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -313,12 +315,12 @@ fun SelectOptionsCheckout(
             sheetStateHide.invoke()
         }) {
         Icon(
-            imageVector = CheckboxResource1(isSelected = isSelectedOption),
+            imageVector = checkboxResource1(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
             modifier = Modifier.padding(start = 8.dp, end = 8.dp),
             tint = MaterialTheme.colors.primary
         )
-        Text(text, style = MaterialTheme.typography.body1)
+        Text(text, style = MaterialTheme.typography.subtitle1)
 
         Spacer(modifier = Modifier.height(16.dp))
 
