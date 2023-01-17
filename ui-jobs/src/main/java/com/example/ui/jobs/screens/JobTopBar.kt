@@ -106,16 +106,19 @@ fun SelectedJobFilterItems(
         items(filterResultList) { item ->
             Button(modifier = Modifier
                 .padding(
-                    horizontal = dimensionResource(id = R.dimen.spacing_2x)
+                    start = dimensionResource(id = R.dimen.spacing_3x),
+                    top = dimensionResource(id = R.dimen.spacing_base)
                 ),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = MaterialTheme.colors.primary
                 ),
                 shape = RoundedCornerShape(corner = CornerSize(24.dp)),
                 onClick = { param(item) }) {
-
-                Text(text = item, color = MaterialTheme.colors.onPrimary)
+                Text(text = item, color = MaterialTheme.colors.onPrimary, style = MaterialTheme.typography.overline)
                 Icon(
+                    modifier = Modifier
+                        .size(15.dp, 15.dp)
+                        .padding(start = dimensionResource(id = R.dimen.spacing_base)),
                     painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_close),
                     contentDescription = "",
                     tint = MaterialTheme.colors.onSecondary

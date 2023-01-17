@@ -14,7 +14,6 @@ fun Project.addCompose() {
         add("implementation",  "com.google.android.material:material:1.2.1")
         add("implementation", "androidx.navigation:navigation-compose:2.5.0-beta01")
         add("implementation" ,"com.google.accompanist:accompanist-navigation-animation:0.24.0-alpha")
-
     }
 }
 fun Project.addNavigationComponent() {
