@@ -12,13 +12,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.common.ui.view.JobInfoModel
 import com.example.common.ui.view.R
+import com.example.common.ui.view.theme.captionOnBackground
+import com.example.common.ui.view.theme.h3OnPrimary
+import com.example.ui.jobs.models.JobInfoModel
 
 @Composable
 fun JobItem(
@@ -35,7 +36,6 @@ fun JobItem(
         shape = RoundedCornerShape(corner = CornerSize(24.dp)),
         elevation = 4.dp
     ) {
-//        val painter = rememberCoilPainter(item.imageUrl)
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -52,9 +52,6 @@ fun JobItem(
                     .padding(8.dp)
             )
 
-//            if (painter.loadState is ImageLoadState.Loading) {
-//                CircularProgressIndicator(Modifier.align(Alignment.Center))
-//            }
             Column {
                 Text(
 
@@ -62,9 +59,8 @@ fun JobItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 8.dp, top = 8.dp),
-                    color = MaterialTheme.colors.secondary,
                     maxLines = 1,
-                    style = MaterialTheme.typography.h3,
+                    style = MaterialTheme.typography.h3OnPrimary(),
                     overflow = TextOverflow.Ellipsis
                 )
                 Row(modifier = Modifier.fillMaxWidth()) {
@@ -72,18 +68,15 @@ fun JobItem(
                         text = item.locationCompany ?: "",
                         modifier = Modifier.padding(start = 8.dp, end = 16.dp),
                         maxLines = 1,
-                        color = MaterialTheme.colors.onBackground,
-                        style = MaterialTheme.typography.caption,
+                        style = MaterialTheme.typography.captionOnBackground(),
                     )
 
                     Text(
                         text = item.employmentType ?: "",
                         modifier = Modifier.padding(start = 8.dp, end = 16.dp),
                         maxLines = 1,
-                        color = MaterialTheme.colors.onBackground,
-                        style = MaterialTheme.typography.caption,
+                        style = MaterialTheme.typography.captionOnBackground(),
                     )
-
                 }
                 Text(
                     text = item.role ?: "",

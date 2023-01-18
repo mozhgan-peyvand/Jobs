@@ -15,10 +15,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.common.ui.view.theme.AppColors
 import com.example.base.R
-import com.example.base.shape.*
-import com.example.base.AppColors
-import com.example.common.ui.view.ImageButton
+import com.example.base.util.shape.*
+import com.example.common.ui.view.theme.overLineOnPrimary
+import com.example.ui.jobs.util.ui.ImageButton
 
 @Composable
 fun JobTopBar(
@@ -114,7 +115,7 @@ fun SelectedJobFilterItems(
                 ),
                 shape = RoundedCornerShape(corner = CornerSize(24.dp)),
                 onClick = { param(item) }) {
-                Text(text = item, color = MaterialTheme.colors.onPrimary, style = MaterialTheme.typography.overline)
+                Text(text = item, style = MaterialTheme.typography.overLineOnPrimary())
                 Icon(
                     modifier = Modifier
                         .size(15.dp, 15.dp)

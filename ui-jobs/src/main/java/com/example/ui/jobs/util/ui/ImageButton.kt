@@ -1,4 +1,4 @@
-package com.example.common.ui.view
+package com.example.ui.jobs.util.ui
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -13,11 +13,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.base.AppColors
-import com.example.base.shape.Flat
-import com.example.base.shape.LightSource
-import com.example.base.shape.Oval
-import com.example.base.shape.neu
+import com.example.common.ui.view.theme.AppColors
+import com.example.base.util.shape.Flat
+import com.example.base.util.shape.LightSource
+import com.example.base.util.shape.Oval
+import com.example.base.util.shape.neu
 
 @Composable
 fun ImageButton(

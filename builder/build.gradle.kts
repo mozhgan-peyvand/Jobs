@@ -6,7 +6,16 @@ plugins {
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
 }
 
+android{
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
+        kotlinOptions {
+            jvmTarget = "11"
 
+            // For creation of default methods in interfaces
+            freeCompilerArgs = listOf("-Xjvm-default=all")
+        }
+    }
+}
 dependencies {
     implementation(project(":ui-jobs"))
     implementation(project(":common-ui-view"))

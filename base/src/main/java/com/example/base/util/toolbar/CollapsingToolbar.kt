@@ -1,5 +1,5 @@
 
-package com.example.base.toolbar
+package com.example.base.util.toolbar
 
 import androidx.annotation.FloatRange
 import androidx.compose.foundation.MutatePriority

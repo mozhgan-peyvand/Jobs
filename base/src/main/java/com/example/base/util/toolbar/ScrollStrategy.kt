@@ -1,5 +1,5 @@
 
-package com.example.base.toolbar
+package com.example.base.util.toolbar
 
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.runtime.MutableState

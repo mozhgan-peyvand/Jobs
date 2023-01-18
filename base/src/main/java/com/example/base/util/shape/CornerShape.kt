@@ -1,4 +1,4 @@
-package com.example.base.shape
+package com.example.base.util.shape
 
 import androidx.compose.ui.unit.Dp
 
