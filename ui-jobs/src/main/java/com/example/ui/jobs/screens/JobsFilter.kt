@@ -91,6 +91,15 @@ fun FilterJobs(
                 style = MaterialTheme.typography.h1,
                 textAlign = TextAlign.Center
             )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            RoleField(roleText, sheetState,{ roleText = it }) { selectedItem = 0 }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            CityField(cityText, sheetState,{ cityText = it }) { selectedItem = 1 }
+
             Spacer(modifier = Modifier.height(32.dp))
             RoleField(roleText, sheetState,{ roleText = it }) { selectedItem = 0 }
             Spacer(modifier = Modifier.height(32.dp))
