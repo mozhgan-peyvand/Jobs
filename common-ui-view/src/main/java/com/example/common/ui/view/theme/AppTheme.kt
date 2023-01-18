@@ -1,11 +1,10 @@
-package com.example.builder.ui.theme
+package com.example.common.ui.view.theme
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.example.base.AppColors
 
 private val DarkThemeColors = darkColors(
     primary = AppColors.Purple200,
@@ -39,10 +38,29 @@ fun AppTheme(
     darkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
-    MaterialTheme(
-        colors = if (darkTheme) DarkThemeColors else LightThemeColors,
-        content = content,
-        shapes = AppShapes,
-        typography = QuickSandTypography
-    )
+//    CompositionLocalProvider(
+//        LocalRippleTheme provides SecondaryRippleTheme
+//    ) {
+        MaterialTheme(
+            colors = if (darkTheme) DarkThemeColors else LightThemeColors,
+            content = content,
+            shapes = AppShapes,
+            typography = AppTypography
+        )
+//    }
 }
+
+//@Immutable
+//object SecondaryRippleTheme : RippleTheme {
+//    @Composable
+//    override fun defaultColor() = RippleTheme.defaultRippleColor(
+//        contentColor = MaterialTheme.colors.background,
+//        lightTheme = MaterialTheme.colors.isLight
+//    )
+//
+//    @Composable
+//    override fun rippleAlpha() = RippleTheme.defaultRippleAlpha(
+//        contentColor = MaterialTheme.colors.background,
+//        lightTheme = MaterialTheme.colors.isLight
+//    )
+//}

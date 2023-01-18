@@ -3,7 +3,10 @@ package com.example.builder.ui.bottomNavigaiton
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -19,11 +22,11 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.base.AppColors
-import com.example.base.shape.LightSource
-import com.example.base.shape.Pressed
-import com.example.base.shape.RoundedCorner
-import com.example.base.shape.neu
+import com.example.common.ui.view.theme.AppColors
+import com.example.base.util.shape.LightSource
+import com.example.base.util.shape.Pressed
+import com.example.base.util.shape.RoundedCorner
+import com.example.base.util.shape.neu
 
 @Composable
 fun AddItem(

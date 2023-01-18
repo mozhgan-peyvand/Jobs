@@ -1,4 +1,4 @@
-package com.example.common.ui.view
+package com.example.ui.jobs.models
 
 data class JobInfoModel(
     val id: Int? = null,

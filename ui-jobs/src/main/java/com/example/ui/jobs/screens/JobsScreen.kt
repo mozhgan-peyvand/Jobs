@@ -1,34 +1,40 @@
 package com.example.ui.jobs.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import com.example.base.R
-import com.example.base.toolbar.CollapsingToolbarScaffold
-import com.example.base.toolbar.rememberCollapsingToolbarScaffoldState
-import com.example.common.ui.view.JobInfoModel
+import com.example.base.util.toolbar.CollapsingToolbarScaffold
+import com.example.base.util.toolbar.ScrollStrategy
+import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
+import com.example.ui.jobs.models.JobInfoModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import com.example.base.toolbar.ScrollStrategy
 
 @Composable
 fun JobScreen() {
 
-    var filterResultList = remember {
+    val filterResultList = remember {
         mutableStateListOf<String>()
     }
 
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     val coroutineScope = rememberCoroutineScope()
-    var jobList = listOf(
+    val jobList = listOf(
         JobInfoModel(
             1,
             "part",
@@ -89,14 +95,10 @@ fun JobScreen() {
     )
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {
-
-        },
         drawerContent = {
             FilterJobs(
                 {
                     coroutineScope.launch {
-                        // to close use -> scaffoldState.drawerState.close()
                         scaffoldState.drawerState.close()
                     }
                 },
@@ -105,11 +107,10 @@ fun JobScreen() {
             )
         }
     ) { paddingValues ->
-        JobList(items = jobList, Modifier.padding(paddingValues)
-        ,
+        JobList(
+            items = jobList, Modifier.padding(paddingValues),
             onMenuClicked = {
                 coroutineScope.launch {
-                    // to close use -> scaffoldState.drawerState.close()
                     scaffoldState.drawerState.open()
                 }
             },
@@ -138,10 +139,8 @@ private fun JobList(
         scrollStrategy = ScrollStrategy.EnterAlways,
         toolbar = {
             JobTopBar(
-                // When menu is clicked open the
-                // drawer in coroutine scope
                 onMenuClicked = {
-                   onMenuClicked.invoke()
+                    onMenuClicked.invoke()
                 },
                 filterResultList,
                 { function.invoke(it) }
@@ -170,8 +169,5 @@ private fun JobList(
             }
         }
     }
-
-
-
 }
 
