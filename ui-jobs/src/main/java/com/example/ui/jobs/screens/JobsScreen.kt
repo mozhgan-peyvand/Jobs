@@ -1,22 +1,18 @@
 package com.example.ui.jobs.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.base.R
+
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
@@ -25,16 +21,18 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 @Composable
-fun JobScreen() {
+fun JobScreen(
+    viewModel: JobViewModel = hiltViewModel()
+) {
 
-    val filterResultList = remember {
+    var filterResultList = remember {
         mutableStateListOf<String>()
     }
 
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     val coroutineScope = rememberCoroutineScope()
-    val jobList = listOf(
+    var jobList = listOf(
         JobInfoModel(
             1,
             "part",
@@ -107,8 +105,8 @@ fun JobScreen() {
             )
         }
     ) { paddingValues ->
-        JobList(
-            items = jobList, Modifier.padding(paddingValues),
+        JobList(items = jobList, Modifier.padding(paddingValues)
+        ,
             onMenuClicked = {
                 coroutineScope.launch {
                     scaffoldState.drawerState.open()
@@ -140,7 +138,7 @@ private fun JobList(
         toolbar = {
             JobTopBar(
                 onMenuClicked = {
-                    onMenuClicked.invoke()
+                   onMenuClicked.invoke()
                 },
                 filterResultList,
                 { function.invoke(it) }

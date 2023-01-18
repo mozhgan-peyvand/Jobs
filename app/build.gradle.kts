@@ -1,6 +1,8 @@
 import java.io.ByteArrayOutputStream
 
 plugins {
+    id(BuildPlugins.KOTLIN_KAPT)
+    id(BuildPlugins.HILT_PLUGIN)
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.ORG_JETBRAINS_KOTLIN_ANDROID)
 }
@@ -87,4 +89,5 @@ android {
 dependencies {
     implementation(project(":builder"))
     addCompose()
+    addHilt()
 }

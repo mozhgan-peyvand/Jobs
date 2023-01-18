@@ -10,4 +10,5 @@ object BuildPlugins {
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs"
     const val MAVEN_PUBLISH = "maven-publish"
     const val MAVEN = "maven"
+    const val HILT_PLUGIN="dagger.hilt.android.plugin"
 }

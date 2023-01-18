@@ -11,11 +11,15 @@ fun Project.addCompose() {
         add("debugImplementation", "androidx.compose.ui:ui-tooling:$composeVersion")
         add("implementation", "androidx.activity:activity-compose:1.3.1")
         add("implementation", "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-        add("implementation",  "com.google.android.material:material:1.2.1")
+        add("implementation", "com.google.android.material:material:1.2.1")
         add("implementation", "androidx.navigation:navigation-compose:2.5.0-beta01")
-        add("implementation" ,"com.google.accompanist:accompanist-navigation-animation:0.24.0-alpha")
+        add(
+            "implementation",
+            "com.google.accompanist:accompanist-navigation-animation:0.24.0-alpha"
+        )
     }
 }
+
 fun Project.addNavigationComponent() {
     dependencies {
         add("implementation", "androidx.navigation:navigation-fragment-ktx:2.3.1")
@@ -28,3 +32,15 @@ fun Project.addNavigationComponent() {
         )
     }
 }
+
+fun Project.addHilt() {
+    dependencies {
+        val hiltVersion = "2.42"
+        add("implementation", "com.google.dagger:hilt-android:${hiltVersion}")
+        add("kapt", "com.google.dagger:hilt-android-compiler:${hiltVersion}")
+        add("implementation", "androidx.hilt:hilt-navigation-compose:1.0.0")
+        add("implementation", "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0")
+
+    }
+}
+
