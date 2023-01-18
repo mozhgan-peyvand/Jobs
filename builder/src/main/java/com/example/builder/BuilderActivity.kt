@@ -1,4 +1,4 @@
-package com.example.builder.ui
+package com.example.builder
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,7 +23,9 @@ import com.example.ui.jobs.util.navigation.addJobsGraph
 import com.example.ui.user.util.navigation.addUserNavGraph
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BuilderActivity : ComponentActivity() {
 
     companion object {

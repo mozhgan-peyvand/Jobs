@@ -4,6 +4,7 @@
     package="com.example.jobs">
 
     <application
+        android:name=".JobApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,6 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.builder.BuilderActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.com.example.builder.Jobs">
+        </activity>
+
     </application>
 
 </manifest>

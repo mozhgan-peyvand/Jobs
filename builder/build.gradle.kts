@@ -4,6 +4,7 @@ plugins {
     id(BuildPlugins.PARCELIZE_Plugins)
     id(BuildPlugins.KOTLIN_KAPT)
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
+    id(BuildPlugins.HILT_PLUGIN)
 }
 
 android{
@@ -23,4 +24,5 @@ dependencies {
     implementation(project(":base"))
     addCompose()
     addNavigationComponent()
+    addHilt()
 }

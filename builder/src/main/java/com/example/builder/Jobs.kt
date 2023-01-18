@@ -3,7 +3,6 @@ package com.example.builder
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.example.builder.ui.BuilderActivity
 
 class Jobs (
     private var context: Context? = null,
