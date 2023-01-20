@@ -1,4 +1,5 @@
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.add
 import org.gradle.kotlin.dsl.dependencies
 
 fun Project.addCompose() {
@@ -44,3 +45,41 @@ fun Project.addHilt() {
     }
 }
 
+fun Project.addRetrofit() {
+    dependencies {
+        add("implementation", "com.squareup.retrofit2:retrofit:2.9.0")
+        add("implementation", "com.squareup.okhttp3:okhttp-bom:4.10.0")
+        add("implementation", "com.squareup.retrofit2:converter-moshi:2.9.0")
+        add("implementation", "com.squareup.okhttp3:logging-interceptor:3.12.2")
+        add("implementation", "com.squareup.okhttp3:okhttp")
+        }
+}
+
+fun Project.addMoshi() {
+    dependencies {
+        add("kapt", "com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+        add("implementation", "com.squareup.moshi:moshi:1.13.0")
+        add("implementation", "com.squareup.moshi:moshi-adapters:1.13.0")
+    }
+}
+
+fun Project.addKotshi() {
+    dependencies {
+        add("implementation", "se.ansman.kotshi:api:2.7.0")
+        add("kapt", "se.ansman.kotshi:compiler:2.7.0")
+    }
+}
+
+fun Project.addCoroutine() {
+    dependencies {
+        add("implementation", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
+        add("implementation", "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
+    }
+}
+
+fun Project.addCoil(){
+    dependencies {
+        add("implementation","io.coil-kt:coil-compose:2.1.0")
+        add("implementation","androidx.appcompat:appcompat:1.4.2")
+    }
+}

@@ -7,5 +7,11 @@ plugins {
 
 
 dependencies {
-addHilt()
+    implementation(project(":domain-jobs"))
+    implementation(project(":base"))
+    addHilt()
+    addRetrofit()
+    addMoshi()
+    addKotshi()
+    addCoroutine()
 }

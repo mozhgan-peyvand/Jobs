@@ -22,6 +22,8 @@ dependencies {
     implementation(project(":common-ui-view"))
     implementation(project(":ui-user"))
     implementation(project(":base"))
+    implementation(project(":data-jobs"))
+    implementation(project(":domain-jobs"))
     addCompose()
     addNavigationComponent()
     addHilt()

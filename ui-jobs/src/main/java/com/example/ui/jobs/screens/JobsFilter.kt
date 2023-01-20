@@ -88,7 +88,7 @@ fun FilterJobs(
             Text(
                 text = "Choose your option",
                 modifier = Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.h1,
+                style = MaterialTheme.typography.h2,
                 textAlign = TextAlign.Center
             )
 
