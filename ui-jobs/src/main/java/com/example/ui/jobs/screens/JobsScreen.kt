@@ -32,65 +32,7 @@ fun JobScreen(
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     val coroutineScope = rememberCoroutineScope()
-    var jobList = listOf(
-        JobInfoModel(
-            1,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-        JobInfoModel(
-            2,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-        JobInfoModel(
-            3,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-        JobInfoModel(
-            4,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-
-        JobInfoModel(
-            4,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-        JobInfoModel(
-            4,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-        JobInfoModel(
-            4,
-            "part",
-            "london",
-            "part_time",
-            "android_Developer",
-            "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        ),
-    )
+    var jobList = viewModel.jobList.value.data ?: listOf()
     Scaffold(
         scaffoldState = scaffoldState,
         drawerContent = {

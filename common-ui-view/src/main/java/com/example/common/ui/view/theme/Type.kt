@@ -21,7 +21,7 @@ val AppTypography = Typography(
     ),
     h1 = TextStyle(
         fontWeight = FontWeight.W500,
-        fontSize = 30.sp,
+        fontSize = 100.sp,
     ),
     h2 = TextStyle(
         fontWeight = FontWeight.W500,

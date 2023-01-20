@@ -14,6 +14,6 @@ android{
     }
 }
 dependencies {
-
-
+addHilt()
+addRetrofit()
 }
