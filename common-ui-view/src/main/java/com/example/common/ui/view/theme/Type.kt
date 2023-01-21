@@ -21,7 +21,7 @@ val AppTypography = Typography(
     ),
     h1 = TextStyle(
         fontWeight = FontWeight.W500,
-        fontSize = 100.sp,
+        fontSize = 35.sp,
     ),
     h2 = TextStyle(
         fontWeight = FontWeight.W500,
@@ -74,9 +74,9 @@ val AppTypography = Typography(
 
 //if we need to color
 @Composable
-fun Typography.h3OnPrimary(): TextStyle {
+fun Typography.h3Primary(): TextStyle {
     return h3.copy(
-        color = MaterialTheme.colors.secondary
+        color = MaterialTheme.colors.primary
     )
 }
 
