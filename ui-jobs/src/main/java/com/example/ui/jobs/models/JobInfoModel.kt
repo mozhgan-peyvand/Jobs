@@ -10,15 +10,18 @@ data class JobInfoModel(
     val role: String? = null,
     val description: String? = null,
     val imageRes : String? = null,
+    val data: String? = null
     )
 
 
-fun com.example.domain_jobs.model.GetJob.toViewJob() = JobInfoModel(
+fun GetJob.toViewJob() = JobInfoModel(
     id = id,
     companyName = company_name,
     locationCompany = location,
     employmentType = employment_type,
     role = role,
-    description = text,
-    imageRes = logo
+    description = url,
+    imageRes = logo,
+    data =  date_posted
+
 )

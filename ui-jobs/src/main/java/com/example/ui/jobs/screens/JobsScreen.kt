@@ -9,10 +9,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.base.R
-
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
@@ -25,14 +23,15 @@ fun JobScreen(
     viewModel: JobViewModel = hiltViewModel()
 ) {
 
-    var filterResultList = remember {
+    val filterResultList = remember {
         mutableStateListOf<String>()
     }
 
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     val coroutineScope = rememberCoroutineScope()
-    var jobList = viewModel.jobList.value.data ?: listOf()
+    val isloading = viewModel.jobList.value.isLoading
+    val jobList = viewModel.jobList.value.data ?: listOf()
     Scaffold(
         scaffoldState = scaffoldState,
         drawerContent = {
@@ -54,10 +53,12 @@ fun JobScreen(
                     scaffoldState.drawerState.open()
                 }
             },
-            filterResultList
+            filterResultList,
+            { filterResultList.remove(it) },
+            isloading
 
 
-        ) { filterResultList.remove(it) }
+        )
     }
 }
 
@@ -68,6 +69,7 @@ private fun JobList(
     onMenuClicked: () -> Job,
     filterResultList: SnapshotStateList<String>,
     function: (String) -> Boolean,
+    isloading: Boolean,
 
     ) {
     val state = rememberCollapsingToolbarScaffoldState()
@@ -92,18 +94,13 @@ private fun JobList(
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
                 .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            contentPadding = PaddingValues(
-                start = dimensionResource(id = R.dimen.spacing_4x),
-                end = dimensionResource(id = R.dimen.spacing_4x),
-                bottom = dimensionResource(id = R.dimen.spacing_4x)
-            )
+
         ) {
             items(items) { item ->
                 JobItem(
                     item = item,
                     modifier = Modifier,
-                    imageModifier = Modifier
+                    isloading
                 )
 
             }
