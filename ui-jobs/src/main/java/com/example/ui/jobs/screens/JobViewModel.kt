@@ -5,8 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.base.api.Resource
-import com.example.domain_jobs.usecase.FilterJobList
-import com.example.domain_jobs.usecase.GetAllJobRequest
+import com.example.domain_jobs.usecase.*
 import com.example.ui.jobs.models.toViewJob
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +14,10 @@ import javax.inject.Inject
 @HiltViewModel
 class JobViewModel @Inject constructor(
     private val getAllJobRequest : GetAllJobRequest,
-    private val filterJobsRequest : FilterJobList
+    private val filterJobsRequest : FilterJobList,
+    private val getAllLocation: GetAllLocation,
+    private val getAllRoles: GetAllRoles,
+    private val saveAllJobs: SaveAllJobs
 ) : ViewModel() {
 
     private var _jobList = mutableStateOf(JobScreenState())
@@ -24,6 +26,9 @@ class JobViewModel @Inject constructor(
     init {
         getAllJobs()
     }
+    val locationList = getAllLocation.invoke()
+
+    val rolesList = getAllRoles.invoke()
 
     private fun getAllJobs() {
         viewModelScope.launch {

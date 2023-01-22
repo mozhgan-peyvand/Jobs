@@ -4,18 +4,15 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -29,7 +26,9 @@ fun FilterJobs(
     onCloseDrawer: () -> Unit,
     param: (List<String>) -> Boolean,
     clear: () -> Unit,
-    filterJobList: (String?, String?) -> Unit
+    filterJobList: (String?, String?) -> Unit,
+    locationList: List<String>,
+    roleList: List<String>
 ) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
@@ -52,13 +51,13 @@ fun FilterJobs(
         coroutineScope.launch { sheetState.hide() }
     }
     var selectedItem by remember {
-        mutableStateOf(0)
+        mutableStateOf(-1)
     }
     var cityText by remember {
-        mutableStateOf("OptionA")
+        mutableStateOf("mozhgan")
     }
     var roleText by remember {
-        mutableStateOf("OptionA")
+        mutableStateOf("Legal Counsel")
     }
     ModalBottomSheetLayout(
         sheetState = sheetState,
@@ -67,12 +66,15 @@ fun FilterJobs(
                 RoleContentBottomSheet(
                     roleText,
                     { coroutineScope.launch { sheetState.hide() } },
-                    { roleText = it })
+                    { roleText = it },
+                    roleList = roleList
+                    )
             else
                 CityContentBottomSheet(
                     cityText,
                     { coroutineScope.launch { sheetState.hide() } },
-                    { cityText = it }
+                    { cityText = it },
+                    locationList
                 )
         },
         modifier = Modifier.fillMaxSize(),

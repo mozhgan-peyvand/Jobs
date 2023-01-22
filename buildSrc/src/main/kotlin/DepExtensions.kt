@@ -83,3 +83,12 @@ fun Project.addCoil(){
         add("implementation","androidx.appcompat:appcompat:1.4.2")
     }
 }
+
+fun Project.addRoom(){
+    dependencies {
+        val roomVersion = "2.4.2"
+        add("implementation","androidx.room:room-runtime:$roomVersion")
+        add("kapt","androidx.room:room-compiler:$roomVersion")
+        add("implementation","androidx.room:room-ktx:$roomVersion")
+    }
+}
