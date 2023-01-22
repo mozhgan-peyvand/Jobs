@@ -121,19 +121,9 @@ fun SelectedJobFilterItems(
                     backgroundColor = MaterialTheme.colors.primary
                 ),
                 shape = RoundedCornerShape(corner = CornerSize(24.dp)),
-                onClick = { param(item)
-                    filterJobListRequest(filterResultList[0],null)
-
-                }) {
+                onClick = {}
+            ) {
                 Text(text = item, style = MaterialTheme.typography.overLineOnPrimary())
-                Icon(
-                    modifier = Modifier
-                        .size(15.dp, 15.dp)
-                        .padding(start = dimensionResource(id = R.dimen.spacing_base)),
-                    painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_close),
-                    contentDescription = "",
-                    tint = MaterialTheme.colors.onSecondary
-                )
             }
         }
     }
