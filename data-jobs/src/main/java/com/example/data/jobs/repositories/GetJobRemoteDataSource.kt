@@ -19,4 +19,17 @@ class GetJobRemoteDataSource @Inject constructor(
         )
     )
 
+    suspend fun filterJobList(role: String? ,city: String? ) = safeApiCall(
+        call = {requestSearchJobs(role,city)},
+        errorMessage = "Error get Filter job list"
+    )
+
+    private suspend fun requestSearchJobs(role: String? , city: String? ) = checkApiResult(
+        service.searchJobs(
+            url = ApiUrlHelper.API_URL,
+            location = city,
+            search = role
+        )
+    )
+
 }

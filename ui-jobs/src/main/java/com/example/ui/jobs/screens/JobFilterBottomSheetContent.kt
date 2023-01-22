@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 //roleContent
 @Composable
 fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: (String) -> Unit) {
-    val radioOptions1 = listOf("OptionA", "OptionB", "OptionC")
+    val radioOptions1 = listOf("OptionA", "react", "OptionC")
 
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(
@@ -91,7 +91,7 @@ fun CityContentBottomSheet(
     sheetStateHide: () -> Unit,
     function: (String) -> Unit
 ) {
-    val radioOptions = listOf("OptionA", "OptionB", "OptionC")
+    val radioOptions = listOf("OptionA", "london", "OptionC")
 
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(

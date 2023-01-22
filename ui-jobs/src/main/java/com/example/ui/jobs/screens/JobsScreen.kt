@@ -43,7 +43,7 @@ fun JobScreen(
                 },
                 { filterResultList.addAll(it) },
                 { filterResultList.clear() }
-            )
+            ) { role, city -> viewModel.filterJobs(role = role, city = city) }
         }
     ) { paddingValues ->
         JobList(items = jobList, Modifier.padding(paddingValues)
@@ -57,8 +57,7 @@ fun JobScreen(
             { filterResultList.remove(it) },
             isloading
 
-
-        )
+        ) { role, city -> viewModel.filterJobs(role = role, city = city) }
     }
 }
 
@@ -70,9 +69,11 @@ private fun JobList(
     filterResultList: SnapshotStateList<String>,
     function: (String) -> Boolean,
     isloading: Boolean,
+    filterJobsList: (String?, String?) -> Unit,
 
     ) {
     val state = rememberCollapsingToolbarScaffoldState()
+
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -85,7 +86,8 @@ private fun JobList(
                    onMenuClicked.invoke()
                 },
                 filterResultList,
-                { function.invoke(it) }
+                { function.invoke(it) },
+                filterJobsListRequest = { role , city -> filterJobsList(role,city) }
             )
         }
     ) {

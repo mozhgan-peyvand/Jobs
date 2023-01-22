@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetJobRepository {
     suspend fun getAllJobs() : Flow<Resource<List<GetJob>?>>
+    suspend fun filterJobsList(role: String? , city: String?) : Flow<Resource<List<GetJob>?>>
 }
