@@ -28,7 +28,8 @@ import kotlinx.coroutines.launch
 fun FilterJobs(
     onCloseDrawer: () -> Unit,
     param: (List<String>) -> Boolean,
-    clear: () -> Unit
+    clear: () -> Unit,
+    filterJobList: (String?, String?) -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
@@ -105,6 +106,7 @@ fun FilterJobs(
             Button(
                 modifier = Modifier,
                 onClick = {
+                    filterJobList.invoke(roleText , cityText)
                     clear.invoke()
                     param(listOf(roleText, cityText))
                     onCloseDrawer.invoke()

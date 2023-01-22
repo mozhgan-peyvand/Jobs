@@ -25,7 +25,8 @@ import com.example.ui.jobs.util.ui.ImageButton
 fun JobTopBar(
     onMenuClicked: () -> Unit,
     filterResultList: SnapshotStateList<String>,
-    param: (String) -> Boolean
+    param: (String) -> Boolean,
+    filterJobsListRequest: (String?, String?) -> Unit
 ) {
 
     Column(
@@ -35,7 +36,12 @@ fun JobTopBar(
 
         SearchAndFilterJobs(onMenuClicked)
 
-        SelectedJobFilterItems(filterResultList, param)
+        SelectedJobFilterItems(filterResultList, param) { role, city ->
+            filterJobsListRequest(
+                role,
+                city
+            )
+        }
 
     }
 }
@@ -101,7 +107,8 @@ fun SearchAndFilterJobs(onMenuClicked: () -> Unit) {
 @Composable
 fun SelectedJobFilterItems(
     filterResultList: SnapshotStateList<String>,
-    param: (String) -> Boolean
+    param: (String) -> Boolean,
+    filterJobListRequest: (String?, String?) -> Unit
 ) {
     LazyRow(modifier = Modifier.fillMaxWidth()) {
         items(filterResultList) { item ->
@@ -114,7 +121,10 @@ fun SelectedJobFilterItems(
                     backgroundColor = MaterialTheme.colors.primary
                 ),
                 shape = RoundedCornerShape(corner = CornerSize(24.dp)),
-                onClick = { param(item) }) {
+                onClick = { param(item)
+                    filterJobListRequest(filterResultList[0],null)
+
+                }) {
                 Text(text = item, style = MaterialTheme.typography.overLineOnPrimary())
                 Icon(
                     modifier = Modifier
