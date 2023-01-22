@@ -20,7 +20,7 @@ data class GetJobResponse(
     val keywords: List<String>? = null,
     val source: String? = null
 ){
-    fun toGetJob() = com.example.domain_jobs.model.GetJob(
+    fun toGetJob() = GetJob(
         id = id,
         role = role,
         company_name = company_name,
@@ -34,5 +34,17 @@ data class GetJobResponse(
         date_posted = date_posted,
         keywords = keywords,
         source = source
+    )
+
+    fun toJobDto() = GetJobDTO(
+        role = role,
+        companyName = company_name,
+        companyNumEmployees = company_num_employees,
+        employmentType = employment_type,
+        location = location,
+        remote = remote,
+        logo = logo,
+        url = url,
+        datePosted = date_posted
     )
 }

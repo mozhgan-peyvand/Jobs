@@ -14,4 +14,5 @@ dependencies {
     addMoshi()
     addKotshi()
     addCoroutine()
+    addRoom()
 }

@@ -32,6 +32,9 @@ fun JobScreen(
     val coroutineScope = rememberCoroutineScope()
     val isloading = viewModel.jobList.value.isLoading
     val jobList = viewModel.jobList.value.data ?: listOf()
+    val locationList = viewModel.locationList.collectAsState(initial = listOf())
+    val roleList = viewModel.rolesList.collectAsState(initial = listOf())
+
     Scaffold(
         scaffoldState = scaffoldState,
         drawerContent = {
@@ -42,12 +45,15 @@ fun JobScreen(
                     }
                 },
                 { filterResultList.addAll(it) },
-                { filterResultList.clear() }
-            ) { role, city -> viewModel.filterJobs(role = role, city = city) }
+                { filterResultList.clear() },
+                { role, city -> viewModel.filterJobs(role = role, city = city) },
+                locationList = locationList.value,
+                roleList = roleList.value
+            )
         }
     ) { paddingValues ->
-        JobList(items = jobList, Modifier.padding(paddingValues)
-        ,
+        JobList(
+            items = jobList, Modifier.padding(paddingValues),
             onMenuClicked = {
                 coroutineScope.launch {
                     scaffoldState.drawerState.open()
@@ -83,11 +89,11 @@ private fun JobList(
         toolbar = {
             JobTopBar(
                 onMenuClicked = {
-                   onMenuClicked.invoke()
+                    onMenuClicked.invoke()
                 },
                 filterResultList,
                 { function.invoke(it) },
-                filterJobsListRequest = { role , city -> filterJobsList(role,city) }
+                filterJobsListRequest = { role, city -> filterJobsList(role, city) }
             )
         }
     ) {
@@ -97,7 +103,7 @@ private fun JobList(
                 .background(MaterialTheme.colors.background)
                 .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
 
-        ) {
+            ) {
             items(items) { item ->
                 JobItem(
                     item = item,

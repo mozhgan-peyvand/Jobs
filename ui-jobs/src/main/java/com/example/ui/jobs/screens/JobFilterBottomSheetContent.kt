@@ -1,7 +1,10 @@
 package com.example.ui.jobs.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -14,12 +17,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
+import com.example.base.R
 
 //roleContent
 @Composable
-fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: (String) -> Unit) {
-    val radioOptions1 = listOf("OptionA", "react", "OptionC")
+fun RoleContentBottomSheet(
+    roleText: String,
+    sheetStateHide: () -> Unit,
+    param: (String) -> Unit,
+    roleList: List<String>
+) {
+    val radioOptions1 = roleList
 
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(
@@ -28,7 +38,7 @@ fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: 
     }
     param(selectedOption)
     Column(
-        Modifier
+        modifier = Modifier
             .selectableGroup()
             .padding(32.dp)
     ) {
@@ -37,13 +47,16 @@ fun RoleContentBottomSheet(roleText: String, sheetStateHide: () -> Unit, param: 
             style = MaterialTheme.typography.h2
         )
         Spacer(modifier = Modifier.height(16.dp))
-        radioOptions1.forEach { text ->
-            SelectOptionsCheckoutRole(
-                text = text,
-                isSelectedOption = selectedOption == text,
-                onSelectOption = onOptionSelected,
-                sheetStateHide
-            )
+        LazyColumn(
+        ) {
+            items(radioOptions1) { item ->
+                SelectOptionsCheckoutRole(
+                    text = item,
+                    isSelectedOption = selectedOption == item,
+                    onSelectOption = onOptionSelected,
+                    sheetStateHide
+                )
+            }
         }
     }
 }
@@ -89,13 +102,14 @@ fun checkboxResourceRole(isSelected: Boolean): ImageVector {
 fun CityContentBottomSheet(
     cityText: String,
     sheetStateHide: () -> Unit,
-    function: (String) -> Unit
+    function: (String) -> Unit,
+    locationList: List<String> = listOf()
 ) {
-    val radioOptions = listOf("OptionA", "london", "OptionC")
-
+val newlist = mutableListOf("mozhgan")
+    newlist.addAll(locationList)
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(
-            radioOptions[radioOptions.indexOf(cityText)]
+            newlist[newlist.indexOf(cityText)]
         )
     }
     function(selectedOption)
@@ -109,9 +123,9 @@ fun CityContentBottomSheet(
             style = MaterialTheme.typography.h2
         )
         Spacer(modifier = Modifier.height(16.dp))
-        radioOptions.forEach { text ->
+        newlist.forEach { text ->
             SelectOptionsCheckoutCity(
-                text = text,
+                text = text ?: "",
                 isSelectedOption = selectedOption == text,
                 onSelectOption = onOptionSelected,
                 sheetStateHide

@@ -21,6 +21,6 @@ interface JobService {
         @Header("Authorization") authorization: String = "Token b3fd31cc427e369c9a0c1b0c7728144e956a6e96",
         @Query("location") location: String?,
         @Query("search") search: String?,
-        @Query("sort_by") sortBy: String = "relevance"
+        @Query("sort_by") sortBy: String = "date"
     ): Response<PublicResponse<GetJobResponse>>
 }

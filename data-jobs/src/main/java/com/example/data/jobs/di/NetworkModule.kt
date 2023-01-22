@@ -1,7 +1,9 @@
 package com.example.data.jobs.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.data.jobs.BuildConfig
+import com.example.data.jobs.db.AppDataBase
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -21,6 +23,16 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
+
+    @Singleton
+    @Provides
+    fun provideDb(@ApplicationContext context: Context): AppDataBase{
+        return Room
+            .databaseBuilder(context, AppDataBase::class.java, "com.mozhgan.peivandian.db")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
     @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
         .add(ApplicationJsonAdapterFactory)
