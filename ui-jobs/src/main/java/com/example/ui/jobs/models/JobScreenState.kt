@@ -7,8 +7,8 @@ import javax.annotation.concurrent.Immutable
 @Immutable
  data class JobScreenState(
     val allJobList: AsyncResult<List<JobInfoModel>?> = Uninitialized,
-    val allLocationList: List<String> = listOf(),
-    val allRoleList: List<String> = listOf(),
+    val allLocationList: AsyncResult<List<String>> = Uninitialized,
+    val allRoleList: AsyncResult<List<String>> = Uninitialized,
     val isLoading: Boolean = true,
     val hasError: Boolean = false,
     val errorMessage: String? = null

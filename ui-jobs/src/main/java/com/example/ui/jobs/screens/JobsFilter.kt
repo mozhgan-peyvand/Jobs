@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.base.Success
 import com.example.common.ui.view.theme.AppColors
 import com.example.base.util.shape.*
 import com.example.ui.jobs.models.JobScreenState
@@ -58,6 +59,7 @@ fun FilterJobs(
     var roleText by remember {
         mutableStateOf("Legal Counsel")
     }
+    if (viewState.allLocationList is Success)
     ModalBottomSheetLayout(
         sheetState = sheetState,
         sheetContent = {
@@ -66,14 +68,14 @@ fun FilterJobs(
                     roleText,
                     { coroutineScope.launch { sheetState.hide() } },
                     { roleText = it },
-                    roleList = viewState.allRoleList
+                    roleList = viewState.allRoleList.invoke() ?: listOf()
                     )
             else
                 CityContentBottomSheet(
                     cityText,
                     { coroutineScope.launch { sheetState.hide() } },
                     { cityText = it },
-                    locationList = viewState.allLocationList
+                    locationList = viewState.allLocationList.invoke()
                 )
         },
         modifier = Modifier.fillMaxSize(),
