@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,17 +17,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.common.ui.view.theme.AppColors
 import com.example.base.util.shape.*
+import com.example.ui.jobs.models.JobScreenState
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun FilterJobs(
-    onCloseDrawer: () -> Unit,
-    param: (List<String>) -> Boolean,
-    clear: () -> Unit,
+    onCloseFilterJobsDrawer: () -> Unit,
+    addFilterResultJob: (List<String>) -> Boolean,
+    clearFilterResultJob: () -> Unit,
     filterJobList: (String?, String?) -> Unit,
-    locationList: List<String>,
-    roleList: List<String>
+    viewState: JobScreenState,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
@@ -67,14 +66,14 @@ fun FilterJobs(
                     roleText,
                     { coroutineScope.launch { sheetState.hide() } },
                     { roleText = it },
-                    roleList = roleList
+                    roleList = viewState.allRoleList
                     )
             else
                 CityContentBottomSheet(
                     cityText,
                     { coroutineScope.launch { sheetState.hide() } },
                     { cityText = it },
-                    locationList
+                    locationList = viewState.allLocationList
                 )
         },
         modifier = Modifier.fillMaxSize(),
@@ -109,9 +108,9 @@ fun FilterJobs(
                 modifier = Modifier,
                 onClick = {
                     filterJobList.invoke(roleText , cityText)
-                    clear.invoke()
-                    param(listOf(roleText, cityText))
-                    onCloseDrawer.invoke()
+                    clearFilterResultJob.invoke()
+                    addFilterResultJob(listOf(roleText, cityText))
+                    onCloseFilterJobsDrawer.invoke()
                 },
                 shape = RoundedCornerShape(CornerSize(24.dp)),
                 colors = ButtonDefaults.buttonColors(

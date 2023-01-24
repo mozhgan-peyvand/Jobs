@@ -15,6 +15,8 @@ import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
 import com.example.ui.jobs.models.JobInfoModel
+import com.example.ui.jobs.models.JobScreenState
+import com.example.ui.jobs.models.JobScreenUiEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
@@ -23,47 +25,74 @@ fun JobScreen(
     viewModel: JobViewModel = hiltViewModel()
 ) {
 
+    val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
+
+    JobScreenList(
+        isloading = false,
+        actioner = { action ->
+            viewModel.submitAction(action)
+        },
+        viewState
+    )
+
+}
+
+@Composable
+fun JobScreenList(
+    isloading: Boolean,
+    actioner: (JobScreenUiEvent) -> Unit,
+    viewState: JobScreenState
+) {
     val filterResultList = remember {
         mutableStateListOf<String>()
     }
 
+    val jobList = remember {
+        mutableStateOf<List<JobInfoModel>>(listOf())
+    }
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     val coroutineScope = rememberCoroutineScope()
-    val isloading = viewModel.jobList.value.isLoading
-    val jobList = viewModel.jobList.value.data ?: listOf()
-    val locationList = viewModel.locationList.collectAsState(initial = listOf())
-    val roleList = viewModel.rolesList.collectAsState(initial = listOf())
-
     Scaffold(
         scaffoldState = scaffoldState,
         drawerContent = {
             FilterJobs(
-                {
+                onCloseFilterJobsDrawer = {
                     coroutineScope.launch {
                         scaffoldState.drawerState.close()
                     }
                 },
-                { filterResultList.addAll(it) },
-                { filterResultList.clear() },
-                { role, city -> viewModel.filterJobs(role = role, city = city) },
-                locationList = locationList.value,
-                roleList = roleList.value
+                addFilterResultJob = { filterResultList.addAll(it) },
+                clearFilterResultJob = { filterResultList.clear() },
+                filterJobList = { role, city ->
+                    actioner(
+                        JobScreenUiEvent.FilterJobsList(
+                            role,
+                            city
+                        )
+                    )
+                },
+                viewState
             )
         }
     ) { paddingValues ->
+
+        viewState.allJobList.handleEvent(
+            onSuccess = {
+                jobList.value = it ?: listOf()
+            }
+        )
+
         JobList(
-            items = jobList, Modifier.padding(paddingValues),
+            items = jobList.value, Modifier.padding(paddingValues),
             onMenuClicked = {
                 coroutineScope.launch {
                     scaffoldState.drawerState.open()
                 }
             },
             filterResultList,
-            { filterResultList.remove(it) },
             isloading
-
-        ) { role, city -> viewModel.filterJobs(role = role, city = city) }
+        )
     }
 }
 
@@ -73,9 +102,7 @@ private fun JobList(
     modifier: Modifier,
     onMenuClicked: () -> Job,
     filterResultList: SnapshotStateList<String>,
-    function: (String) -> Boolean,
     isloading: Boolean,
-    filterJobsList: (String?, String?) -> Unit,
 
     ) {
     val state = rememberCollapsingToolbarScaffoldState()
@@ -88,12 +115,10 @@ private fun JobList(
         scrollStrategy = ScrollStrategy.EnterAlways,
         toolbar = {
             JobTopBar(
-                onMenuClicked = {
+                onClickedFilterJobs = {
                     onMenuClicked.invoke()
                 },
-                filterResultList,
-                { function.invoke(it) },
-                filterJobsListRequest = { role, city -> filterJobsList(role, city) }
+                filterResultList = filterResultList
             )
         }
     ) {
