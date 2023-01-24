@@ -69,7 +69,7 @@ class JobViewModel @Inject constructor(
             getAllJobRequest.invoke()
         }.execute(
             onSuccess = { jobList ->
-                jobList.collect{ resource ->
+                jobList.collect { resource ->
                     if (resource is Resource.Success)
                     setState { copy(allJobList = Success(resource.data?.map { it.toViewJob() } )) }
                     getAllLocations()

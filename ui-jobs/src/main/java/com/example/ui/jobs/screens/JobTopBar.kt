@@ -103,19 +103,20 @@ fun SelectedJobFilterItems(
 ) {
     LazyRow(modifier = Modifier.fillMaxWidth()) {
         items(filterResultList) { item ->
-            Button(modifier = Modifier
-                .padding(
-                    start = dimensionResource(id = R.dimen.spacing_3x),
-                    top = dimensionResource(id = R.dimen.spacing_base)
-                ),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colors.primary
-                ),
-                shape = RoundedCornerShape(corner = CornerSize(24.dp)),
-                onClick = {}
-            ) {
-                Text(text = item, style = MaterialTheme.typography.overLineOnPrimary())
-            }
+            if (item.isNotEmpty())
+                Button(modifier = Modifier
+                    .padding(
+                        start = dimensionResource(id = R.dimen.spacing_3x),
+                        top = dimensionResource(id = R.dimen.spacing_base)
+                    ),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.primary
+                    ),
+                    shape = RoundedCornerShape(corner = CornerSize(24.dp)),
+                    onClick = {}
+                ) {
+                    Text(text = item, style = MaterialTheme.typography.overLineOnPrimary())
+                }
         }
     }
 }
