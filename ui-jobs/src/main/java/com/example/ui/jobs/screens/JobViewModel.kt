@@ -32,6 +32,14 @@ class JobViewModel @Inject constructor(
                 else -> throw IllegalArgumentException("unknown action: $action")
             }
         }
+
+        onAsyncResult(
+            JobScreenState::allJobList,
+            onSuccess = {
+                    getAllRoles()
+                    getAllLocations()
+            }
+        )
     }
 
 
@@ -54,10 +62,6 @@ class JobViewModel @Inject constructor(
        suspend {
             getAllJobRequest(Unit)
         }.execute {
-           if (it.invoke()?.isNotEmpty() == true){
-               getAllRoles()
-               getAllLocations()
-           }
            copy(allJobList = it)
        }
     }
