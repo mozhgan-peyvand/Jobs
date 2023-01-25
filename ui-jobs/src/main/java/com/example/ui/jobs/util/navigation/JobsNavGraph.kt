@@ -17,7 +17,7 @@ fun NavGraphBuilder.addJobsGraph(
         route = AppRouters.JobGraph.routers
     ) {
         composable(AppRouters.JobScreen.routers) {
-            JobScreen()
+            JobScreen(navigateUp = { navHostController.navigateUp() })
         }
     }
 }
