@@ -182,7 +182,6 @@ fun JobItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 12.dp),
-                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
                         text = item.companyName ?: "",
@@ -208,7 +207,7 @@ fun JobItem(
                         text = item.role ?: "",
                         modifier = Modifier
                             .fillMaxWidth(),
-                        maxLines = 2,
+                        maxLines = 1,
                         style = MaterialTheme.typography.subtitle2,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -216,7 +215,7 @@ fun JobItem(
                         text = item.data ?: "",
                         modifier = Modifier
                             .fillMaxWidth(),
-                        maxLines = 2,
+                        maxLines = 1,
                         style = MaterialTheme.typography.overline,
                         overflow = TextOverflow.Ellipsis
                     )
