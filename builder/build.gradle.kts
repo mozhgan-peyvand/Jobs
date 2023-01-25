@@ -24,6 +24,7 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":data-jobs"))
     implementation(project(":domain-jobs"))
+    implementation(project(":data-android"))
     addCompose()
     addNavigationComponent()
     addHilt()

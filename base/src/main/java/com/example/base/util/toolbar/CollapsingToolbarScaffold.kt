@@ -96,7 +96,7 @@ fun CollapsingToolbarScaffold(
 				}
 			)
 	) { measurables, constraints ->
-		check(measurables.size >= 2) {
+		check(measurables.size >= 1) {
 			"the number of children should be at least 2: toolbar, (at least one) body"
 		}
 

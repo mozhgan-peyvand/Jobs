@@ -3,6 +3,7 @@ package com.example.ui.jobs.screens
 import com.example.base.BaseViewModel
 import com.example.base.Success
 import com.example.base.api.Resource
+import com.example.domain_jobs.model.GetJob
 import com.example.domain_jobs.usecase.FilterJobList
 import com.example.domain_jobs.usecase.GetAllJobRequest
 import com.example.domain_jobs.usecase.GetAllLocation
@@ -11,6 +12,8 @@ import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
 import com.example.ui.jobs.models.toViewJob
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.job
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,14 +26,12 @@ class JobViewModel @Inject constructor(
 
     init {
         getAllJobs()
-
         onEachAction { action ->
             when (action) {
                 is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
                 else -> throw IllegalArgumentException("unknown action: $action")
             }
         }
-
     }
 
 
@@ -50,32 +51,27 @@ class JobViewModel @Inject constructor(
 
 
     private fun getAllJobs() {
-        suspend {
-            getAllJobRequest.invoke()
-        }.execute(
-            onSuccess = { jobList ->
-                jobList.collect{ resource ->
-                    if (resource is Resource.Success)
-                        setState { copy(allJobList = Success(resource.data?.map { it.toViewJob() })) }
-                    getAllLocations()
-                    getAllRoles()
-                }
-            }
-        )
+       suspend {
+            getAllJobRequest(Unit)
+        }.execute {
+           if (it.invoke()?.isNotEmpty() == true){
+               getAllRoles()
+               getAllLocations()
+           }
+           copy(allJobList = it)
+       }
     }
 
     private fun filterJobs(role: String? = null, city: String? = null) {
         suspend {
-            filterJobsRequest.invoke(role = role, city = city)
-        }.execute(
-            onSuccess = { jobList ->
-                jobList.collect { resource ->
-                    if (resource is Resource.Success)
-                        setState { copy(allJobList = Success(resource.data?.map { it.toViewJob() })) }
-                }
-            }
-        )
+            val params = FilterJobList.Params(
+                role = role,
+                city = city
+            )
+            filterJobsRequest(params)
+        }.execute{
+            copy(allJobList = it)
+        }
+
     }
-
-
 }
