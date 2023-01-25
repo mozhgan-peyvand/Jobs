@@ -28,8 +28,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun JobScreen(
-    viewModel: JobViewModel = hiltViewModel(),
-    navigateUp : () -> Unit
+    viewModel: JobViewModel = hiltViewModel()
 ) {
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
@@ -37,8 +36,8 @@ fun JobScreen(
         actioner = { action ->
             viewModel.submitAction(action)
         },
-        viewState,
-        navigateUp
+        viewState = viewState,
+        filterResultList = viewModel.filterResultList,
     )
 }
 
@@ -46,12 +45,8 @@ fun JobScreen(
 fun JobScreenList(
     actioner: (JobScreenUiEvent) -> Unit,
     viewState: JobScreenState,
-    navigateUp: () -> Unit
+    filterResultList: SnapshotStateList<String>,
 ) {
-    val filterResultList = remember {
-        mutableStateListOf<String>()
-    }
-
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     val coroutineScope = rememberCoroutineScope()
@@ -74,21 +69,27 @@ fun JobScreenList(
                         )
                     )
                 },
-                viewState
+                viewState = viewState
             )
         }
     ) { paddingValues ->
 
         JobList(
-            Modifier.padding(paddingValues),
+            modifier = Modifier.padding(paddingValues),
             onMenuClicked = {
                 coroutineScope.launch {
                     scaffoldState.drawerState.open()
                 }
             },
-            filterResultList,
-            viewState,
-            navigateUp
+            filterResultList = filterResultList,
+            viewState = viewState,
+            actioner = {
+                if (filterResultList.isEmpty())
+                    actioner(JobScreenUiEvent.ShowAllJobList)
+                else
+                    actioner(JobScreenUiEvent.FilterJobsList(filterResultList[0], filterResultList[1])
+                )
+            }
         )
     }
 }
@@ -99,11 +100,10 @@ private fun JobList(
     onMenuClicked: () -> Job,
     filterResultList: SnapshotStateList<String>,
     viewState: JobScreenState,
-    navigateUp: () -> Unit,
+    actioner: () -> Unit,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
-    var openDialog = remember { mutableStateOf(false) }
-
+    val openDialog = remember { mutableStateOf(false) }
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -160,7 +160,10 @@ private fun JobList(
             }
             is Fail -> {
                 Column {
-                    AlertDialogSample(navigateUp)
+                    LaunchedEffect(key1 = Unit) {
+                        openDialog.value = true
+                    }
+                    AlertDialogSample(openDialog.value, { openDialog.value = false }, actioner)
                 }
 
             }
@@ -202,37 +205,34 @@ fun LoadingShimmerJobList() {
 }
 
 @Composable
-fun AlertDialogSample(navigateUp: () -> Unit) {
+fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit) {
+    if (value) {
         AlertDialog(
             onDismissRequest = {
-                // Dismiss the dialog when the user clicks outside the dialog or on the back
-                // button. If you want to disable that functionality, simply use an empty
-                // onCloseRequest.
-                               navigateUp.invoke()
+                function.invoke()
             },
             title = {
-                Text(text = "error!")
+                Text(text = "Error!")
             },
             text = {
                 Text("Error processing data. Please try again later")
             },
             confirmButton = {
                 Button(
-
                     onClick = {
-
+                        actioner.invoke()
                     }) {
                     Text("retry")
                 }
             },
             dismissButton = {
                 Button(
-
                     onClick = {
-                        navigateUp.invoke()
+                        function.invoke()
                     }) {
                     Text("dismiss")
                 }
             }
         )
+    }
 }

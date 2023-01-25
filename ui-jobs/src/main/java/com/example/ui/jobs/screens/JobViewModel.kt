@@ -1,5 +1,7 @@
 package com.example.ui.jobs.screens
 
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import com.example.base.BaseViewModel
 import com.example.base.Success
 import com.example.base.api.Resource
@@ -24,10 +26,13 @@ class JobViewModel @Inject constructor(
     private val getAllRoles: GetAllRoles,
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
 
+    val filterResultList = mutableStateListOf<String>()
+
     init {
         getAllJobs()
         onEachAction { action ->
             when (action) {
+                JobScreenUiEvent.ShowAllJobList -> getAllJobs()
                 is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
                 else -> throw IllegalArgumentException("unknown action: $action")
             }

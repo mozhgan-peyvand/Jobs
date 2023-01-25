@@ -59,7 +59,6 @@ fun FilterJobs(
     var roleText by remember {
         mutableStateOf("Legal Counsel")
     }
-    if (viewState.allLocationList is Success)
     ModalBottomSheetLayout(
         sheetState = sheetState,
         sheetContent = {
@@ -75,7 +74,7 @@ fun FilterJobs(
                     cityText,
                     { coroutineScope.launch { sheetState.hide() } },
                     { cityText = it },
-                    locationList = viewState.allLocationList.invoke()
+                    locationList = viewState.allLocationList.invoke() ?: listOf()
                 )
         },
         modifier = Modifier.fillMaxSize(),
