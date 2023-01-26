@@ -69,7 +69,8 @@ fun JobScreenList(
                         )
                     )
                 },
-                viewState = viewState
+                viewState = viewState,
+                filterResultList
             )
         }
     ) { paddingValues ->

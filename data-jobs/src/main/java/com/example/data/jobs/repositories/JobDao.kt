@@ -15,7 +15,7 @@ interface JobDao {
     suspend fun insertJobList(jobList: List<GetJobDTO>)
 
     @Transaction
-    @Query("SELECT DISTINCT location FROM GetJobDTO ORDER BY location")
+    @Query("SELECT DISTINCT location FROM GetJobDTO WHERE location IS NOT NULL ORDER BY location")
     fun getLocationList(): Flow<List<String>>
 
     @Transaction

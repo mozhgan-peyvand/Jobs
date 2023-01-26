@@ -26,7 +26,7 @@ class JobViewModel @Inject constructor(
     private val getAllRoles: GetAllRoles,
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
 
-    val filterResultList = mutableStateListOf<String>()
+    val filterResultList = mutableStateListOf<String>("","")
 
     init {
         getAllJobs()
