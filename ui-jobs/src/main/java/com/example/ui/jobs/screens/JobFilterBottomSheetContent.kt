@@ -1,6 +1,5 @@
 package com.example.ui.jobs.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,26 +16,24 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
-import com.example.base.R
 
 //roleContent
 @Composable
 fun RoleContentBottomSheet(
     roleText: String,
     sheetStateHide: () -> Unit,
-    param: (String) -> Unit,
+    onChangeRoleText: (String) -> Unit,
     roleList: List<String>
 ) {
-    val radioOptions1 = roleList
-
+    val allCityList = mutableListOf("")
+    allCityList.addAll(roleList)
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(
-            radioOptions1[radioOptions1.indexOf(roleText)]
+            allCityList[allCityList.indexOf(roleText)]
         )
     }
-    param(selectedOption)
+    onChangeRoleText(selectedOption)
     Column(
         modifier = Modifier
             .selectableGroup()
@@ -49,7 +46,7 @@ fun RoleContentBottomSheet(
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(
         ) {
-            items(radioOptions1) { item ->
+            items(allCityList) { item ->
                 SelectOptionsCheckoutRole(
                     text = item,
                     isSelectedOption = selectedOption == item,
@@ -102,17 +99,17 @@ fun checkboxResourceRole(isSelected: Boolean): ImageVector {
 fun CityContentBottomSheet(
     cityText: String,
     sheetStateHide: () -> Unit,
-    function: (String) -> Unit,
+    onChangeLocationText: (String) -> Unit,
     locationList: List<String> = listOf()
 ) {
-val newlist = mutableListOf("mozhgan")
-    newlist.addAll(locationList)
+    val allLocationList = mutableListOf("")
+    allLocationList.addAll(locationList)
     val (selectedOption: String, onOptionSelected: (String) -> Unit) = remember {
         mutableStateOf(
-            newlist[newlist.indexOf(cityText)]
+            allLocationList[allLocationList.indexOf(if (locationList.isNotEmpty())cityText else "")]
         )
     }
-    function(selectedOption)
+    onChangeLocationText(selectedOption)
     Column(
         Modifier
             .selectableGroup()
@@ -123,7 +120,7 @@ val newlist = mutableListOf("mozhgan")
             style = MaterialTheme.typography.h2
         )
         Spacer(modifier = Modifier.height(16.dp))
-        newlist.forEach { text ->
+        allLocationList.forEach { text ->
             SelectOptionsCheckoutCity(
                 text = text ?: "",
                 isSelectedOption = selectedOption == text,
