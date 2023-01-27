@@ -38,6 +38,11 @@ fun JobScreen(
         },
         viewState = viewState,
         filterResultList = viewModel.filterResultList,
+        searchResultList = viewModel.searchResultList,
+        searchText = viewModel.searchText,
+        onChangeSearchText = { viewModel.searchText.value = it },
+        closeSearch = viewModel.closeSearch,
+        onCloseSearch = { viewModel.closeSearch.value = it }
     )
 }
 
@@ -46,9 +51,13 @@ fun JobScreenList(
     actioner: (JobScreenUiEvent) -> Unit,
     viewState: JobScreenState,
     filterResultList: SnapshotStateList<String>,
+    searchResultList: SnapshotStateList<JobInfoModel>,
+    searchText: MutableState<String>,
+    onChangeSearchText: (String) -> Unit,
+    onCloseSearch: (Boolean) -> Unit,
+    closeSearch: MutableState<Boolean>,
 ) {
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         scaffoldState = scaffoldState,
@@ -59,8 +68,6 @@ fun JobScreenList(
                         scaffoldState.drawerState.close()
                     }
                 },
-                addFilterResultJob = { filterResultList.addAll(it) },
-                clearFilterResultJob = { filterResultList.clear() },
                 filterJobList = { role, city ->
                     actioner(
                         JobScreenUiEvent.FilterJobsList(
@@ -70,7 +77,9 @@ fun JobScreenList(
                     )
                 },
                 viewState = viewState,
-                filterResultList
+                filterResultList = filterResultList,
+                closeSearch = onCloseSearch,
+                onChangeSearchText = onChangeSearchText
             )
         }
     ) { paddingValues ->
@@ -88,9 +97,15 @@ fun JobScreenList(
                 if (filterResultList.isEmpty())
                     actioner(JobScreenUiEvent.ShowAllJobList)
                 else
-                    actioner(JobScreenUiEvent.FilterJobsList(filterResultList[0], filterResultList[1])
-                )
-            }
+                    actioner(
+                        JobScreenUiEvent.FilterJobsList(filterResultList[0], filterResultList[1])
+                    )
+            },
+            searchResultList = searchResultList,
+            closeSearch = onCloseSearch,
+            closeSearchValue = closeSearch.value,
+            searchText = searchText.value,
+            onChangeSearchText = onChangeSearchText
         )
     }
 }
@@ -102,6 +117,11 @@ private fun JobList(
     filterResultList: SnapshotStateList<String>,
     viewState: JobScreenState,
     actioner: () -> Unit,
+    searchResultList: SnapshotStateList<JobInfoModel>,
+    closeSearch: (Boolean) -> Unit,
+    closeSearchValue: Boolean,
+    searchText: String,
+    onChangeSearchText: (String) -> Unit,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val openDialog = remember { mutableStateOf(false) }
@@ -116,14 +136,49 @@ private fun JobList(
                 onClickedFilterJobs = {
                     onMenuClicked.invoke()
                 },
-                filterResultList = filterResultList
+                filterResultList = filterResultList,
+                searchResultList = searchResultList,
+                viewState = viewState,
+                closeSearch = closeSearch,
+                searchText = searchText,
+                onChangeSearchText = onChangeSearchText
             )
         }
     ) {
         when (viewState.allJobList) {
             is Success -> {
                 var jobList = viewState.allJobList.invoke()?.map { it.toViewJob() } ?: listOf()
-                if (jobList.isNotEmpty()) {
+                if (!closeSearchValue) {
+                    LazyColumn(
+                        modifier = modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colors.background)
+                            .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
+
+                        ) {
+                        items(searchResultList) { item ->
+                            JobItem(
+                                item = item,
+                                modifier = Modifier,
+                                false
+                            )
+                        }
+                    }
+                } else if (jobList.isEmpty()) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "There are no search results !",
+                            modifier = Modifier.padding(dimensionResource(id = R.dimen.spacing_2x)),
+                            style = MaterialTheme.typography.h3Primary()
+                        )
+                    }
+
+                } else {
+
                     LazyColumn(
                         modifier = modifier
                             .fillMaxSize()
@@ -138,20 +193,7 @@ private fun JobList(
                                 modifier = Modifier,
                                 false
                             )
-
                         }
-                    }
-                } else {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "There are no search results !",
-                            modifier = Modifier.padding(dimensionResource(id = R.dimen.spacing_2x)),
-                            style = MaterialTheme.typography.h3Primary()
-                        )
                     }
                 }
 

@@ -26,11 +26,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun FilterJobs(
     onCloseFilterJobsDrawer: () -> Unit,
-    addFilterResultJob: (List<String>) -> Boolean,
-    clearFilterResultJob: () -> Unit,
     filterJobList: (String?, String?) -> Unit,
     viewState: JobScreenState,
     filterResultList: SnapshotStateList<String>,
+    closeSearch: (Boolean) -> Unit,
+    onChangeSearchText: (String) -> Unit,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
@@ -123,9 +123,11 @@ fun FilterJobs(
             Button(
                 modifier = Modifier,
                 onClick = {
+                    closeSearch.invoke(true)
+                    onChangeSearchText.invoke("")
                     filterJobList.invoke(roleText , cityText)
-                    clearFilterResultJob.invoke()
-                    addFilterResultJob(listOf(roleText, cityText))
+                    filterResultList.clear()
+                    filterResultList.addAll(listOf(roleText, cityText))
                     onCloseFilterJobsDrawer.invoke()
                 },
                 shape = RoundedCornerShape(CornerSize(24.dp)),
