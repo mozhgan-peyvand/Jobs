@@ -37,7 +37,9 @@ fun AddItem(
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
 
     val background =
-        if (selected) MaterialTheme.colors.primary else Color.Transparent
+        if (selected) MaterialTheme.colors.secondary else Color.Transparent
+    val iconAndTextColor =
+        if (selected) MaterialTheme.colors.onSecondary else MaterialTheme.colors.secondary
 
     Box(
         modifier = Modifier
@@ -66,12 +68,12 @@ fun AddItem(
             Icon(
                 painter = painterResource(id = if (selected) screen.icon_focused else screen.icon),
                 contentDescription = "icon",
-                tint = MaterialTheme.colors.onBackground
+                tint = iconAndTextColor
             )
             AnimatedVisibility(visible = selected) {
                 Text(
                     text = screen.title,
-                    color = MaterialTheme.colors.onBackground,
+                    color = iconAndTextColor,
                     style = MaterialTheme.typography.body1
                 )
             }

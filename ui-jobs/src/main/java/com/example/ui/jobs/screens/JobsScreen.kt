@@ -18,6 +18,9 @@ import com.example.base.Success
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
+import com.example.common.ui.view.theme.captionOnPrimary
+import com.example.common.ui.view.theme.captionOnSurface
+import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
@@ -158,7 +161,7 @@ private fun JobList(
                         ) {
                         items(searchResultList) { item ->
                             JobItem(
-                                item = item,
+                                jobInfoView = item,
                                 modifier = Modifier,
                                 false
                             )
@@ -189,7 +192,7 @@ private fun JobList(
 
                         items(jobList) { item ->
                             JobItem(
-                                item = item,
+                                jobInfoView = item,
                                 modifier = Modifier,
                                 false
                             )
@@ -239,7 +242,7 @@ fun LoadingShimmerJobList() {
         items(jobList) { item ->
             JobItem(
                 isloading = true,
-                item = item,
+                jobInfoView = item,
                 modifier = Modifier
             )
 
@@ -255,17 +258,17 @@ fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit
                 function.invoke()
             },
             title = {
-                Text(text = "Error!")
+                Text(text = "Error!", style = MaterialTheme.typography.h3Primary())
             },
             text = {
-                Text("Error processing data. Please try again later")
+                Text("Error processing data. Please try again later",style = MaterialTheme.typography.captionOnSurface())
             },
             confirmButton = {
                 Button(
                     onClick = {
                         actioner.invoke()
                     }) {
-                    Text("retry")
+                    Text("retry", style = MaterialTheme.typography.captionOnPrimary())
                 }
             },
             dismissButton = {
@@ -273,7 +276,7 @@ fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit
                     onClick = {
                         function.invoke()
                     }) {
-                    Text("dismiss")
+                    Text("dismiss", style = MaterialTheme.typography.captionOnPrimary())
                 }
             }
         )

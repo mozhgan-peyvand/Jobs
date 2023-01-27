@@ -44,7 +44,7 @@ fun ImageButton(
             painter = painterResource(id = drawableResId),
             contentDescription = contentDescription,
             contentScale = ContentScale.Inside,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            colorFilter = ColorFilter.tint(MaterialTheme.colors.secondary)
         )
     }
 }

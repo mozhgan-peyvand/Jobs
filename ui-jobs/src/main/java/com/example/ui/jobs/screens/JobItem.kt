@@ -31,16 +31,96 @@ import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import coil.request.ImageRequest
-import com.example.common.ui.view.theme.captionOnBackground
+import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobInfoModel
 
 @Composable
 fun JobItem(
-    item: JobInfoModel,
+    jobInfoView: JobInfoModel,
     modifier: Modifier = Modifier,
     isloading: Boolean,
 ) {
+
+    if (isloading) {
+        LoadingShimmerItem(modifier)
+    } else {
+        JobItemInfo(modifier,jobInfoView)
+    }
+}
+
+
+@Composable
+fun LoadingShimmerItem(modifier: Modifier) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        shape = RoundedCornerShape(12.dp),
+        elevation = 4.dp
+    ) {
+        Row {
+
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .fillMaxSize()
+                    .shimmerEffect()
+                    .clip(MaterialTheme.shapes.medium)
+            ) {
+            }
+
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 12.dp),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.3f)
+                        .padding(4.dp)
+                        .shimmerEffect()
+                        .height(20.dp),
+                    )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.7f)
+                        .padding(4.dp)
+                        .shimmerEffect()
+                        .height(10.dp),
+                    )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.7f)
+                        .padding(4.dp)
+                        .shimmerEffect()
+                        .height(10.dp),
+                    )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.7f)
+                        .padding(4.dp)
+                        .shimmerEffect()
+                        .height(10.dp),
+                    )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.2f)
+                        .padding(4.dp)
+                        .shimmerEffect()
+                        .height(10.dp),
+                    )
+            }
+        }
+    }
+}
+
+@Composable
+fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
     val colorBackGround = remember {
         mutableStateListOf<Color>(
             Color(235, 189, 75, 255),
@@ -48,180 +128,105 @@ fun JobItem(
             Color(226, 108, 108, 255),
         )
     }
-    if (isloading) {
-        Card(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-            shape = RoundedCornerShape(12.dp),
-            elevation = 4.dp
-        ) {
-            Row {
-
-                Box(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .fillMaxSize()
-                        .shimmerEffect()
-                        .clip(MaterialTheme.shapes.medium)
-                ) {
-                }
-
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 12.dp),
-                    verticalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.3f)
-                            .padding(4.dp)
-                            .shimmerEffect()
-                            .height(20.dp),
-
-                        )
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.7f)
-                            .padding(4.dp)
-                            .shimmerEffect()
-                            .height(10.dp),
-
-                        )
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.7f)
-                            .padding(4.dp)
-                            .shimmerEffect()
-                            .height(10.dp),
-
-                        )
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.7f)
-                            .padding(4.dp)
-                            .shimmerEffect()
-                            .height(10.dp),
-
-                        )
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.2f)
-                            .padding(4.dp)
-                            .shimmerEffect()
-                            .height(10.dp),
-
-                        )
-                }
-
-            }
+    val uriHandler = LocalUriHandler.current
+    Card(modifier = modifier
+        .fillMaxWidth()
+        .clickable {
+            uriHandler.openUri(jobInfoView.description ?: "")
         }
+        .background(MaterialTheme.colors.surface)
+        .padding(horizontal = 8.dp, vertical = 4.dp),
+        shape = RoundedCornerShape(12.dp),
+        elevation = 4.dp
+    )
+    {
+        Row {
 
-    } else {
-        val uriHandler = LocalUriHandler.current
-        Card(modifier = modifier
-            .fillMaxWidth()
-            .clickable {
-                uriHandler.openUri(item.description ?: "")
-            }
-            .background(MaterialTheme.colors.surface)
-            .padding(horizontal = 8.dp, vertical = 4.dp),
-            shape = RoundedCornerShape(12.dp),
-            elevation = 4.dp
-        )
-        {
-            Row {
-
-                Box(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .fillMaxSize()
-                        .clip(MaterialTheme.shapes.medium)
-                        .background(MaterialTheme.colors.surface)
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .fillMaxSize()
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colors.surface)
+            ) {
+                SubcomposeAsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(jobInfoView.imageRes)
+                        .build(),
+                    modifier = modifier.fillMaxSize(),
+                    contentDescription = ""
                 ) {
-                    SubcomposeAsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(item.imageRes)
-                            .build(),
-                        modifier = modifier.fillMaxSize(),
-                        contentDescription = ""
-                    ) {
-                        when (painter.state) {
-                            is AsyncImagePainter.State.Loading -> {
-                                CircularProgressIndicator(modifier = Modifier.padding(16.dp))
-                            }
-                            is AsyncImagePainter.State.Error -> {
-                                val randColor =
-                                    colorBackGround[(0..2).random()]
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .background(randColor),
-                                    contentAlignment = Alignment.Center
+                    when (painter.state) {
+                        is AsyncImagePainter.State.Loading -> {
+                            CircularProgressIndicator(modifier = Modifier.padding(16.dp))
+                        }
+                        is AsyncImagePainter.State.Error -> {
+                            val randColor =
+                                colorBackGround[(0..2).random()]
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(randColor),
+                                contentAlignment = Alignment.Center
+                            )
+                            {
+                                Text(
+                                    text = jobInfoView.companyName?.toCharArray()?.first().toString(),
+                                    textAlign = TextAlign.Center,
+                                    style = MaterialTheme.typography.h1,
                                 )
-                                {
-                                    Text(
-                                        text = item.companyName?.toCharArray()?.first().toString(),
-                                        textAlign = TextAlign.Center,
-                                        style = MaterialTheme.typography.h1,
-                                    )
-                                }
                             }
-                            else -> {
-                                SubcomposeAsyncImageContent()
-                            }
+                        }
+                        else -> {
+                            SubcomposeAsyncImageContent()
                         }
                     }
                 }
+            }
 
-                Column(
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 12.dp),
+            ) {
+                Text(
+                    text = jobInfoView.companyName ?: "",
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 12.dp),
-                ) {
-                    Text(
-                        text = item.companyName ?: "",
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        maxLines = 1,
-                        style = MaterialTheme.typography.h3Primary(),
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = item.locationCompany ?: "",
-                        maxLines = 1,
-                        style = MaterialTheme.typography.captionOnBackground(),
-                    )
+                        .fillMaxWidth(),
+                    maxLines = 1,
+                    style = MaterialTheme.typography.h3Primary(),
+                    overflow = TextOverflow.Ellipsis
+                )
 
-                    Text(
-                        text = item.employmentType ?: "",
-                        maxLines = 1,
-                        style = MaterialTheme.typography.captionOnBackground(),
-                    )
+                ItemInfo(taskTitle = "Location : ", taskName = jobInfoView.locationCompany)
 
-                    Text(
-                        text = item.role ?: "",
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        maxLines = 1,
-                        style = MaterialTheme.typography.subtitle2,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = item.data ?: "",
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        maxLines = 1,
-                        style = MaterialTheme.typography.overline,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
+                ItemInfo(taskTitle = "employmentType : ", taskName = jobInfoView.employmentType)
+
+                ItemInfo(taskTitle = "role : ", taskName = jobInfoView.role)
+
+                ItemInfo("data : ",jobInfoView.data)
             }
         }
+    }
+}
+
+@Composable
+fun ItemInfo(taskTitle: String,taskName: String? ) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = taskTitle ,
+            modifier = Modifier ,
+            maxLines = 1,
+            style = MaterialTheme.typography.captionSecondary(),
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(
+            text = taskName ?: "-",
+            modifier = Modifier,
+            maxLines = 1,
+            style = MaterialTheme.typography.overline,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
