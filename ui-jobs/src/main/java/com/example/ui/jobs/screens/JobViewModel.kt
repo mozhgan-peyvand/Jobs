@@ -1,7 +1,6 @@
 package com.example.ui.jobs.screens
 
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import com.example.base.BaseViewModel
 import com.example.base.Success
 import com.example.base.api.Resource
@@ -10,6 +9,7 @@ import com.example.domain_jobs.usecase.FilterJobList
 import com.example.domain_jobs.usecase.GetAllJobRequest
 import com.example.domain_jobs.usecase.GetAllLocation
 import com.example.domain_jobs.usecase.GetAllRoles
+import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
 import com.example.ui.jobs.models.toViewJob
@@ -27,6 +27,9 @@ class JobViewModel @Inject constructor(
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
 
     val filterResultList = mutableStateListOf<String>("","")
+    val searchResultList = mutableStateListOf<JobInfoModel>()
+    val closeSearch = mutableStateOf(true)
+    var searchText = mutableStateOf("")
 
     init {
         getAllJobs()
