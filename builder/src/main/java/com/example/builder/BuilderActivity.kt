@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.example.base.routers.AppRouters
 import com.example.builder.ui.bottomNavigaiton.BottomBar
 import com.example.common.ui.view.theme.AppTheme
@@ -42,7 +44,7 @@ class BuilderActivity : ComponentActivity() {
                 mutableStateOf(true)
             }
             AppTheme(darkTheme = appTheme.value) {
-                navController = rememberAnimatedNavController()
+                navController = rememberNavController()
                 // create a scaffold state, set it to close by default
                 val scaffoldState = rememberScaffoldState()
                 // Create a coroutine scope. Opening of Drawer
@@ -61,7 +63,7 @@ class BuilderActivity : ComponentActivity() {
 
                 ) { paddingValue ->
 
-                    AnimatedNavHost(
+                    NavHost(
                         navController = navController,
                         startDestination = AppRouters.JobGraph.routers,
                         modifier = Modifier.padding(paddingValue)
