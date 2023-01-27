@@ -157,7 +157,8 @@ fun SearchAndFilterJobs(
                             }
                     )
                 }
-            }
+            },
+            singleLine = true
         )
     }
 }

@@ -80,16 +80,31 @@ fun Typography.h3Primary(): TextStyle {
     )
 }
 
-@Composable
-fun Typography.captionOnBackground(): TextStyle {
-    return caption.copy(
-        color = MaterialTheme.colors.onBackground
-    )
-}
 
 @Composable
 fun Typography.overLineOnPrimary(): TextStyle {
     return overline.copy(
         color = MaterialTheme.colors.onPrimary
+    )
+}
+
+@Composable
+fun Typography.captionSecondary(): TextStyle {
+    return caption.copy(
+        color = MaterialTheme.colors.secondary
+    )
+}
+
+@Composable
+fun Typography.captionOnPrimary(): TextStyle{
+    return caption.copy(
+        color = MaterialTheme.colors.onPrimary
+    )
+}
+
+@Composable
+fun Typography.captionOnSurface(): TextStyle{
+    return caption.copy(
+        color = MaterialTheme.colors.onSurface
     )
 }

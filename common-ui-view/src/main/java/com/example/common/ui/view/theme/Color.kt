@@ -5,21 +5,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 object AppColors {
-    val Purple200 = Color(0xFF40B4B8)
-    val Purple500 = Color(0xFF256967)
 
     object Light {
+        val primary = Color(0xFF00a794)
+        val primaryVariant = Color(0xFF03dac4)
+        val secondary = Color(0xFF6300ee)
+        val onSecondary = Color(0xFFffc4ff)
         val Background = Color(0xFFDCDCDC)
         val LightShadow = Color(0xFFFFFFFF)
         val DarkShadow = Color(0xFFA8B5C7)
-        val TextColor = Color.Black
     }
 
     object Dark {
+        val primary = Color(0xFF66fff7)
+        val primaryVariant = Color(0xFF03dac4)
+        val secondary = Color(0xFFffc4ff)
+        val onSecondary = Color(0xFF7C2FE9)
         val Background = Color(0xFF303234)
         val LightShadow = Color(0x66494949)
         val DarkShadow = Color(0x66000000)
-        val TextColor = Color.White
     }
 
     @Composable
