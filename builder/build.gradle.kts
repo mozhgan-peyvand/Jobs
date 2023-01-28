@@ -28,4 +28,5 @@ dependencies {
     addCompose()
     addNavigationComponent()
     addHilt()
+    addCoroutine()
 }
