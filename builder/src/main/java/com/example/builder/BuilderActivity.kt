@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.base.routers.AppRouters
 import com.example.builder.ui.bottomNavigaiton.BottomBar
+import com.example.builder.ui.splash.addSplash
 import com.example.common.ui.view.theme.AppTheme
 import com.example.ui.jobs.util.ui.ImageButton
 import com.example.ui.jobs.R
@@ -41,21 +42,29 @@ class BuilderActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val appTheme = remember {
-                mutableStateOf(true)
+                mutableStateOf(false)
             }
+            val showBottomBarAndTopBar = remember { mutableStateOf(false) }
+
             AppTheme(darkTheme = appTheme.value) {
                 navController = rememberNavController()
-                // create a scaffold state, set it to close by default
+                navController.addOnDestinationChangedListener { _, destination, _ ->
+                    showBottomBarAndTopBar.value = when (destination.route) {
+                        AppRouters.SplashScreen.routers -> false
+                        else -> true
+                    }
+                }
+
                 val scaffoldState = rememberScaffoldState()
-                // Create a coroutine scope. Opening of Drawer
-                // and snackbar should happen in background
-                // thread without blocking main thread
                 Scaffold(
-                    // pass the scaffold state
                     scaffoldState = scaffoldState,
-                    // pass the topbar we created
-                    bottomBar = { BottomBar(navController = navController) },
+                    bottomBar = {
+                        if (showBottomBarAndTopBar.value) {
+                            BottomBar(navController = navController)
+                        }
+                    },
                     topBar = {
+                        if (showBottomBarAndTopBar.value)
                         TitleWithThemeToggle(isDarkTheme = appTheme) {
                             appTheme.value = !appTheme.value
                         }
@@ -65,9 +74,14 @@ class BuilderActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = AppRouters.JobGraph.routers,
+                        startDestination = AppRouters.AppGraph.routers,
                         modifier = Modifier.padding(paddingValue)
                     ) {
+                        addSplash({
+                            navController.navigate(AppRouters.JobScreen.routers){
+                                popUpTo(AppRouters.SplashScreen.routers) { inclusive = true }
+                            }
+                        })
                         addJobsGraph(navController)
                         addUserNavGraph(navController)
                     }
@@ -89,7 +103,7 @@ fun TitleWithThemeToggle(
     ) {
         Text(
             modifier = Modifier.padding(horizontal = 16.dp),
-            text = "MozhganPeivandian",
+            text = "Jobs",
             style = MaterialTheme.typography.h3,
             color = MaterialTheme.colors.primary
         )

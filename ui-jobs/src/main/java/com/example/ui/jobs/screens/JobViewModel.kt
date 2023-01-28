@@ -1,10 +1,8 @@
 package com.example.ui.jobs.screens
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import com.example.base.BaseViewModel
-import com.example.base.Success
-import com.example.base.api.Resource
-import com.example.domain_jobs.model.GetJob
 import com.example.domain_jobs.usecase.FilterJobList
 import com.example.domain_jobs.usecase.GetAllJobRequest
 import com.example.domain_jobs.usecase.GetAllLocation
@@ -12,10 +10,7 @@ import com.example.domain_jobs.usecase.GetAllRoles
 import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
-import com.example.ui.jobs.models.toViewJob
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.job
 import javax.inject.Inject
 
 @HiltViewModel

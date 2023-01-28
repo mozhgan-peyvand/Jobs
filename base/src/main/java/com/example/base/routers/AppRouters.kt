@@ -7,4 +7,5 @@ sealed class AppRouters(val routers: String) {
     object UserGraph : AppRouters(routers = "${AppModuleNames.MODULE_UI_USER}://userGraph")
     object JobScreen : AppRouters(routers = "${AppModuleNames.MODULE_UI_JOB}://jobScreen")
     object UserScreen : AppRouters(routers = "${AppModuleNames.MODULE_UI_USER}://userScreen")
+    object SplashScreen : AppRouters(routers = "${AppModuleNames.MODULE_BUILDER}://splashScreen")
 }
