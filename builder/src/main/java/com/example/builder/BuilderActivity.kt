@@ -64,9 +64,10 @@ class BuilderActivity : ComponentActivity() {
                         }
                     },
                     topBar = {
-                        if (showBottomBarAndTopBar.value)
-                        TitleWithThemeToggle(isDarkTheme = appTheme) {
-                            appTheme.value = !appTheme.value
+                        if (showBottomBarAndTopBar.value) {
+                            TitleWithThemeToggle(isDarkTheme = appTheme) {
+                                appTheme.value = !appTheme.value
+                            }
                         }
                     }
 
@@ -74,14 +75,12 @@ class BuilderActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = AppRouters.AppGraph.routers,
+                        startDestination = AppRouters.JobGraph.routers,
                         modifier = Modifier.padding(paddingValue)
                     ) {
-                        addSplash({
-                            navController.navigate(AppRouters.JobScreen.routers){
-                                popUpTo(AppRouters.SplashScreen.routers) { inclusive = true }
-                            }
-                        })
+                        addSplash {
+                            navController.navigate(AppRouters.JobScreen.routers)
+                        }
                         addJobsGraph(navController)
                         addUserNavGraph(navController)
                     }
