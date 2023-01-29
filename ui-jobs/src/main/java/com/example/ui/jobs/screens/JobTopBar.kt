@@ -88,11 +88,11 @@ fun SearchAndFilterJobs(
                 end = dimensionResource(id = BaseR.dimen.spacing_2x)
             ),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = BaseR.dimen.spacing_base))
     ) {
         ImageButton(
             modifier = Modifier
-                .padding(horizontal = 4.dp),
+                .padding(horizontal = dimensionResource(id = BaseR.dimen.spacing_base)),
             drawableResId = com.example.ui.jobs.R.drawable.ic_job_filter,
             contentDescription = "filter button",
             onClick = { onMenuClicked.invoke() }
@@ -101,14 +101,14 @@ fun SearchAndFilterJobs(
         TextField(
             value = searchText, onValueChange = { onChangeSearchText.invoke(it) },
             modifier = Modifier
-                .padding(horizontal = 4.dp)
+                .padding(horizontal = dimensionResource(id = BaseR.dimen.spacing_base))
                 .neu(
                     NeuAttrs(
                         lightShadowColor = AppColors.lightShadow(),
                         darkShadowColor = AppColors.darkShadow(),
-                        shadowElevation = 6.dp,
+                        shadowElevation = dimensionResource(id = BaseR.dimen.spacing_2x),
                         lightSource = LightSource.LEFT_TOP,
-                        shape = Pressed(RoundedCorner(12.dp)),
+                        shape = Pressed(RoundedCorner(dimensionResource(id = BaseR.dimen.spacing_3x))),
                     )
                 ),
             colors = TextFieldDefaults.textFieldColors(
@@ -140,7 +140,7 @@ fun SearchAndFilterJobs(
                         contentDescription = "Search",
                         tint = MaterialTheme.colors.primary
                     )
-                    Spacer(modifier = Modifier.size(4.dp))
+                    Spacer(modifier = Modifier.size(dimensionResource(id = BaseR.dimen.spacing_base)))
                     Text(
                         text = stringResource(id = UiJobsR.string.label_search_job),
                         style = MaterialTheme.typography.body1
@@ -154,7 +154,7 @@ fun SearchAndFilterJobs(
                         contentDescription = "Search",
                         tint = MaterialTheme.colors.primary,
                         modifier = Modifier
-                            .size(20.dp)
+                            .size(dimensionResource(id = BaseR.dimen.spacing_5x))
                             .clickable {
                                 searchResultList.clear()
                                 onChangeSearchText.invoke("")
