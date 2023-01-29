@@ -1,8 +1,8 @@
-package com.example.data_android
+package com.example.data_android.dataSourceImp
 
 import androidx.room.withTransaction
 import com.example.data.jobs.db.AppDataBase
-import com.example.data.jobs.models.GetJobDTO
+import com.example.data.jobs.models.JobDto
 import com.example.data.jobs.repositories.JobDao
 import com.example.data.jobs.repositories.JobLocalDataSource
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +13,7 @@ class JobLocalDataSourceImp @Inject constructor(
     private val appDataBase: AppDataBase
 ) : JobLocalDataSource {
 
-    override suspend fun insertJobList(jobList: List<GetJobDTO>) {
+    override suspend fun insertJobList(jobList: List<JobDto>) {
         appDataBase.withTransaction {
             jobDao.insertJobList(jobList)
         }

@@ -10,11 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.base.routers.AppRouters
-import com.example.common.ui.view.R
+import com.example.builder.R as BuilderR
+import com.example.base.R as BaseR
 
 sealed class BottomBarScreen(
     val route: String,
@@ -27,19 +28,20 @@ sealed class BottomBarScreen(
     object Home : BottomBarScreen(
         route = AppRouters.JobScreen.routers,
         title = "Home",
-        icon = R.drawable.ic_bottom_home,
-        icon_focused = R.drawable.ic_bottom_home_focused
+        icon = BuilderR.drawable.ic_bottom_home,
+        icon_focused = BuilderR.drawable.ic_bottom_home_focused
     )
 
     // for profile
     object Profile : BottomBarScreen(
         route = AppRouters.UserScreen.routers,
         title = "Profile",
-        icon = R.drawable.ic_bottom_profile,
-        icon_focused = R.drawable.ic_bottom_profile_focused
+        icon = BuilderR.drawable.ic_bottom_profile,
+        icon_focused = BuilderR.drawable.ic_bottom_profile_focused
     )
 
 }
+
 @Composable
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
@@ -54,8 +56,7 @@ fun BottomBar(navController: NavHostController) {
         modifier = Modifier
             .background(MaterialTheme.colors.background)
             .fillMaxWidth()
-            .padding( 8.dp)
-        ,
+            .padding(dimensionResource(id = BaseR.dimen.spacing_2x)),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {

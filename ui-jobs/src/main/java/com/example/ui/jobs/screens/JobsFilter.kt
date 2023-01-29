@@ -14,13 +14,17 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.common.ui.view.theme.AppColors
 import com.example.base.util.shape.*
 import com.example.ui.jobs.models.JobScreenState
 import kotlinx.coroutines.launch
+import com.example.base.R as BaseR
+import com.example.ui.jobs.R as UiJobsR
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -82,7 +86,7 @@ fun FilterJobs(
                     Column(
                         Modifier
                             .selectableGroup()
-                            .padding(32.dp)
+                            .padding(dimensionResource(id = BaseR.dimen.spacing_8x))
                     ) {
                         Spacer(modifier = Modifier.height(16.dp))
                         defaultBottomSheetList.forEach { text ->
@@ -100,25 +104,25 @@ fun FilterJobs(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
-                .padding(24.dp),
+                .padding(dimensionResource(id = BaseR.dimen.spacing_6x)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Choose your option",
+                text = stringResource(id = UiJobsR.string.label_choose_filter_items),
                 modifier = Modifier.fillMaxWidth(),
                 style = MaterialTheme.typography.h2,
                 textAlign = TextAlign.Center
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_8x)))
 
             RoleField(roleText, sheetState,{ roleText = it }) { selectedItem = 0 }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_8x)))
 
             CityField(cityText, sheetState,{ cityText = it }) { selectedItem = 1 }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_8x)))
 
             Button(
                 modifier = Modifier,
@@ -130,13 +134,13 @@ fun FilterJobs(
                     filterResultList.addAll(listOf(roleText, cityText))
                     onCloseFilterJobsDrawer.invoke()
                 },
-                shape = RoundedCornerShape(CornerSize(24.dp)),
+                shape = RoundedCornerShape(CornerSize(dimensionResource(id = BaseR.dimen.spacing_6x))),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = MaterialTheme.colors.primary
                 ),
-                elevation = ButtonDefaults.elevation(8.dp)
+                elevation = ButtonDefaults.elevation(dimensionResource(id = BaseR.dimen.spacing_2x))
             ) {
-                Text(text = "Filter", style = MaterialTheme.typography.h3)
+                Text(text = stringResource(id = UiJobsR.string.label_filter_job_button), style = MaterialTheme.typography.h3)
             }
         }
     }
@@ -157,14 +161,14 @@ fun RoleField(
         value = roleText, onValueChange = { setRoleText(it) },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(4.dp)
+            .padding(dimensionResource(id = BaseR.dimen.spacing_base))
             .neu(
                 NeuAttrs(
                     lightShadowColor = AppColors.lightShadow(),
                     darkShadowColor = AppColors.darkShadow(),
-                    shadowElevation = 6.dp,
+                    shadowElevation = dimensionResource(id = BaseR.dimen.spacing_2x),
                     lightSource = LightSource.LEFT_TOP,
-                    shape = Pressed(RoundedCorner(12.dp)),
+                    shape = Pressed(RoundedCorner(dimensionResource(id = BaseR.dimen.spacing_3x))),
                 )
             )
             .clickable {
@@ -185,11 +189,11 @@ fun RoleField(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_search),
-                    contentDescription = "Search"
+                    painter = painterResource(id = UiJobsR.drawable.ic_job_search),
+                    contentDescription = "Search roles"
                 )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(text = "Enter Role", style = MaterialTheme.typography.subtitle1)
+                Spacer(modifier = Modifier.size(dimensionResource(id = BaseR.dimen.spacing_4x)))
+                Text(text = stringResource(id = UiJobsR.string.label_search_role), style = MaterialTheme.typography.subtitle1)
             }
         },
         enabled = false
@@ -211,14 +215,14 @@ fun CityField(
         value = cityText, onValueChange = { setCityText(it) },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(4.dp)
+            .padding(dimensionResource(id = BaseR.dimen.spacing_base))
             .neu(
                 NeuAttrs(
                     lightShadowColor = AppColors.lightShadow(),
                     darkShadowColor = AppColors.darkShadow(),
-                    shadowElevation = 6.dp,
+                    shadowElevation = dimensionResource(id = BaseR.dimen.spacing_2x),
                     lightSource = LightSource.LEFT_TOP,
-                    shape = Pressed(RoundedCorner(12.dp)),
+                    shape = Pressed(RoundedCorner(dimensionResource(id = BaseR.dimen.spacing_3x))),
                 )
             )
             .clickable {
@@ -239,11 +243,11 @@ fun CityField(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_search),
-                    contentDescription = "Search"
+                    painter = painterResource(id = UiJobsR.drawable.ic_job_search),
+                    contentDescription = "Search City"
                 )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(text = "Enter City", style = MaterialTheme.typography.subtitle1)
+                Spacer(modifier = Modifier.size(dimensionResource(id = BaseR.dimen.spacing_4x)))
+                Text(text = stringResource(id = UiJobsR.string.label_search_city), style = MaterialTheme.typography.subtitle1)
             }
         },
         enabled = false

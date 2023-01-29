@@ -16,7 +16,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.base.R as BaseR
+import com.example.ui.jobs.R as UiJobsR
 
 //roleContent
 @Composable
@@ -37,13 +41,13 @@ fun RoleContentBottomSheet(
     Column(
         modifier = Modifier
             .selectableGroup()
-            .padding(32.dp)
+            .padding(dimensionResource(id = BaseR.dimen.spacing_8x))
     ) {
         Text(
-            text = "Role",
+            text = stringResource(id = UiJobsR.string.label_role_list),
             style = MaterialTheme.typography.h2
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_4x)))
         LazyColumn(
         ) {
             items(allCityList) { item ->
@@ -67,7 +71,7 @@ fun SelectOptionsCheckoutRole(
 ) {
 
     Row(modifier = Modifier
-        .padding(8.dp)
+        .padding(dimensionResource(id = BaseR.dimen.spacing_2x))
         .fillMaxWidth()
         .clickable {
             onSelectOption(text)
@@ -76,12 +80,12 @@ fun SelectOptionsCheckoutRole(
         Icon(
             imageVector = checkboxResourceRole(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
-            modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+            modifier = Modifier.padding(horizontal = dimensionResource(id = BaseR.dimen.spacing_2x)),
             tint = MaterialTheme.colors.primary
         )
         Text(text, style = MaterialTheme.typography.subtitle1)
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_4x)))
 
     }
 }
@@ -113,13 +117,13 @@ fun CityContentBottomSheet(
     Column(
         Modifier
             .selectableGroup()
-            .padding(32.dp)
+            .padding(dimensionResource(id = BaseR.dimen.spacing_8x))
     ) {
         Text(
-            text = "City",
+            text = stringResource(id = UiJobsR.string.label_city_list),
             style = MaterialTheme.typography.h2
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_4x)))
         allLocationList.forEach { text ->
             SelectOptionsCheckoutCity(
                 text = text ?: "",
@@ -150,12 +154,12 @@ fun SelectOptionsCheckoutCity(
         Icon(
             imageVector = checkboxResourceCity(isSelected = isSelectedOption),
             contentDescription = "Checkbox",
-            modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+            modifier = Modifier.padding(horizontal = dimensionResource(id = BaseR.dimen.spacing_2x)),
             tint = MaterialTheme.colors.primary
         )
         Text(text, style = MaterialTheme.typography.subtitle1)
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = BaseR.dimen.spacing_4x)))
 
     }
 }

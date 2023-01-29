@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--     aboute me-->
+    <string name="label_first_and_last_name">Mozhgan Peivandian</string>
+    <string name="msg_role_info">I`m Android Developer</string>
+    <string name="msg_birthday_info">My Birthday : 1999 July 18</string>
+    <string name="msg_location">Live in Mashhad</string>
+
+<!--    links-->
+    <string name="link_github">https://github.com/mozhgan-peyvand</string>
+    <string name="link_linkedin">https://www.linkedin.com/in/mozhganpeyvand/</string>
+    <string name="link_instagram">https://www.instagram.com/mozhgan.peyvand.sh/</string>
+
+<!--    //linksName-->
+    <string name="github_title">Github</string>
+    <string name="linkedin_title">Linkedin</string>
+    <string name="instagram_title">Instagram</string>
+</resources>

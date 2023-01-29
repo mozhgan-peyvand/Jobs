@@ -1,7 +1,10 @@
 package com.example.ui.jobs.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
@@ -10,17 +13,16 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.base.Fail
 import com.example.base.Loading
-import com.example.base.R
 import com.example.base.Success
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
 import com.example.common.ui.view.theme.captionOnPrimary
 import com.example.common.ui.view.theme.captionOnSurface
-import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
@@ -28,6 +30,9 @@ import com.example.ui.jobs.models.JobScreenUiEvent
 import com.example.ui.jobs.models.toViewJob
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import com.example.base.R as BaseR
+import com.example.ui.jobs.R as UiJobsR
+
 
 @Composable
 fun JobScreen(
@@ -156,7 +161,7 @@ private fun JobList(
                         modifier = modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colors.background)
-                            .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
+                            .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
 
                         ) {
                         items(searchResultList) { item ->
@@ -174,8 +179,8 @@ private fun JobList(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "There are no search results !",
-                            modifier = Modifier.padding(dimensionResource(id = R.dimen.spacing_2x)),
+                            text = stringResource(id = UiJobsR.string.msg_empty_result_job_search),
+                            modifier = Modifier.padding(dimensionResource(id = BaseR.dimen.spacing_2x)),
                             style = MaterialTheme.typography.h3Primary()
                         )
                     }
@@ -186,7 +191,7 @@ private fun JobList(
                         modifier = modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colors.background)
-                            .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
+                            .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
 
                         ) {
 
@@ -235,7 +240,7 @@ fun LoadingShimmerJobList() {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
-            .padding(top = dimensionResource(id = R.dimen.spacing_2x)),
+            .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
 
         ) {
 
@@ -258,17 +263,26 @@ fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit
                 function.invoke()
             },
             title = {
-                Text(text = "Error!", style = MaterialTheme.typography.h3Primary())
+                Text(
+                    text = stringResource(id = UiJobsR.string.label_title_error_dialog),
+                    style = MaterialTheme.typography.h3Primary()
+                )
             },
             text = {
-                Text("Error processing data. Please try again later",style = MaterialTheme.typography.captionOnSurface())
+                Text(
+                    stringResource(id = UiJobsR.string.msg_error_dialog),
+                    style = MaterialTheme.typography.captionOnSurface()
+                )
             },
             confirmButton = {
                 Button(
                     onClick = {
                         actioner.invoke()
                     }) {
-                    Text("retry", style = MaterialTheme.typography.captionOnPrimary())
+                    Text(
+                        stringResource(id = UiJobsR.string.label_dialog_retry),
+                        style = MaterialTheme.typography.captionOnPrimary()
+                    )
                 }
             },
             dismissButton = {
@@ -276,7 +290,10 @@ fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit
                     onClick = {
                         function.invoke()
                     }) {
-                    Text("dismiss", style = MaterialTheme.typography.captionOnPrimary())
+                    Text(
+                        stringResource(id = UiJobsR.string.label_dialog_dismiss),
+                        style = MaterialTheme.typography.captionOnPrimary()
+                    )
                 }
             }
         )

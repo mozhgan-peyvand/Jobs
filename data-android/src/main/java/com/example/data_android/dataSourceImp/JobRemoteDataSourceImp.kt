@@ -1,10 +1,10 @@
-package com.example.data_android
+package com.example.data_android.dataSourceImp
 
-import com.example.data.jobs.di.ApiUrlHelper
-import com.example.data.jobs.models.GetJobResponse
+import com.example.base.api.ApiUrlHelper
+import com.example.data.jobs.models.JobResponse
 import com.example.data.jobs.repositories.JobRemoteDataSource
 import com.example.data.jobs.repositories.JobService
-import com.example.data_android.util.RequestHandler
+import com.example.base.api.RequestHandler
 import javax.inject.Inject
 
 class JobRemoteDataSourceImp @Inject constructor(
@@ -12,13 +12,13 @@ class JobRemoteDataSourceImp @Inject constructor(
     private val requestHandler: RequestHandler
 ) : JobRemoteDataSource {
 
-    override suspend fun getAllJobList(): List<GetJobResponse>? {
+    override suspend fun getAllJobList(): List<JobResponse>? {
         return requestHandler.getRequestBodyOrThrow(
             service.getAllJobs(url = ApiUrlHelper.API_URL)
         ).results
     }
 
-    override suspend fun getFilterJobList(role: String?, city: String?): List<GetJobResponse>? {
+    override suspend fun getFilterJobList(role: String?, city: String?): List<JobResponse>? {
         return requestHandler.getRequestBodyOrThrow(
             service.searchJobs(
                 url = ApiUrlHelper.API_URL,

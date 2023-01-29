@@ -1,4 +1,4 @@
-package com.example.data_android.util
+package com.example.base.api
 
 import retrofit2.Response
 import javax.inject.Inject

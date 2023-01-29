@@ -19,11 +19,13 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.example.common.ui.view.theme.captionOnPrimary
 import com.example.common.ui.view.theme.h3Primary
-
+import com.example.base.R as BaseR
+import com.example.ui.user.R as UiUserR
 @Composable
 fun UserScreen() {
     val context = LocalContext.current
@@ -45,30 +47,42 @@ fun UserScreen() {
                 bitmap = bitmap.asImageBitmap(),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(dimensionResource(id = BaseR.dimen.spacing_32x))
                     .align(Alignment.CenterHorizontally)
                     .clip(CircleShape)
             )
             Text(
-                text = "Mozhgan Peivandian",
+                text = stringResource(id = UiUserR.string.label_first_and_last_name),
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-                    .padding(top = 16.dp),
+                    .padding(top = dimensionResource(id = BaseR.dimen.spacing_4x)),
                 style = MaterialTheme.typography.h3Primary()
             )
             Text(
-                text = "I`m Android Developer",
+                text = stringResource(id = UiUserR.string.msg_role_info),
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Text(
-                text = "My Birthday : 1999 July 18",
+                text = stringResource(id = UiUserR.string.msg_birthday_info),
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             )
-            Text(text = "Live in Mashhad", modifier = Modifier.align(Alignment.CenterHorizontally))
-            val list = listOf<UserNetworkEntity>(
-                UserNetworkEntity("Github", "https://github.com/mozhgan-peyvand"),
-                UserNetworkEntity("Linkdin", "https://www.linkedin.com/in/mozhganpeyvand/"),
-                UserNetworkEntity("Instagram", "https://www.instagram.com/mozhgan.peyvand.sh/")
+            Text(
+                text = stringResource(id = UiUserR.string.msg_location),
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            val list = listOf(
+                UserNetworkEntity(
+                    stringResource(id = UiUserR.string.github_title),
+                    stringResource(id = UiUserR.string.link_github)
+                ),
+                UserNetworkEntity(
+                    stringResource(id = UiUserR.string.linkedin_title),
+                    stringResource(id = UiUserR.string.link_linkedin)
+                ),
+                UserNetworkEntity(
+                    stringResource(id = UiUserR.string.instagram_title),
+                    stringResource(id = UiUserR.string.link_instagram)
+                )
             )
             LazyColumn(modifier = Modifier.align(Alignment.CenterHorizontally)) {
                 items(list) { item ->
@@ -78,7 +92,7 @@ fun UserScreen() {
                         }
                     }
                     Divider(
-                        modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+                        modifier = Modifier.padding(horizontal = dimensionResource(id = BaseR.dimen.spacing_4x)),
                         color = MaterialTheme.colors.onBackground,
                         thickness = 1.dp
                     )
@@ -89,30 +103,13 @@ fun UserScreen() {
     }
 }
 
-// on below line we are creating a function to get bitmap
-// from image and passing params as context and an int for drawable.
 private fun getBitmapFromImage(context: Context, drawable: Int): Bitmap {
-
-    // on below line we are getting drawable
     val db = ContextCompat.getDrawable(context, drawable)
-
-    // in below line we are creating our bitmap and initializing it.
     val bit = Bitmap.createBitmap(
         db!!.intrinsicWidth, db.intrinsicHeight, Bitmap.Config.ARGB_8888
     )
-
-    // on below line we are
-    // creating a variable for canvas.
     val canvas = Canvas(bit)
-
-    // on below line we are setting bounds for our bitmap.
     db.setBounds(0, 0, canvas.width, canvas.height)
-
-    // on below line we are simply
-    // calling draw to draw our canvas.
     db.draw(canvas)
-
-    // on below line we are
-    // returning our bitmap.
     return bit
 }

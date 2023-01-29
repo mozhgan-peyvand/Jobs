@@ -1,9 +1,8 @@
-package com.example.data.jobs.di
+package com.example.base.api
 
 import android.content.Context
 import androidx.room.Room
-import com.example.data.jobs.BuildConfig
-import com.example.data.jobs.db.AppDataBase
+import com.example.base.BuildConfig
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -19,24 +18,22 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+
 
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
+
     @Singleton
     @Provides
-    fun provideDb(@ApplicationContext context: Context): AppDataBase{
-        return Room
-            .databaseBuilder(context, AppDataBase::class.java, "com.mozhgan.peivandian.db")
-            .fallbackToDestructiveMigration()
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(DefaultIfNullFactory())
+            .addLast(KotlinJsonAdapterFactory())
             .build()
     }
-
-    @Provides
-    fun provideMoshi(): Moshi = Moshi.Builder()
-        .add(ApplicationJsonAdapterFactory)
-        .build()
 
     @Singleton
     @Provides

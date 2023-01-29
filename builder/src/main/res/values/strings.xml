@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_title_toolbar">Jobs</string>
+    <string name="label_nav_item_profile">Profile</string>
+    <string name="label_nav_item_home">Home</string>
+</resources>

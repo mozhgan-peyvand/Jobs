@@ -1,11 +1,11 @@
 package com.example.data.jobs.models
 
-import com.example.domain_jobs.model.GetJob
+import com.example.domain_jobs.model.JobModel
 import se.ansman.kotshi.JsonSerializable
 
 
 @JsonSerializable
-data class GetJobResponse(
+data class JobResponse(
     val id: String? = null,
     val role: String? = null,
     val company_name: String? = null,
@@ -20,7 +20,7 @@ data class GetJobResponse(
     val keywords: List<String>? = null,
     val source: String? = null
 ){
-    fun toGetJob() = GetJob(
+    fun toGetJob() = JobModel(
         id = id,
         role = role,
         company_name = company_name,
@@ -36,7 +36,7 @@ data class GetJobResponse(
         source = source
     )
 
-    fun toJobDto() = GetJobDTO(
+    fun toJobDto() = JobDto(
         role = role,
         companyName = company_name,
         companyNumEmployees = company_num_employees,

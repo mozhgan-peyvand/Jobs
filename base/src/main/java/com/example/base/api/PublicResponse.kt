@@ -1,4 +1,4 @@
-package com.example.data.jobs.models
+package com.example.base.api
 
 import se.ansman.kotshi.JsonSerializable
 

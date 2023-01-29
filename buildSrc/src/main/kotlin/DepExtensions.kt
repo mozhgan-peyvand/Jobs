@@ -60,12 +60,14 @@ fun Project.addMoshi() {
         add("kapt", "com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
         add("implementation", "com.squareup.moshi:moshi:1.13.0")
         add("implementation", "com.squareup.moshi:moshi-adapters:1.13.0")
+        add("implementation", "com.squareup.moshi:moshi-kotlin:1.13.0")
+
     }
 }
 
 fun Project.addKotshi() {
     dependencies {
-        add("implementation", "se.ansman.kotshi:api:2.7.0")
+        add("api", "se.ansman.kotshi:api:2.7.0")
         add("kapt", "se.ansman.kotshi:compiler:2.7.0")
     }
 }

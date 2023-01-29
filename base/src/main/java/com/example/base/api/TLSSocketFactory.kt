@@ -1,4 +1,4 @@
-package com.example.data.jobs.di
+package com.example.base.api
 
 import java.io.IOException
 import java.net.InetAddress
