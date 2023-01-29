@@ -1,4 +1,4 @@
-package com.example.data.jobs.di
+package com.example.base.api
 
 object ApiUrlHelper {
 
@@ -7,8 +7,6 @@ object ApiUrlHelper {
     }
 
     lateinit var API_URL: String
-
-    lateinit var GET_ARTICLE_LIST_API_URL: String
 
     private fun update() {
         API_URL = "https://findwork.dev/api/jobs/"

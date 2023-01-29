@@ -10,14 +10,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class CommonModulePlugin : Plugin<Project> {
     override fun apply(project: Project) {
-
-//        val outputText: String = ByteArrayOutputStream().use { outputStream ->
-//            project.exec {
-//                commandLine("git", "rev-parse", "--short", "HEAD")
-//                standardOutput = outputStream
-//            }
-//            outputStream.toString().trim()
-//        }
         //    apply commonPlugin to all project
         project.plugins.apply(BuildPlugins.ANDROID_LIBRARY)
         project.plugins.apply(BuildPlugins.KOTLIN_ANDROID)
@@ -27,6 +19,7 @@ class CommonModulePlugin : Plugin<Project> {
         val androidExtensions = project.extensions.getByName("android")
         if (androidExtensions is BaseExtension) {
             androidExtensions.apply {
+
                 compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
                 buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
                 compileOptions {
@@ -36,6 +29,8 @@ class CommonModulePlugin : Plugin<Project> {
                 project.tasks.withType(KotlinCompile::class.java).configureEach {
                     kotlinOptions {
                         jvmTarget = JavaVersion.VERSION_1_8.toString()
+                        freeCompilerArgs = listOf("-Xjvm-default=all")
+
                     }
                 }
                 defaultConfig {
@@ -57,19 +52,6 @@ class CommonModulePlugin : Plugin<Project> {
                 productFlavors {
                     create("mock") {
                         dimension("mode")
-//                        buildConfigField(
-//                            "String",
-//                            "VERSION_NAME",
-//                            "\"dev-build${getDate()}-g${outputText}\""
-//                        )
-//                        val usePublishDependencyInGradle: String by project
-//                        buildConfigField(
-//                            "String",
-//                            "usePublishDependencyInGradle",
-//                            "\"${usePublishDependencyInGradle}\""
-//                        )
-                        // The following configuration limits the "dev" flavor to using
-                        // English string resources and xxhdpi screen-density resources.
                         resourceConfigurations.addAll(listOf("en", "xxhdpi"))
                         // Disable PNG crunching
                         aaptOptions.cruncherEnabled = false
@@ -91,21 +73,9 @@ class CommonModulePlugin : Plugin<Project> {
                     }
                     create("stage") {
                         dimension("mode")
-//                        val usePublishDependencyInGradle: String by project
-//                        buildConfigField(
-//                            "String",
-//                            "usePublishDependencyInGradle",
-//                            "\"${usePublishDependencyInGradle}\""
-//                        )
                     }
                     create("prod") {
                         dimension("mode")
-//                        val usePublishDependencyInGradle: String by project
-//                        buildConfigField(
-//                            "String",
-//                            "usePublishDependencyInGradle",
-//                            "\"${usePublishDependencyInGradle}\""
-//                        )
                     }
                 }
             }

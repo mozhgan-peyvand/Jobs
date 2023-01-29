@@ -2,7 +2,7 @@ package com.example.ui.jobs.screens
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import com.example.base.BaseViewModel
+import com.example.base.util.BaseViewModel
 import com.example.domain_jobs.usecase.FilterJobList
 import com.example.domain_jobs.usecase.GetAllJobRequest
 import com.example.domain_jobs.usecase.GetAllLocation

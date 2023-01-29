@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import kotlinx.coroutines.delay
+import com.example.builder.R
 
 
 @Composable
@@ -21,9 +22,9 @@ fun SplashScreen( navigateToJobScreen : () -> Unit){
     ) {
         Image(
             painter = painterResource(
-                com.example.common.ui.view.R.drawable.ic_splash
+                R.drawable.ic_splash
             ),
-            contentDescription = null,
+            contentDescription = "splash image",
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .fillMaxWidth(0.8f)

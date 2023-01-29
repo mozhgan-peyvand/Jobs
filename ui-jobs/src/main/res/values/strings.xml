@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">ListAnimationsInCompose</string>
+    <string name="label_role_list">Role</string>
+    <string name="label_city_list">City</string>
+    <string name="label_location_title">Location : </string>
+    <string name="label_employmentType_title">employmentType : </string>
+    <string name="label_role_title">role : </string>
+    <string name="label_data_title">data : </string>
+    <string name="label_choose_filter_items">Choose your option</string>
+    <string name="label_filter_job_button">Filter</string>
+    <string name="label_search_city">Enter City</string>
+    <string name="label_search_role">Enter Role</string>
+    <string name="msg_empty_result_job_search">Enter Role</string>
+    <string name="label_title_error_dialog">Error!</string>
+    <string name="msg_error_dialog">Error processing data. Please try again later</string>
+    <string name="label_dialog_retry">Retry</string>
+    <string name="label_dialog_dismiss">Dismiss</string>
 
+<!--    jobTopBar-->
+  <string name="label_search_job">Search</string>
 </resources>

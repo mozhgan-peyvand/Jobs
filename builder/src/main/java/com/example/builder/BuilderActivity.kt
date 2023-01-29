@@ -8,10 +8,18 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -20,13 +28,13 @@ import com.example.base.routers.AppRouters
 import com.example.builder.ui.bottomNavigaiton.BottomBar
 import com.example.builder.ui.splash.addSplash
 import com.example.common.ui.view.theme.AppTheme
-import com.example.ui.jobs.util.ui.ImageButton
-import com.example.ui.jobs.R
+import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.util.navigation.addJobsGraph
+import com.example.ui.jobs.util.ui.ImageButton
 import com.example.ui.user.util.navigation.addUserNavGraph
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.base.R as BaseR
+import com.example.builder.R as BuilderR
 
 @AndroidEntryPoint
 class BuilderActivity : ComponentActivity() {
@@ -101,15 +109,14 @@ fun TitleWithThemeToggle(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 16.dp),
-            text = "Jobs",
-            style = MaterialTheme.typography.h3,
-            color = MaterialTheme.colors.primary
+            modifier = Modifier.padding(horizontal = dimensionResource(id = BaseR.dimen.spacing_4x)),
+            text = stringResource(id = BuilderR.string.label_title_toolbar),
+            style = MaterialTheme.typography.h3Primary()
         )
         ImageButton(
-            modifier = Modifier.padding(8.dp),
-            drawableResId = if (isDarkTheme.value) R.drawable.ic_light_mode
-            else R.drawable.ic_dark_mode,
+            modifier = Modifier.padding(dimensionResource(id = BaseR.dimen.spacing_2x)),
+            drawableResId = if (isDarkTheme.value) BuilderR.drawable.ic_light_mode
+            else BuilderR.drawable.ic_dark_mode,
             contentDescription = "Toggle theme",
             onClick = onThemeToggle
         )

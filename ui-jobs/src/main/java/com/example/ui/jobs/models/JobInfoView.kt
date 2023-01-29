@@ -1,6 +1,6 @@
 package com.example.ui.jobs.models
 
-import com.example.domain_jobs.model.GetJob
+import com.example.domain_jobs.model.JobModel
 
 data class JobInfoModel(
     val id: String? = null,
@@ -14,7 +14,7 @@ data class JobInfoModel(
     )
 
 
-fun GetJob.toViewJob() = JobInfoModel(
+fun JobModel.toViewJob() = JobInfoModel(
     id = id,
     companyName = company_name,
     locationCompany = location,

@@ -1,4 +1,4 @@
-package com.example.base
+package com.example.base.util
 
 interface BaseEffect {
     object ShowSnackBar : BaseEffect

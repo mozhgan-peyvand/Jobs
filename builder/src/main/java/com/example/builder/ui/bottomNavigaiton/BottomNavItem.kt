@@ -16,12 +16,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.example.base.R
 import com.example.common.ui.view.theme.AppColors
 import com.example.base.util.shape.LightSource
 import com.example.base.util.shape.Pressed
@@ -55,15 +57,20 @@ fun AddItem(
                 lightShadowColor = AppColors.lightShadow(),
                 darkShadowColor = AppColors.darkShadow(),
                 lightSource = LightSource.LEFT_TOP,
-                shape = Pressed(RoundedCorner(24.dp)),
+                shape = Pressed(RoundedCorner(dimensionResource(id = R.dimen.spacing_6x))),
             )
-            .padding(2.dp),
+            .padding(dimensionResource(id = R.dimen.spacing_half_base)),
     ) {
         Row(
             modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),
+                .padding(
+                    start = dimensionResource(id = R.dimen.spacing_3x),
+                    end = dimensionResource(id = R.dimen.spacing_3x),
+                    top = dimensionResource(id = R.dimen.spacing_2x),
+                    bottom = dimensionResource(id = R.dimen.spacing_2x)
+                ),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_base))
         ) {
             Icon(
                 painter = painterResource(id = if (selected) screen.icon_focused else screen.icon),

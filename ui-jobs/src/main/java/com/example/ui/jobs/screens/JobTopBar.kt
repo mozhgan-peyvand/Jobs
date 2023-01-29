@@ -19,10 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.example.common.ui.view.theme.AppColors
-import com.example.base.R
 import com.example.base.Success
 import com.example.base.util.shape.*
 import com.example.common.ui.view.theme.overLineOnPrimary
@@ -30,6 +30,8 @@ import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.toViewJob
 import com.example.ui.jobs.util.ui.ImageButton
+import com.example.base.R as BaseR
+import com.example.ui.jobs.R as UiJobsR
 
 @Composable
 fun JobTopBar(
@@ -73,7 +75,7 @@ fun SearchAndFilterJobs(
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    if (searchText.isEmpty()){
+    if (searchText.isEmpty()) {
         searchResultList.clear()
     }
 
@@ -81,9 +83,9 @@ fun SearchAndFilterJobs(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                top = dimensionResource(id = R.dimen.spacing_2x),
-                start = dimensionResource(id = R.dimen.spacing_2x),
-                end = dimensionResource(id = R.dimen.spacing_2x)
+                top = dimensionResource(id = BaseR.dimen.spacing_2x),
+                start = dimensionResource(id = BaseR.dimen.spacing_2x),
+                end = dimensionResource(id = BaseR.dimen.spacing_2x)
             ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -92,7 +94,7 @@ fun SearchAndFilterJobs(
             modifier = Modifier
                 .padding(horizontal = 4.dp),
             drawableResId = com.example.ui.jobs.R.drawable.ic_job_filter,
-            contentDescription = "filter",
+            contentDescription = "filter button",
             onClick = { onMenuClicked.invoke() }
         )
 
@@ -134,18 +136,21 @@ fun SearchAndFilterJobs(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Icon(
-                        painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_search),
+                        painter = painterResource(id = UiJobsR.drawable.ic_job_search),
                         contentDescription = "Search",
                         tint = MaterialTheme.colors.primary
                     )
                     Spacer(modifier = Modifier.size(4.dp))
-                    Text(text = "Search", style = MaterialTheme.typography.body1)
+                    Text(
+                        text = stringResource(id = UiJobsR.string.label_search_job),
+                        style = MaterialTheme.typography.body1
+                    )
                 }
             },
             trailingIcon = {
                 if (searchText.isNotEmpty()) {
                     Icon(
-                        painter = painterResource(id = com.example.ui.jobs.R.drawable.ic_job_close),
+                        painter = painterResource(id = UiJobsR.drawable.ic_job_close),
                         contentDescription = "Search",
                         tint = MaterialTheme.colors.primary,
                         modifier = Modifier
@@ -172,13 +177,13 @@ fun SelectedJobFilterItems(
             if (item.isNotEmpty()) {
                 Button(modifier = Modifier
                     .padding(
-                        start = dimensionResource(id = R.dimen.spacing_3x),
-                        top = dimensionResource(id = R.dimen.spacing_base)
+                        start = dimensionResource(id = BaseR.dimen.spacing_3x),
+                        top = dimensionResource(id = BaseR.dimen.spacing_base)
                     ),
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = MaterialTheme.colors.primary
                     ),
-                    shape = RoundedCornerShape(corner = CornerSize(24.dp)),
+                    shape = RoundedCornerShape(corner = CornerSize(dimensionResource(id = BaseR.dimen.spacing_3x))),
                     onClick = {}
                 ) {
                     Text(text = item, style = MaterialTheme.typography.overLineOnPrimary())

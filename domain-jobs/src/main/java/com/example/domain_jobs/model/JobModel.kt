@@ -1,6 +1,6 @@
 package com.example.domain_jobs.model
 
-data class GetJob(
+data class JobModel(
     val id: String? = null,
     val role: String? = null,
     val company_name: String? = null,

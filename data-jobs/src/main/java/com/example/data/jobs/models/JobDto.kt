@@ -2,10 +2,10 @@ package com.example.data.jobs.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.domain_jobs.model.GetJob
+import com.example.domain_jobs.model.JobModel
 
 @Entity
-data class GetJobDTO(
+data class JobDto(
     @PrimaryKey(autoGenerate = true) val idJob: Int = 0,
     val role: String? = null,
     val companyName: String? = null,
@@ -16,20 +16,4 @@ data class GetJobDTO(
     val logo: String? = null,
     val url: String? = null,
     val datePosted: String? = null,
-){
-    fun toGetJob() = GetJob(
-        id = idJob.toString(),
-        role = role,
-        company_name = companyName,
-        company_num_employees = companyNumEmployees,
-        employment_type = employmentType,
-        location = location,
-        remote = remote,
-        logo = logo,
-        url = url,
-        text = "",
-        date_posted = "",
-        keywords = listOf(),
-        source = ""
-    )
-}
+)

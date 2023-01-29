@@ -1,8 +1,8 @@
 package com.example.data.jobs.repositories
 
-import com.example.data.jobs.models.GetJobResponse
+import com.example.data.jobs.models.JobResponse
 
 interface JobRemoteDataSource {
-    suspend fun getAllJobList() : List<GetJobResponse>?
-    suspend fun getFilterJobList(role: String?,city: String?) : List<GetJobResponse>?
+    suspend fun getAllJobList() : List<JobResponse>?
+    suspend fun getFilterJobList(role: String?,city: String?) : List<JobResponse>?
 }

@@ -23,6 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
@@ -34,6 +36,8 @@ import coil.request.ImageRequest
 import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobInfoModel
+import com.example.base.R as BaseR
+import com.example.ui.jobs.R as UiJobsR
 
 @Composable
 fun JobItem(
@@ -45,7 +49,7 @@ fun JobItem(
     if (isloading) {
         LoadingShimmerItem(modifier)
     } else {
-        JobItemInfo(modifier,jobInfoView)
+        JobItemInfo(modifier, jobInfoView)
     }
 }
 
@@ -63,57 +67,57 @@ fun LoadingShimmerItem(modifier: Modifier) {
 
             Box(
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(dimensionResource(id = BaseR.dimen.spacing_25x))
                     .fillMaxSize()
                     .shimmerEffect()
                     .clip(MaterialTheme.shapes.medium)
             ) {
             }
 
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 12.dp),
+                    .padding(start = dimensionResource(id = BaseR.dimen.spacing_3x)),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.3f)
-                        .padding(4.dp)
+                        .padding(dimensionResource(id = BaseR.dimen.spacing_base))
                         .shimmerEffect()
-                        .height(20.dp),
-                    )
+                        .height(dimensionResource(id = BaseR.dimen.spacing_5x)),
+                )
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.7f)
-                        .padding(4.dp)
+                        .padding(dimensionResource(id = BaseR.dimen.spacing_base))
                         .shimmerEffect()
-                        .height(10.dp),
-                    )
+                        .height(dimensionResource(id = BaseR.dimen.spacing_2x)),
+                )
+
 
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.7f)
-                        .padding(4.dp)
+                        .padding(dimensionResource(id = BaseR.dimen.spacing_base))
                         .shimmerEffect()
-                        .height(10.dp),
-                    )
+                        .height(dimensionResource(id = BaseR.dimen.spacing_2x)),
+                )
 
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(0.7f)
-                        .padding(4.dp)
-                        .shimmerEffect()
-                        .height(10.dp),
-                    )
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.2f)
-                        .padding(4.dp)
+                        .padding(dimensionResource(id = BaseR.dimen.spacing_base))
                         .shimmerEffect()
-                        .height(10.dp),
-                    )
+                        .height(dimensionResource(id = BaseR.dimen.spacing_2x)),
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.3f)
+                        .padding(dimensionResource(id = BaseR.dimen.spacing_base))
+                        .shimmerEffect()
+                        .height(dimensionResource(id = BaseR.dimen.spacing_2x)),
+                )
             }
         }
     }
@@ -135,16 +139,19 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
             uriHandler.openUri(jobInfoView.description ?: "")
         }
         .background(MaterialTheme.colors.surface)
-        .padding(horizontal = 8.dp, vertical = 4.dp),
-        shape = RoundedCornerShape(12.dp),
-        elevation = 4.dp
+        .padding(
+            horizontal = dimensionResource(id = BaseR.dimen.spacing_2x),
+            vertical = dimensionResource(id = BaseR.dimen.spacing_base)
+        ),
+        shape = RoundedCornerShape(dimensionResource(id = BaseR.dimen.spacing_3x)),
+        elevation = dimensionResource(id = BaseR.dimen.spacing_base)
     )
     {
         Row {
 
             Box(
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(dimensionResource(id = BaseR.dimen.spacing_25x))
                     .fillMaxSize()
                     .clip(MaterialTheme.shapes.medium)
                     .background(MaterialTheme.colors.surface)
@@ -158,7 +165,13 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
                 ) {
                     when (painter.state) {
                         is AsyncImagePainter.State.Loading -> {
-                            CircularProgressIndicator(modifier = Modifier.padding(16.dp))
+                            CircularProgressIndicator(
+                                modifier = Modifier.padding(
+                                    dimensionResource(
+                                        id = BaseR.dimen.spacing_4x
+                                    )
+                                )
+                            )
                         }
                         is AsyncImagePainter.State.Error -> {
                             val randColor =
@@ -171,7 +184,8 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
                             )
                             {
                                 Text(
-                                    text = jobInfoView.companyName?.toCharArray()?.first().toString(),
+                                    text = jobInfoView.companyName?.toCharArray()?.first()
+                                        .toString(),
                                     textAlign = TextAlign.Center,
                                     style = MaterialTheme.typography.h1,
                                 )
@@ -187,7 +201,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 12.dp),
+                    .padding(start = dimensionResource(id = BaseR.dimen.spacing_3x)),
             ) {
                 Text(
                     text = jobInfoView.companyName ?: "",
@@ -198,24 +212,36 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
                     overflow = TextOverflow.Ellipsis
                 )
 
-                ItemInfo(taskTitle = "Location : ", taskName = jobInfoView.locationCompany)
+                ItemInfo(
+                    taskTitle = stringResource(id = UiJobsR.string.label_location_title),
+                    taskName = jobInfoView.locationCompany
+                )
 
-                ItemInfo(taskTitle = "employmentType : ", taskName = jobInfoView.employmentType)
+                ItemInfo(
+                    taskTitle = stringResource(id = UiJobsR.string.label_employmentType_title),
+                    taskName = jobInfoView.employmentType
+                )
 
-                ItemInfo(taskTitle = "role : ", taskName = jobInfoView.role)
+                ItemInfo(
+                    taskTitle = stringResource(id = UiJobsR.string.label_role_title),
+                    taskName = jobInfoView.role
+                )
 
-                ItemInfo("data : ",jobInfoView.data)
+                ItemInfo(
+                    taskTitle = stringResource(id = UiJobsR.string.label_data_title),
+                    jobInfoView.data
+                )
             }
         }
     }
 }
 
 @Composable
-fun ItemInfo(taskTitle: String,taskName: String? ) {
+fun ItemInfo(taskTitle: String, taskName: String?) {
     Row(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = taskTitle ,
-            modifier = Modifier ,
+            text = taskTitle,
+            modifier = Modifier,
             maxLines = 1,
             style = MaterialTheme.typography.captionSecondary(),
             overflow = TextOverflow.Ellipsis
