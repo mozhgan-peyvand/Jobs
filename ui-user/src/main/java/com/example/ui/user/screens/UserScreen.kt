@@ -22,10 +22,11 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import com.example.common.ui.view.theme.captionOnPrimary
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.common.ui.view.theme.h3Primary
 import com.example.base.R as BaseR
 import com.example.ui.user.R as UiUserR
+import com.example.common.ui.view.R as CommonUiViewR
 @Composable
 fun UserScreen() {
     val context = LocalContext.current
@@ -35,7 +36,7 @@ fun UserScreen() {
 
         ) {
         val bitmap =
-            getBitmapFromImage(context, com.example.common.ui.view.R.mipmap.ic_launcher_profile)
+            getBitmapFromImage(context, CommonUiViewR.mipmap.ic_launcher_profile)
 
         Column(
             Modifier

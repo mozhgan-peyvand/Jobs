@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,12 +47,6 @@ fun JobScreen(
             viewModel.submitAction(action)
         },
         viewState = viewState,
-        filterResultList = viewModel.filterResultList,
-        searchResultList = viewModel.searchResultList,
-        searchText = viewModel.searchText,
-        onChangeSearchText = { viewModel.searchText.value = it },
-        closeSearch = viewModel.closeSearch,
-        onCloseSearch = { viewModel.closeSearch.value = it }
     )
 }
 
@@ -58,13 +54,16 @@ fun JobScreen(
 fun JobScreenList(
     actioner: (JobScreenUiEvent) -> Unit,
     viewState: JobScreenState,
-    filterResultList: SnapshotStateList<String>,
-    searchResultList: SnapshotStateList<JobInfoModel>,
-    searchText: MutableState<String>,
-    onChangeSearchText: (String) -> Unit,
-    onCloseSearch: (Boolean) -> Unit,
-    closeSearch: MutableState<Boolean>,
 ) {
+
+    val closeSearch = rememberSaveable {
+        mutableStateOf(true)
+    }
+    val searchText = rememberSaveable {
+        mutableStateOf("")
+    }
+    val filterResultList = rememberMutableStateListOf("", "")
+
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
@@ -86,8 +85,8 @@ fun JobScreenList(
                 },
                 viewState = viewState,
                 filterResultList = filterResultList,
-                closeSearch = onCloseSearch,
-                onChangeSearchText = onChangeSearchText
+                closeSearch = { closeSearch.value = it },
+                onChangeSearchText = { searchText.value = it }
             )
         }
     ) { paddingValues ->
@@ -101,19 +100,11 @@ fun JobScreenList(
             },
             filterResultList = filterResultList,
             viewState = viewState,
-            actioner = {
-                if (filterResultList.isEmpty())
-                    actioner(JobScreenUiEvent.ShowAllJobList)
-                else
-                    actioner(
-                        JobScreenUiEvent.FilterJobsList(filterResultList[0], filterResultList[1])
-                    )
-            },
-            searchResultList = searchResultList,
-            closeSearch = onCloseSearch,
+            actioner = actioner,
+            closeSearch = { closeSearch.value = it },
             closeSearchValue = closeSearch.value,
             searchText = searchText.value,
-            onChangeSearchText = onChangeSearchText
+            onChangeSearchText = { searchText.value = it },
         )
     }
 }
@@ -124,12 +115,11 @@ private fun JobList(
     onMenuClicked: () -> Job,
     filterResultList: SnapshotStateList<String>,
     viewState: JobScreenState,
-    actioner: () -> Unit,
-    searchResultList: SnapshotStateList<JobInfoModel>,
     closeSearch: (Boolean) -> Unit,
     closeSearchValue: Boolean,
     searchText: String,
     onChangeSearchText: (String) -> Unit,
+    actioner: (JobScreenUiEvent) -> Unit,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val openDialog = remember { mutableStateOf(false) }
@@ -145,8 +135,7 @@ private fun JobList(
                     onMenuClicked.invoke()
                 },
                 filterResultList = filterResultList,
-                searchResultList = searchResultList,
-                viewState = viewState,
+                actioner = { searchText -> actioner(JobScreenUiEvent.SearchJobsList(searchText)) },
                 closeSearch = closeSearch,
                 searchText = searchText,
                 onChangeSearchText = onChangeSearchText
@@ -164,7 +153,7 @@ private fun JobList(
                             .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
 
                         ) {
-                        items(searchResultList) { item ->
+                        items(viewState.searchResultList) { item ->
                             JobItem(
                                 jobInfoView = item,
                                 modifier = Modifier,
@@ -214,7 +203,20 @@ private fun JobList(
                     LaunchedEffect(key1 = Unit) {
                         openDialog.value = true
                     }
-                    AlertDialogSample(openDialog.value, { openDialog.value = false }, actioner)
+                    AlertDialogSample(
+                        openDialog.value, { openDialog.value = false },
+                        {
+                            if (filterResultList.isEmpty())
+                                actioner(JobScreenUiEvent.ShowAllJobList)
+                            else
+                                actioner(
+                                    JobScreenUiEvent.FilterJobsList(
+                                        filterResultList[0],
+                                        filterResultList[1]
+                                    )
+                                )
+                        },
+                    )
                 }
 
             }
@@ -297,5 +299,25 @@ fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit
                 }
             }
         )
+    }
+}
+
+@Composable
+fun <T : Any> rememberMutableStateListOf(vararg elements: T): SnapshotStateList<T> {
+    return rememberSaveable(
+        saver = listSaver(
+            save = { stateList ->
+                if (stateList.isNotEmpty()) {
+                    val first = stateList.first()
+                    if (!canBeSaved(first)) {
+                        throw IllegalStateException("${first::class} cannot be saved. By default only types which can be stored in the Bundle class can be saved.")
+                    }
+                }
+                stateList.toList()
+            },
+            restore = { it.toMutableStateList() }
+        )
+    ) {
+        elements.toList().toMutableStateList()
     }
 }
