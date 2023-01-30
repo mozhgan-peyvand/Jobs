@@ -43,10 +43,10 @@ fun JobScreen(
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
     JobScreenList(
+        viewState = viewState,
         actioner = { action ->
             viewModel.submitAction(action)
-        },
-        viewState = viewState,
+        }
     )
 }
 
@@ -144,7 +144,7 @@ private fun JobList(
     ) {
         when (viewState.allJobList) {
             is Success -> {
-                var jobList = viewState.allJobList.invoke()?.map { it.toViewJob() } ?: listOf()
+                val jobList = viewState.allJobList.invoke()?.map { it.toViewJob() } ?: listOf()
                 if (!closeSearchValue) {
                     LazyColumn(
                         modifier = modifier
@@ -227,7 +227,7 @@ private fun JobList(
 
 @Composable
 fun LoadingShimmerJobList() {
-    var jobList = listOf(
+    val jobList = listOf(
         JobInfoModel(),
         JobInfoModel(),
         JobInfoModel(),

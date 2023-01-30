@@ -1,8 +1,5 @@
 package com.example.ui.jobs.screens
 
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import com.example.base.Success
 import com.example.base.util.BaseViewModel
 import com.example.domain_jobs.usecase.FilterJobList
 import com.example.domain_jobs.usecase.GetAllJobRequest
@@ -23,7 +20,7 @@ class JobViewModel @Inject constructor(
     private val getAllRoles: GetAllRoles,
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
 
-    var searchResultList2 = listOf<JobInfoModel>()
+    var searchResultJobList = listOf<JobInfoModel>()
 
     init {
         getAllJobs()
@@ -32,15 +29,15 @@ class JobViewModel @Inject constructor(
                 JobScreenUiEvent.ShowAllJobList -> getAllJobs()
                 is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
                 is JobScreenUiEvent.SearchJobsList -> searchJobs(action.searchText ?: "")
-                else -> throw IllegalArgumentException("unknown action: $action")
             }
         }
 
         onAsyncResult(
             JobScreenState::allJobList,
-            onSuccess = {
+            onSuccess = { listJobs ->
                 getAllRoles()
                 getAllLocations()
+                searchResultJobList = listJobs?.map { it.toViewJob() } ?: emptyList()
             }
         )
     }
@@ -63,7 +60,7 @@ class JobViewModel @Inject constructor(
     private fun searchJobs(searchText: String) {
         val searchResult = mutableListOf<JobInfoModel>()
         suspend {
-            searchResultList2.map { item ->
+            searchResultJobList.map { item ->
                 if (
                     item.companyName?.contains(searchText) == true ||
                     item.locationCompany?.contains(searchText) == true ||
@@ -82,7 +79,6 @@ class JobViewModel @Inject constructor(
         suspend {
             getAllJobRequest(Unit)
         }.execute {
-            searchResultList2 = it.invoke()?.map { it.toViewJob() } ?: emptyList()
             copy(allJobList = it)
         }
     }
