@@ -10,7 +10,7 @@
     <string name="label_filter_job_button">Filter</string>
     <string name="label_search_city">Enter City</string>
     <string name="label_search_role">Enter Role</string>
-    <string name="msg_empty_result_job_search">Enter Role</string>
+    <string name="msg_empty_result_job_search">There are no search results !</string>
     <string name="label_title_error_dialog">Error!</string>
     <string name="msg_error_dialog">Error processing data. Please try again later</string>
     <string name="label_dialog_retry">Retry</string>

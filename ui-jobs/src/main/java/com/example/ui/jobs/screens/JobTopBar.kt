@@ -21,14 +21,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.unit.dp
 import com.example.common.ui.view.theme.AppColors
-import com.example.base.Success
 import com.example.base.util.shape.*
 import com.example.common.ui.view.theme.overLineOnPrimary
-import com.example.ui.jobs.models.JobInfoModel
-import com.example.ui.jobs.models.JobScreenState
-import com.example.ui.jobs.models.toViewJob
 import com.example.ui.jobs.util.ui.ImageButton
 import com.example.base.R as BaseR
 import com.example.ui.jobs.R as UiJobsR
@@ -37,8 +32,7 @@ import com.example.ui.jobs.R as UiJobsR
 fun JobTopBar(
     onClickedFilterJobs: () -> Unit,
     filterResultList: SnapshotStateList<String>,
-    searchResultList: SnapshotStateList<JobInfoModel>,
-    viewState: JobScreenState,
+    actioner: (String) -> Unit,
     closeSearch: (Boolean) -> Unit,
     searchText: String,
     onChangeSearchText: (String) -> Unit
@@ -50,12 +44,11 @@ fun JobTopBar(
     ) {
 
         SearchAndFilterJobs(
-            onClickedFilterJobs,
-            searchResultList,
-            viewState,
-            closeSearch,
-            searchText,
-            onChangeSearchText
+            onMenuClicked = onClickedFilterJobs,
+            searchResultList = actioner,
+            closeSearch = closeSearch,
+            searchText = searchText,
+            onChangeSearchText = onChangeSearchText
         )
 
         SelectedJobFilterItems(filterResultList)
@@ -67,8 +60,7 @@ fun JobTopBar(
 @Composable
 fun SearchAndFilterJobs(
     onMenuClicked: () -> Unit,
-    searchResultList: SnapshotStateList<JobInfoModel>,
-    viewState: JobScreenState,
+    searchResultList: (String) -> Unit,
     closeSearch: (Boolean) -> Unit,
     searchText: String,
     onChangeSearchText: (String) -> Unit
@@ -76,7 +68,7 @@ fun SearchAndFilterJobs(
     val keyboardController = LocalSoftwareKeyboardController.current
 
     if (searchText.isEmpty()) {
-        searchResultList.clear()
+        searchResultList.invoke("")
     }
 
     Row(
@@ -118,15 +110,7 @@ fun SearchAndFilterJobs(
             ),
             keyboardActions = KeyboardActions(onDone = {
                 closeSearch.invoke(false)
-                (viewState.allJobList as Success).invoke()?.map { item ->
-                    if (
-                        item.company_name?.contains(searchText) == true ||
-                        item.location?.contains(searchText) == true ||
-                        item.role?.contains(searchText) == true
-                    ) {
-                        searchResultList.add(item.toViewJob())
-                    }
-                }
+                searchResultList.invoke(searchText)
                 keyboardController?.hide()
 
             }),
@@ -156,7 +140,7 @@ fun SearchAndFilterJobs(
                         modifier = Modifier
                             .size(dimensionResource(id = BaseR.dimen.spacing_5x))
                             .clickable {
-                                searchResultList.clear()
+                                searchResultList.invoke("")
                                 onChangeSearchText.invoke("")
                                 closeSearch.invoke(true)
                             }
