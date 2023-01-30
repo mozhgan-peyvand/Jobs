@@ -24,6 +24,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.base.R
+import com.example.base.routers.AppRouters
 import com.example.common.ui.view.theme.AppColors
 import com.example.base.util.shape.LightSource
 import com.example.base.util.shape.Pressed
@@ -49,6 +50,9 @@ fun AddItem(
             .background(background)
             .clickable(onClick = {
                 navController.navigate(screen.route) {
+                    if (screen.route == AppRouters.JobScreen.routers){
+                        popUpTo(AppRouters.JobScreen.routers)
+                    }
                     popUpTo(navController.graph.findStartDestination().id)
                     launchSingleTop = true
                 }

@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -83,11 +82,15 @@ class BuilderActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = AppRouters.JobGraph.routers,
+                        startDestination = AppRouters.AppGraph.routers,
                         modifier = Modifier.padding(paddingValue)
                     ) {
                         addSplash {
-                            navController.navigate(AppRouters.JobScreen.routers)
+                            navController.navigate(AppRouters.JobScreen.routers){
+                                popUpTo(AppRouters.SplashScreen.routers){
+                                    inclusive = true
+                                }
+                            }
                         }
                         addJobsGraph(navController)
                         addUserNavGraph(navController)
