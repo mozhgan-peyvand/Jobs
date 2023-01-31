@@ -1,6 +1,6 @@
 package com.example.data.jobs.repositories
 
-import com.example.data.jobs.models.JobDto
+import com.example.base.JobDto
 import kotlinx.coroutines.flow.Flow
 
 interface JobLocalDataSource {

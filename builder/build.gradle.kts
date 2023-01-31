@@ -29,4 +29,6 @@ dependencies {
     addNavigationComponent()
     addHilt()
     addCoroutine()
+    addRoom()
+
 }

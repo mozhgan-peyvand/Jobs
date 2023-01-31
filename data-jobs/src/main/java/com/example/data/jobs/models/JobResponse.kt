@@ -1,5 +1,6 @@
 package com.example.data.jobs.models
 
+import com.example.base.JobDto
 import com.example.domain_jobs.model.JobModel
 import se.ansman.kotshi.JsonSerializable
 

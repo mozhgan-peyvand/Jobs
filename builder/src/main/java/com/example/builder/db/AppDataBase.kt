@@ -1,15 +1,14 @@
-package com.example.data.jobs.db
+package com.example.builder.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.data.jobs.models.JobDto
+import com.example.base.JobDto
 import com.example.data.jobs.repositories.JobDao
+import com.example.data.jobs.repositories.JobDatabase
 
 
 @Database(
     entities = [JobDto::class],
     version = 2
 )
-abstract class AppDataBase : RoomDatabase() {
-    abstract fun jobDao(): JobDao
-}
+abstract class AppDataBase : RoomDatabase(), JobDatabase

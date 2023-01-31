@@ -1,8 +1,7 @@
-package com.example.data.jobs.models
+package com.example.base
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.domain_jobs.model.JobModel
 
 @Entity
 data class JobDto(
