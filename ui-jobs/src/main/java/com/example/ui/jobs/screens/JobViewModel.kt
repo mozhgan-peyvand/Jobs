@@ -44,50 +44,50 @@ class JobViewModel @Inject constructor(
 
 
     private fun getAllLocations() {
-            getAllLocation(Unit)
-            getAllLocation.flow.execute {
-                copy(allLocationList = it)
-            }
+        getAllLocation(Unit)
+        getAllLocation.flow.execute {
+            copy(allLocationList = it)
+        }
     }
 
     private fun getAllRoles() {
-            getAllRoles(Unit)
-            getAllRoles.flow.execute {
-                copy(allRoleList = it)
-            }
+        getAllRoles(Unit)
+        getAllRoles.flow.execute {
+            copy(allRoleList = it)
+        }
     }
 
     private fun searchJobs(searchText: String) {
         val searchResult = mutableListOf<JobInfoModel>()
-                searchResultJobList.map { item ->
-                    if (
-                        item.companyName?.contains(searchText) == true ||
-                        item.locationCompany?.contains(searchText) == true ||
-                        item.role?.contains(searchText) == true
-                    ) {
-                        searchResult.add(item)
-                    }
-                }
-                setState{copy(searchResultList = searchResult)}
+        searchResultJobList.map { item ->
+            if (
+                item.companyName?.contains(searchText) == true ||
+                item.locationCompany?.contains(searchText) == true ||
+                item.role?.contains(searchText) == true
+            ) {
+                searchResult.add(item)
+            }
+        }
+        setState { copy(searchResultList = searchResult) }
     }
 
     private fun getAllJobs() {
-            suspend {
-                getAllJobRequest(Unit)
-            }.execute {
-                copy(allJobList = it)
-            }
+        suspend {
+            getAllJobRequest(Unit)
+        }.execute {
+            copy(allJobList = it)
+        }
     }
 
     private fun filterJobs(role: String? = null, city: String? = null) {
-            suspend {
-                val params = FilterJobList.Params(
-                    role = role,
-                    city = city
-                )
-                filterJobsRequest(params)
-            }.execute {
-                copy(allJobList = it)
-            }
+        suspend {
+            val params = FilterJobList.Params(
+                role = role,
+                city = city
+            )
+            filterJobsRequest(params)
+        }.execute {
+            copy(allJobList = it)
+        }
     }
 }
