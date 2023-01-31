@@ -14,35 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c64ec96-be44-44fe-b87b-ec052eee6692" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2023_9_35_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2023_9_35_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2023_5_10_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_7_2023_5_10_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-ui-view/src/main/res/drawable/ic_bottom_favorite.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-ui-view/src/main/res/drawable/ic_bottom_favorite_focused.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/consumer-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/src/androidTest/java/com/example/data_favorite/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-favorite/src/test/java/com/example/data_favorite/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-favorite/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-favorite/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-favorite/src/main/java/com/example/domain_favorite/MyClass.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/consumer-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/src/androidTest/java/com/example/ui_favorite/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/src/main/java/com/example/ui_favorite/FavoriteScreen.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/src/main/java/com/example/ui_favorite/util/navigation/FavoriteNavGraph.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-favorite/src/test/java/com/example/ui_favorite/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui_jobs/screens/JobItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui_jobs/screens/JobItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui-jobs/src/main/res/drawable/ic_baseline_star_border_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +65,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="44-delete-favorite-module" />
+        <entry key="$PROJECT_DIR$" value="a44f9c50e497dfd8dbae9553849d712dd14f43d4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -376,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673705576056</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="delete favorite module (#44)">
+      <created>1675148673286</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675148673286</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,5 +398,110 @@
     <MESSAGE value="create action for bottom sheet (#42)" />
     <MESSAGE value="delete favorite module (#44)" />
     <option name="LAST_COMMIT_MESSAGE" value="delete favorite module (#44)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>64</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>66</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>69</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>32</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/models/JobScreenUiEvent.kt</url>
+          <line>6</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>378</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>379</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>380</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>381</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>377</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>384</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/base/src/main/java/com/example/base/util/BaseViewModel.kt</url>
+          <line>385</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>39</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>37</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>40</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>41</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>30</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/screens/JobViewModel.kt</url>
+          <line>31</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/ui-jobs/src/main/java/com/example/ui/jobs/models/JobScreenUiEvent.kt</url>
+          <line>5</line>
+          <properties class="com.example.ui.jobs.models.JobScreenUiEvent.FilterJobsList" method="&lt;init&gt;" />
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

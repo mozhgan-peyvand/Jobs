@@ -1,8 +1,5 @@
 package com.example.base.util
 
-import com.example.base.ComputationDispatcher
-import com.example.base.IoDispatcher
-import com.example.base.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
