@@ -2,8 +2,9 @@ package com.example.builder.db
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.example.data.jobs.repositories.JobDao
-import com.example.data.jobs.repositories.JobDatabase
+import com.example.data.jobs.di.JobDatabase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,11 @@ abstract class DatabaseModule {
 
     @Binds
     @Singleton
-     abstract fun bindJobDataBase(appDatabase: AppDataBase): JobDatabase
+    abstract fun bindJobDataBase(appDatabase: AppDataBase): JobDatabase
+
+    @Binds
+    @Singleton
+    abstract fun bindDataBase(appDatabase: AppDataBase): RoomDatabase
 
     companion object {
         @Singleton

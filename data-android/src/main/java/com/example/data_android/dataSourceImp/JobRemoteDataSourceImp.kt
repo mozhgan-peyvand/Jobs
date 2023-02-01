@@ -1,5 +1,6 @@
 package com.example.data_android.dataSourceImp
 
+import com.example.base.JobDto
 import com.example.base.api.ApiUrlHelper
 import com.example.data.jobs.models.JobResponse
 import com.example.data.jobs.repositories.JobRemoteDataSource
@@ -18,13 +19,13 @@ class JobRemoteDataSourceImp @Inject constructor(
         ).results
     }
 
-    override suspend fun getFilterJobList(role: String?, city: String?): List<JobResponse>? {
-        return requestHandler.getRequestBodyOrThrow(
-            service.searchJobs(
-                url = ApiUrlHelper.API_URL,
-                location = city,
-                search = role
-            )
-        ).results
-    }
+//    override suspend fun getFilterJobList(role: String?, city: String?): List<JobResponse>? {
+//        return requestHandler.getRequestBodyOrThrow(
+//            service.searchJobs(
+//                url = ApiUrlHelper.API_URL,
+//                location = city,
+//                search = role
+//            )
+//        ).results
+//    }
 }

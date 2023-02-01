@@ -3,10 +3,6 @@ package com.example.base.util
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.base.AsyncResult
-import com.example.base.Fail
-import com.example.base.Loading
-import com.example.base.Success
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel

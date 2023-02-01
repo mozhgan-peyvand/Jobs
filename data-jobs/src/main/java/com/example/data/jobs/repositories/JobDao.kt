@@ -9,7 +9,7 @@ interface JobDao {
 
     @Transaction
     @Query("SELECT * FROM JobDto")
-    fun getJobList(): Flow<List<JobDto>?>
+    fun getJobList(): Flow<List<JobDto>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertJobList(jobList: List<JobDto>)
@@ -21,4 +21,20 @@ interface JobDao {
     @Transaction
     @Query("SELECT DISTINCT role FROM JobDto ORDER BY role")
     fun getRoleList(): Flow<List<String>>
+
+    @Transaction
+    @Query("SELECT * FROM JobDto WHERE role=:role")
+    fun getFilterJobListWithRole(role: String): Flow<List<JobDto>>
+
+    @Transaction
+    @Query("SELECT * FROM JobDto WHERE location=:city ")
+    fun getFilterJobListWithCity(city: String): Flow<List<JobDto>>
+
+    @Transaction
+    @Query("SELECT * FROM JobDto WHERE role=:role AND location=:city ")
+    fun getFilterJobList(role: String,city: String): Flow<List<JobDto>>
+
+    @Transaction
+    @Query("DELETE FROM JobDto")
+    fun deleteTable()
 }

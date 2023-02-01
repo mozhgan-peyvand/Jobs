@@ -1,19 +1,23 @@
 package com.example.domain_jobs.usecase
 
+import com.example.base.JobDto
 import com.example.base.util.IoDispatcher
 import com.example.domain_jobs.model.JobModel
 import com.example.domain_jobs.repository.GetJobRepository
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class FilterJobList @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val repository: GetJobRepository
-): ResultUseCase<FilterJobList.Params,List<JobModel>?>(dispatcher) {
+): SubjectUseCase<FilterJobList.Params,List<JobDto>?>(dispatcher) {
 
-    override suspend fun doWork(params: Params): List<JobModel>? {
+    override suspend fun createObservable(params: Params): Flow<List<JobDto>?> {
         return repository.filterJobsList(params.role,params.city)
     }
 
     data class Params(val role: String?,val city: String?)
+
+
 }

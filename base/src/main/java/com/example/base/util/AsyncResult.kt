@@ -1,4 +1,4 @@
-package com.example.base
+package com.example.base.util
 
 /**
  * The T generic is unused for some classes but since it is sealed and useful for Success and Fail,
@@ -68,9 +68,11 @@ sealed class AsyncResult<out T>(val complete: Boolean, val shouldLoad: Boolean, 
     }
 }
 
-object Uninitialized : AsyncResult<Nothing>(complete = false, shouldLoad = true, value = null), Incomplete
+object Uninitialized : AsyncResult<Nothing>(complete = false, shouldLoad = true, value = null),
+    Incomplete
 
-data class Loading<out T>(private val value: T? = null) : AsyncResult<T>(complete = false, shouldLoad = false, value = value), Incomplete
+data class Loading<out T>(private val value: T? = null) : AsyncResult<T>(complete = false, shouldLoad = false, value = value),
+    Incomplete
 
 data class Success<out T>(private val value: T) : AsyncResult<T>(complete = true, shouldLoad = false, value = value) {
 

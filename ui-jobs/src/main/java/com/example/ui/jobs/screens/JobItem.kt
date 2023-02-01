@@ -33,6 +33,7 @@ import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import coil.request.ImageRequest
+import com.example.base.JobDto
 import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobInfoModel
@@ -41,12 +42,12 @@ import com.example.ui.jobs.R as UiJobsR
 
 @Composable
 fun JobItem(
-    jobInfoView: JobInfoModel,
+    jobInfoView: JobDto,
     modifier: Modifier = Modifier,
-    isloading: Boolean,
+    isLoading: Boolean,
 ) {
 
-    if (isloading) {
+    if (isLoading) {
         LoadingShimmerItem(modifier)
     } else {
         JobItemInfo(modifier, jobInfoView)
@@ -124,7 +125,7 @@ fun LoadingShimmerItem(modifier: Modifier) {
 }
 
 @Composable
-fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
+fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
     val colorBackGround = remember {
         mutableStateListOf<Color>(
             Color(235, 189, 75, 255),
@@ -136,7 +137,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
     Card(modifier = modifier
         .fillMaxWidth()
         .clickable {
-            uriHandler.openUri(jobInfoView.description ?: "")
+//            uriHandler.openUri(jobInfoView.description ?: "")
         }
         .background(MaterialTheme.colors.surface)
         .padding(
@@ -158,7 +159,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
             ) {
                 SubcomposeAsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(jobInfoView.imageRes)
+                        .data(jobInfoView.logo)
                         .build(),
                     modifier = modifier.fillMaxSize(),
                     contentDescription = ""
@@ -214,7 +215,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
 
                 ItemInfo(
                     taskTitle = stringResource(id = UiJobsR.string.label_location_title),
-                    taskName = jobInfoView.locationCompany
+                    taskName = jobInfoView.location
                 )
 
                 ItemInfo(
@@ -229,7 +230,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobInfoModel) {
 
                 ItemInfo(
                     taskTitle = stringResource(id = UiJobsR.string.label_data_title),
-                    jobInfoView.data
+                    jobInfoView.datePosted
                 )
             }
         }
