@@ -10,6 +10,20 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
 
+
+abstract class NoResultUseCase<in P>(private val dispatcher: CoroutineDispatcher) {
+
+    suspend operator fun invoke(params: P) {
+        return withContext(dispatcher) {
+            doWork(params)
+        }
+    }
+
+    suspend fun executeSync(params: P) = doWork(params)
+
+    protected abstract suspend fun doWork(params: P)
+}
+
 abstract class ResultUseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
 
     suspend operator fun invoke(params: P): R = withContext(dispatcher) { doWork(params) }

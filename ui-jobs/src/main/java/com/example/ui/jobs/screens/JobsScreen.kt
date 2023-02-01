@@ -17,19 +17,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.base.Fail
-import com.example.base.Loading
-import com.example.base.Success
+import com.example.base.*
+import com.example.base.util.Fail
+import com.example.base.util.Loading
+import com.example.base.util.Success
+import com.example.base.util.Uninitialized
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
 import com.example.common.ui.view.theme.captionOnPrimary
 import com.example.common.ui.view.theme.captionOnSurface
 import com.example.common.ui.view.theme.h3Primary
-import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
-import com.example.ui.jobs.models.toViewJob
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import com.example.base.R as BaseR
@@ -77,17 +77,13 @@ fun JobScreenList(
                 },
                 filterJobList = { role, city ->
                     actioner(
-                        JobScreenUiEvent.FilterJobsList(
-                            role,
-                            city
-                        )
+                        JobScreenUiEvent.FilterJobsList(role, city)
                     )
                 },
                 viewState = viewState,
                 filterResultList = filterResultList,
-                closeSearch = { closeSearch.value = it },
-                onChangeSearchText = { searchText.value = it }
-            )
+                closeSearch = { closeSearch.value = it }
+            ) { searchText.value = it }
         }
     ) { paddingValues ->
 
@@ -142,9 +138,9 @@ private fun JobList(
             )
         }
     ) {
-        when (viewState.allJobList) {
-            is Success -> {
-                val jobList = viewState.allJobList.invoke()?.map { it.toViewJob() } ?: listOf()
+//        when (viewState.value.allJobList) {
+            if(viewState.allJobList is Success){
+                val jobList = viewState.allJobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
                     LazyColumn(
                         modifier = modifier
@@ -195,10 +191,10 @@ private fun JobList(
                 }
 
             }
-            is Loading -> {
+           if (viewState.allJobList is Loading || viewState.allJobList is Uninitialized) {
                 LoadingShimmerJobList()
             }
-            is Fail -> {
+            if (viewState.allJobList is Fail) {
                 Column {
                     LaunchedEffect(key1 = Unit) {
                         openDialog.value = true
@@ -221,21 +217,21 @@ private fun JobList(
 
             }
 
-        }
+//        }
     }
 }
 
 @Composable
 fun LoadingShimmerJobList() {
     val jobList = listOf(
-        JobInfoModel(),
-        JobInfoModel(),
-        JobInfoModel(),
-        JobInfoModel(),
-        JobInfoModel(),
-        JobInfoModel(),
-        JobInfoModel(),
-        JobInfoModel()
+        JobDto(),
+        JobDto(),
+        JobDto(),
+        JobDto(),
+        JobDto(),
+        JobDto(),
+        JobDto(),
+        JobDto()
     )
 
     LazyColumn(
@@ -248,7 +244,7 @@ fun LoadingShimmerJobList() {
 
         items(jobList) { item ->
             JobItem(
-                isloading = true,
+                isLoading = true,
                 jobInfoView = item,
                 modifier = Modifier
             )

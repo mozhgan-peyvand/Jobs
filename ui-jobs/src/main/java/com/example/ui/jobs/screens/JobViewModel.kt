@@ -1,10 +1,8 @@
 package com.example.ui.jobs.screens
 
+import com.example.base.JobDto
 import com.example.base.util.BaseViewModel
-import com.example.domain_jobs.usecase.FilterJobList
-import com.example.domain_jobs.usecase.GetAllJobRequest
-import com.example.domain_jobs.usecase.GetAllLocation
-import com.example.domain_jobs.usecase.GetAllRoles
+import com.example.domain_jobs.usecase.*
 import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
@@ -14,19 +12,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class JobViewModel @Inject constructor(
-    private val getAllJobRequest: GetAllJobRequest,
-    private val filterJobsRequest: FilterJobList,
+    private val insertJobListLocal: InsertJobList,
+    private val getAllJob: GetAllJob,
+    private val filterJobs: FilterJobList,
     private val getAllLocation: GetAllLocation,
     private val getAllRoles: GetAllRoles,
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
 
-    var searchResultJobList = listOf<JobInfoModel>()
+    var searchResultJobList = listOf<JobDto>()
 
     init {
-        getAllJobs()
+        insertJobList()
         onEachAction { action ->
             when (action) {
-                JobScreenUiEvent.ShowAllJobList -> getAllJobs()
                 is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
                 is JobScreenUiEvent.SearchJobsList -> searchJobs(action.searchText ?: "")
             }
@@ -35,9 +33,7 @@ class JobViewModel @Inject constructor(
         onAsyncResult(
             JobScreenState::allJobList,
             onSuccess = { listJobs ->
-                getAllRoles()
-                getAllLocations()
-                searchResultJobList = listJobs?.map { it.toViewJob() } ?: emptyList()
+                searchResultJobList = listJobs ?: emptyList()
             }
         )
     }
@@ -58,11 +54,11 @@ class JobViewModel @Inject constructor(
     }
 
     private fun searchJobs(searchText: String) {
-        val searchResult = mutableListOf<JobInfoModel>()
+        val searchResult = mutableListOf<JobDto>()
         searchResultJobList.map { item ->
             if (
                 item.companyName?.contains(searchText) == true ||
-                item.locationCompany?.contains(searchText) == true ||
+                item.location?.contains(searchText) == true ||
                 item.role?.contains(searchText) == true
             ) {
                 searchResult.add(item)
@@ -71,22 +67,33 @@ class JobViewModel @Inject constructor(
         setState { copy(searchResultList = searchResult) }
     }
 
-    private fun getAllJobs() {
+    private fun insertJobList() {
         suspend {
-            getAllJobRequest(Unit)
-        }.execute {
+            insertJobListLocal(Unit)
+        }.execute(
+            onSuccess = {
+                getJobList()
+                getAllRoles()
+                getAllLocations()
+            }
+        )
+    }
+
+    private fun getJobList() {
+        getAllJob(Unit)
+        getAllJob.flow.execute {
             copy(allJobList = it)
         }
     }
 
     private fun filterJobs(role: String? = null, city: String? = null) {
-        suspend {
-            val params = FilterJobList.Params(
+        filterJobs(
+            FilterJobList.Params(
                 role = role,
                 city = city
             )
-            filterJobsRequest(params)
-        }.execute {
+        )
+        filterJobs.flow.execute {
             copy(allJobList = it)
         }
     }

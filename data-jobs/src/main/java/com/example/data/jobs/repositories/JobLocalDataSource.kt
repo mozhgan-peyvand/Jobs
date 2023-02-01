@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface JobLocalDataSource {
     suspend fun insertJobList(jobList: List<JobDto>): Unit
+    suspend fun getAllJobList(): Flow<List<JobDto>?>
     suspend fun getLocationList(): Flow<List<String>>
     suspend fun getRoleList(): Flow<List<String>>
+    suspend fun filterJobList(role: String,city: String): Flow<List<JobDto>>
 }
