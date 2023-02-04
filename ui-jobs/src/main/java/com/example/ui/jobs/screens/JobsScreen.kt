@@ -1,21 +1,18 @@
 package com.example.ui.jobs.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.base.*
 import com.example.base.util.Fail
@@ -25,15 +22,18 @@ import com.example.base.util.Uninitialized
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
-import com.example.common.ui.view.theme.captionOnPrimary
-import com.example.common.ui.view.theme.captionOnSurface
-import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
+import com.example.ui.jobs.util.ui.AlertDialogSample
+import com.example.ui.jobs.util.ui.EmptyJobList
+import com.example.ui.jobs.util.ui.OnBottomReached
+import com.example.ui.jobs.util.ui.rememberMutableStateListOf
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import com.example.base.R as BaseR
-import com.example.ui.jobs.R as UiJobsR
 
 
 @Composable
@@ -43,10 +43,10 @@ fun JobScreen(
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
     JobScreenList(
-        viewState = viewState,
         actioner = { action ->
             viewModel.submitAction(action)
-        }
+        },
+        viewState = viewState
     )
 }
 
@@ -96,11 +96,11 @@ fun JobScreenList(
             },
             filterResultList = filterResultList,
             viewState = viewState,
-            actioner = actioner,
             closeSearch = { closeSearch.value = it },
             closeSearchValue = closeSearch.value,
             searchText = searchText.value,
             onChangeSearchText = { searchText.value = it },
+            actioner = actioner
         )
     }
 }
@@ -119,6 +119,9 @@ private fun JobList(
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val openDialog = remember { mutableStateOf(false) }
+    val lazyListState = rememberLazyListState()
+
+    val swipeRefreshState = rememberSwipeRefreshState(viewState.allJobList is Loading)
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -138,8 +141,8 @@ private fun JobList(
             )
         }
     ) {
-//        when (viewState.value.allJobList) {
-            if(viewState.allJobList is Success){
+        when (viewState.allJobList) {
+            is Success -> {
                 val jobList = viewState.allJobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
                     LazyColumn(
@@ -158,43 +161,47 @@ private fun JobList(
                         }
                     }
                 } else if (jobList.isEmpty()) {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = stringResource(id = UiJobsR.string.msg_empty_result_job_search),
-                            modifier = Modifier.padding(dimensionResource(id = BaseR.dimen.spacing_2x)),
-                            style = MaterialTheme.typography.h3Primary()
-                        )
-                    }
-
+                    EmptyJobList(modifier)
                 } else {
-
-                    LazyColumn(
-                        modifier = modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colors.background)
-                            .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
+                    SwipeRefresh(
+                        modifier = Modifier.fillMaxSize(),
+                        state = swipeRefreshState,
+                        indicator = { state, trigger ->
+                            SwipeRefreshIndicator(
+                                state = state,
+                                refreshTriggerDistance = trigger,
+                                scale = true,
+                                backgroundColor = MaterialTheme.colors.background,
+                            )
+                        },
+                        onRefresh = { actioner(JobScreenUiEvent.RefreshJobList) }
+                    ) {
+                        LazyColumn(
+                            modifier = modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colors.background)
+                                .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
+                            state = lazyListState
 
                         ) {
 
-                        items(jobList) { item ->
-                            JobItem(
-                                jobInfoView = item,
-                                modifier = Modifier,
-                                false
-                            )
+                            items(items = jobList, key = { it.id }) { item ->
+                                JobItem(
+                                    jobInfoView = item,
+                                    modifier = Modifier,
+                                    false
+                                )
+                            }
                         }
+
                     }
                 }
 
             }
-           if (viewState.allJobList is Loading || viewState.allJobList is Uninitialized) {
+            is Loading, Uninitialized -> {
                 LoadingShimmerJobList()
             }
-            if (viewState.allJobList is Fail) {
+            is Fail -> {
                 Column {
                     LaunchedEffect(key1 = Unit) {
                         openDialog.value = true
@@ -216,17 +223,18 @@ private fun JobList(
                 }
 
             }
-
-//        }
+        }
+        lazyListState.OnBottomReached {
+            if (viewState.allJobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
+                actioner(JobScreenUiEvent.ShowNextPage)
+            }
+        }
     }
 }
 
 @Composable
 fun LoadingShimmerJobList() {
     val jobList = listOf(
-        JobDto(),
-        JobDto(),
-        JobDto(),
         JobDto(),
         JobDto(),
         JobDto(),
@@ -253,67 +261,3 @@ fun LoadingShimmerJobList() {
     }
 }
 
-@Composable
-fun AlertDialogSample(value: Boolean, function: () -> Unit, actioner: () -> Unit) {
-    if (value) {
-        AlertDialog(
-            onDismissRequest = {
-                function.invoke()
-            },
-            title = {
-                Text(
-                    text = stringResource(id = UiJobsR.string.label_title_error_dialog),
-                    style = MaterialTheme.typography.h3Primary()
-                )
-            },
-            text = {
-                Text(
-                    stringResource(id = UiJobsR.string.msg_error_dialog),
-                    style = MaterialTheme.typography.captionOnSurface()
-                )
-            },
-            confirmButton = {
-                Button(
-                    onClick = {
-                        actioner.invoke()
-                    }) {
-                    Text(
-                        stringResource(id = UiJobsR.string.label_dialog_retry),
-                        style = MaterialTheme.typography.captionOnPrimary()
-                    )
-                }
-            },
-            dismissButton = {
-                Button(
-                    onClick = {
-                        function.invoke()
-                    }) {
-                    Text(
-                        stringResource(id = UiJobsR.string.label_dialog_dismiss),
-                        style = MaterialTheme.typography.captionOnPrimary()
-                    )
-                }
-            }
-        )
-    }
-}
-
-@Composable
-fun <T : Any> rememberMutableStateListOf(vararg elements: T): SnapshotStateList<T> {
-    return rememberSaveable(
-        saver = listSaver(
-            save = { stateList ->
-                if (stateList.isNotEmpty()) {
-                    val first = stateList.first()
-                    if (!canBeSaved(first)) {
-                        throw IllegalStateException("${first::class} cannot be saved. By default only types which can be stored in the Bundle class can be saved.")
-                    }
-                }
-                stateList.toList()
-            },
-            restore = { it.toMutableStateList() }
-        )
-    ) {
-        elements.toList().toMutableStateList()
-    }
-}

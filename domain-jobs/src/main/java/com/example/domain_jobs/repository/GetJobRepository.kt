@@ -5,7 +5,7 @@ import com.example.domain_jobs.model.JobModel
 import kotlinx.coroutines.flow.Flow
 
 interface GetJobRepository {
-    suspend fun insertAllJobs(): Unit
+    suspend fun insertAllJobs(page: Int): Unit
     suspend fun getAllRoles(): Flow<List<String>>
     suspend fun getAllLocation(): Flow<List<String>>
     suspend fun getAllJobs(): Flow<List<JobDto>?>

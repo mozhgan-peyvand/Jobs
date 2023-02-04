@@ -8,8 +8,9 @@ import javax.inject.Inject
 class InsertJobList @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val repository: GetJobRepository
-) : NoResultUseCase<Unit>(dispatcher) {
-    override suspend fun doWork(params: Unit) {
-        return repository.insertAllJobs()
+) : NoResultUseCase<InsertJobList.Param>(dispatcher) {
+    override suspend fun doWork(params: Param) {
+        return repository.insertAllJobs(params.page)
     }
+    data class Param(var page: Int)
 }

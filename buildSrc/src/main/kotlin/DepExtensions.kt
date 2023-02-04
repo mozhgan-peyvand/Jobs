@@ -1,5 +1,4 @@
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.add
 import org.gradle.kotlin.dsl.dependencies
 
 fun Project.addCompose() {
@@ -14,10 +13,9 @@ fun Project.addCompose() {
         add("implementation", "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
         add("implementation", "com.google.android.material:material:1.2.1")
         add("implementation", "androidx.navigation:navigation-compose:2.5.0-beta01")
-        add(
-            "implementation",
-            "com.google.accompanist:accompanist-navigation-animation:0.24.0-alpha"
-        )
+        add("implementation", "com.google.accompanist:accompanist-navigation-animation:0.24.0-alpha")
+        add("implementation", "com.google.accompanist:accompanist-swiperefresh:0.24.11-rc")
+        add( "implementation" ,"com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc")
     }
 }
 
@@ -52,7 +50,7 @@ fun Project.addRetrofit() {
         add("implementation", "com.squareup.retrofit2:converter-moshi:2.9.0")
         add("implementation", "com.squareup.okhttp3:logging-interceptor:3.12.2")
         add("implementation", "com.squareup.okhttp3:okhttp")
-        }
+    }
 }
 
 fun Project.addMoshi() {
@@ -79,18 +77,18 @@ fun Project.addCoroutine() {
     }
 }
 
-fun Project.addCoil(){
+fun Project.addCoil() {
     dependencies {
-        add("implementation","io.coil-kt:coil-compose:2.1.0")
-        add("implementation","androidx.appcompat:appcompat:1.4.2")
+        add("implementation", "io.coil-kt:coil-compose:2.1.0")
+        add("implementation", "androidx.appcompat:appcompat:1.4.2")
     }
 }
 
-fun Project.addRoom(){
+fun Project.addRoom() {
     dependencies {
         val roomVersion = "2.4.2"
-        add("implementation","androidx.room:room-runtime:$roomVersion")
-        add("kapt","androidx.room:room-compiler:$roomVersion")
-        add("implementation","androidx.room:room-ktx:$roomVersion")
+        add("implementation", "androidx.room:room-runtime:$roomVersion")
+        add("kapt", "androidx.room:room-compiler:$roomVersion")
+        add("implementation", "androidx.room:room-ktx:$roomVersion")
     }
 }
