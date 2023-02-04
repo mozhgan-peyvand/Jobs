@@ -1,4 +1,4 @@
-package com.example.data.jobs.repositories
+package com.example.data.jobs.repositories.local
 
 import androidx.room.*
 import com.example.base.JobDto

@@ -3,10 +3,8 @@ package com.example.ui.jobs.screens
 import com.example.base.JobDto
 import com.example.base.util.BaseViewModel
 import com.example.domain_jobs.usecase.*
-import com.example.ui.jobs.models.JobInfoModel
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
-import com.example.ui.jobs.models.toViewJob
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -19,14 +17,18 @@ class JobViewModel @Inject constructor(
     private val getAllRoles: GetAllRoles,
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
 
-    var searchResultJobList = listOf<JobDto>()
+    private var searchResultJobList = listOf<JobDto>()
+    var currentPage = 1
 
     init {
         insertJobList()
         onEachAction { action ->
             when (action) {
+                JobScreenUiEvent.RefreshJobList -> refresh()
+                JobScreenUiEvent.ShowNextPage -> getNextPage()
                 is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
                 is JobScreenUiEvent.SearchJobsList -> searchJobs(action.searchText ?: "")
+                else -> throw IllegalArgumentException("unknown action: $action")
             }
         }
 
@@ -38,6 +40,15 @@ class JobViewModel @Inject constructor(
         )
     }
 
+    fun getNextPage() {
+        currentPage++
+        insertJobList()
+    }
+
+    fun refresh() {
+        currentPage = 1
+        insertJobList()
+    }
 
     private fun getAllLocations() {
         getAllLocation(Unit)
@@ -69,7 +80,7 @@ class JobViewModel @Inject constructor(
 
     private fun insertJobList() {
         suspend {
-            insertJobListLocal(Unit)
+            insertJobListLocal(InsertJobList.Param(currentPage))
         }.execute(
             onSuccess = {
                 getJobList()

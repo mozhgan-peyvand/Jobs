@@ -3,9 +3,8 @@ package com.example.data_android.dataSourceImp
 import androidx.room.RoomDatabase
 import androidx.room.withTransaction
 import com.example.base.JobDto
-import com.example.data.jobs.repositories.JobDao
-import com.example.data.jobs.repositories.JobLocalDataSource
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.data.jobs.repositories.local.JobDao
+import com.example.data.jobs.repositories.local.JobLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -16,9 +15,11 @@ class JobLocalDataSourceImp @Inject constructor(
     @Inject
     lateinit var roomDatabase: RoomDatabase
 
-    override suspend fun insertJobList(jobList: List<JobDto>) {
+    override suspend fun insertJobList(jobList: List<JobDto>, page: Int) {
         roomDatabase.withTransaction {
-            jobDao.deleteTable()
+            if (page == 1) {
+                jobDao.deleteTable()
+            }
             jobDao.insertJobList(jobList)
         }
     }

@@ -1,6 +1,6 @@
 package com.example.data.jobs.di
 
-import com.example.data.jobs.repositories.JobService
+import com.example.data.jobs.repositories.remote.JobService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

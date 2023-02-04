@@ -38,6 +38,7 @@ data class JobResponse(
     )
 
     fun toJobDto() = JobDto(
+        id = id ?: "",
         role = role,
         companyName = company_name,
         companyNumEmployees = company_num_employees,

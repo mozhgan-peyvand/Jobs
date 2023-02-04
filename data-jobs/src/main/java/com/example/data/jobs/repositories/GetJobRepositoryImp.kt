@@ -1,7 +1,8 @@
 package com.example.data.jobs.repositories
 
 import com.example.base.JobDto
-import com.example.domain_jobs.model.JobModel
+import com.example.data.jobs.repositories.local.JobLocalDataSource
+import com.example.data.jobs.repositories.remote.JobRemoteDataSource
 import com.example.domain_jobs.repository.GetJobRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -13,12 +14,12 @@ class GetJobRepositoryImp @Inject constructor(
     private val JobLocalDataSource: JobLocalDataSource
 ) : GetJobRepository {
 
-    override suspend fun insertAllJobs() {
-        val result = jobRemoteDataSource.getAllJobList()
+    override suspend fun insertAllJobs(page: Int) {
+        val result = jobRemoteDataSource.getAllJobList(page = page)
         result?.takeIf { it.isNotEmpty() }?.let {
             JobLocalDataSource.insertJobList(it.map { jobResponse ->
                 jobResponse.toJobDto()
-            })
+            }, page = page)
         }
     }
 
@@ -35,7 +36,7 @@ class GetJobRepositoryImp @Inject constructor(
     }
 
     override suspend fun filterJobsList(role: String?, city: String?): Flow<List<JobDto>> {
-        return JobLocalDataSource.filterJobList(role ?: "",city?: "")
+        return JobLocalDataSource.filterJobList(role ?: "", city ?: "")
     }
 
 }
