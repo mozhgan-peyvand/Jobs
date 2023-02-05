@@ -73,7 +73,8 @@ object Uninitialized : AsyncResult<Nothing>(complete = false, shouldLoad = true,
 
 data class Loading<out T>(private val value: T? = null) : AsyncResult<T>(complete = false, shouldLoad = false, value = value),
     Incomplete
-
+data class LoadingMore<out T>(private val value: T? = null) : AsyncResult<T>(complete = false, shouldLoad = false, value = value),
+    Incomplete
 data class Success<out T>(private val value: T) : AsyncResult<T>(complete = true, shouldLoad = false, value = value) {
 
     override operator fun invoke(): T {

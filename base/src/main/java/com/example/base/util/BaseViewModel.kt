@@ -3,11 +3,29 @@ package com.example.base.util
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.selects.select
+import kotlinx.coroutines.yield
 import java.util.concurrent.Executors
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.reflect.KProperty1
@@ -84,7 +102,7 @@ abstract class BaseViewModel<S, A> constructor(initialState: S) : ViewModel() {
      * Access the current ViewModel state. Takes a block of code that will be run after all current pending state
      * updates are processed.
      */
-    fun withState(action: (state: S) -> Unit) {
+    protected fun withState(action: (state: S) -> Unit) {
         withStateChannel.trySend(action)
         if (FORCE_SYNCHRONOUS_STATE_STORES) {
             flushQueuesOnceBlocking()
@@ -122,10 +140,14 @@ abstract class BaseViewModel<S, A> constructor(initialState: S) : ViewModel() {
     protected open fun <T : Any?> (suspend () -> T).execute(
         dispatcher: CoroutineDispatcher? = null,
         retainValue: KProperty1<S, AsyncResult<T>>? = null,
-        reducer: S.(AsyncResult<T>) -> S
+        reducer: S.(AsyncResult<T>) -> S,
+        page: Int? = null
     ): Job {
-        setState { reducer(Loading(value = retainValue?.get(this)?.invoke())) }
-
+        if (page == 1) {
+            setState { reducer(Loading(value = retainValue?.get(this)?.invoke())) }
+        }else{
+            setState { reducer(LoadingMore(value = retainValue?.get(this)?.invoke())) }
+        }
         return viewModelScope.launch(dispatcher ?: EmptyCoroutineContext) {
             try {
                 val result = invoke()
@@ -205,9 +227,13 @@ abstract class BaseViewModel<S, A> constructor(initialState: S) : ViewModel() {
         dispatcher: CoroutineDispatcher? = null,
         retainValue: KProperty1<S, AsyncResult<T>>? = null,
         reducer: S.(AsyncResult<T>) -> S,
+        page: Int? = 1
     ): Job {
-        setState { reducer(Loading(value = retainValue?.get(this)?.invoke())) }
-
+        if (page == 1) {
+            setState { reducer(Loading(value = retainValue?.get(this)?.invoke())) }
+        }else{
+            setState { reducer(LoadingMore(value = retainValue?.get(this)?.invoke())) }
+        }
         return catch { error ->
             setState { reducer(Fail(error, value = retainValue?.get(this)?.invoke())) }
         }

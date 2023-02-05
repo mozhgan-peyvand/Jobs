@@ -1,9 +1,7 @@
 package com.example.ui.jobs.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -11,14 +9,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.base.*
-import com.example.base.util.Fail
-import com.example.base.util.Loading
-import com.example.base.util.Success
-import com.example.base.util.Uninitialized
+import com.example.base.util.*
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
@@ -120,8 +117,7 @@ private fun JobList(
     val state = rememberCollapsingToolbarScaffoldState()
     val openDialog = remember { mutableStateOf(false) }
     val lazyListState = rememberLazyListState()
-
-    val swipeRefreshState = rememberSwipeRefreshState(viewState.allJobList is Loading)
+    val swipeRefreshState = rememberSwipeRefreshState(false)
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -142,7 +138,32 @@ private fun JobList(
         }
     ) {
         when (viewState.allJobList) {
-            is Success -> {
+            is Loading,Uninitialized -> {
+                LoadingShimmerJobList()
+            }
+            is Fail -> {
+                Column {
+                    LaunchedEffect(key1 = Unit) {
+                        openDialog.value = true
+                    }
+                    AlertDialogSample(
+                        openDialog.value, { openDialog.value = false },
+                        {
+                            if (filterResultList.filter { it.isEmpty() }.size == 2)
+                                actioner(JobScreenUiEvent.ShowAllJobList)
+                            else
+                                actioner(
+                                    JobScreenUiEvent.FilterJobsList(
+                                        filterResultList[0],
+                                        filterResultList[1]
+                                    )
+                                )
+                        },
+                    )
+                }
+
+            }
+            else -> {
                 val jobList = viewState.allJobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
                     LazyColumn(
@@ -160,8 +181,6 @@ private fun JobList(
                             )
                         }
                     }
-                } else if (jobList.isEmpty()) {
-                    EmptyJobList(modifier)
                 } else {
                     SwipeRefresh(
                         modifier = Modifier.fillMaxSize(),
@@ -192,38 +211,32 @@ private fun JobList(
                                     false
                                 )
                             }
+                            if (viewState.insertJobList is LoadingMore || viewState.allJobList is LoadingMore) {
+                                item {
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(16.dp)
+                                    ) {
+                                        CircularProgressIndicator(
+                                            modifier = Modifier
+                                                .size(16.dp)
+                                                .align(Alignment.Center),
+                                            color = MaterialTheme.colors.primary,
+                                            strokeWidth = 2.dp
+                                        )
+                                    }
+                                }
+                            }
                         }
 
                     }
                 }
 
-            }
-            is Loading, Uninitialized -> {
-                LoadingShimmerJobList()
-            }
-            is Fail -> {
-                Column {
-                    LaunchedEffect(key1 = Unit) {
-                        openDialog.value = true
-                    }
-                    AlertDialogSample(
-                        openDialog.value, { openDialog.value = false },
-                        {
-                            if (filterResultList.isEmpty())
-                                actioner(JobScreenUiEvent.ShowAllJobList)
-                            else
-                                actioner(
-                                    JobScreenUiEvent.FilterJobsList(
-                                        filterResultList[0],
-                                        filterResultList[1]
-                                    )
-                                )
-                        },
-                    )
-                }
 
             }
         }
+
         lazyListState.OnBottomReached {
             if (viewState.allJobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
                 actioner(JobScreenUiEvent.ShowNextPage)

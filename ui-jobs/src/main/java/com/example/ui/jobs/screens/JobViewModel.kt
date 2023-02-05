@@ -2,6 +2,7 @@ package com.example.ui.jobs.screens
 
 import com.example.base.JobDto
 import com.example.base.util.BaseViewModel
+import com.example.base.util.Fail
 import com.example.domain_jobs.usecase.*
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
@@ -22,8 +23,10 @@ class JobViewModel @Inject constructor(
 
     init {
         insertJobList()
+
         onEachAction { action ->
             when (action) {
+                JobScreenUiEvent.ShowAllJobList -> insertJobList()
                 JobScreenUiEvent.RefreshJobList -> refresh()
                 JobScreenUiEvent.ShowNextPage -> getNextPage()
                 is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
@@ -38,6 +41,15 @@ class JobViewModel @Inject constructor(
                 searchResultJobList = listJobs ?: emptyList()
             }
         )
+        onAsyncResult(
+            JobScreenState::insertJobList,
+            onSuccess = {
+                getJobList()
+                getAllRoles()
+                getAllLocations()
+            }
+        )
+
     }
 
     fun getNextPage() {
@@ -52,16 +64,19 @@ class JobViewModel @Inject constructor(
 
     private fun getAllLocations() {
         getAllLocation(Unit)
-        getAllLocation.flow.execute {
-            copy(allLocationList = it)
-        }
+        getAllLocation.flow.execute(
+            reducer = { copy(allLocationList = it) }
+        )
     }
 
     private fun getAllRoles() {
         getAllRoles(Unit)
-        getAllRoles.flow.execute {
-            copy(allRoleList = it)
-        }
+        getAllRoles.flow.execute(
+            reducer = {
+                copy(allRoleList = it)
+            }
+        )
+
     }
 
     private fun searchJobs(searchText: String) {
@@ -82,19 +97,20 @@ class JobViewModel @Inject constructor(
         suspend {
             insertJobListLocal(InsertJobList.Param(currentPage))
         }.execute(
-            onSuccess = {
-                getJobList()
-                getAllRoles()
-                getAllLocations()
-            }
+            reducer = { copy(insertJobList = it) },
+            page = currentPage
         )
+
     }
 
     private fun getJobList() {
         getAllJob(Unit)
-        getAllJob.flow.execute {
-            copy(allJobList = it)
-        }
+        getAllJob.flow.execute(
+            reducer = {
+                copy(allJobList = it)
+            },
+            page = currentPage
+        )
     }
 
     private fun filterJobs(role: String? = null, city: String? = null) {
@@ -104,8 +120,9 @@ class JobViewModel @Inject constructor(
                 city = city
             )
         )
-        filterJobs.flow.execute {
+        filterJobs.flow.execute(reducer = {
             copy(allJobList = it)
         }
+        )
     }
 }
