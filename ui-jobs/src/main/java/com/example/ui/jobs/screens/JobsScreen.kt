@@ -35,7 +35,7 @@ import com.example.base.R as BaseR
 
 @Composable
 fun JobScreen(
-    viewModel: JobViewModel = hiltViewModel()
+    viewModel: JobViewModel
 ) {
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
@@ -203,7 +203,6 @@ private fun JobList(
                             state = lazyListState
 
                         ) {
-
                             items(items = jobList, key = { it.id }) { item ->
                                 JobItem(
                                     jobInfoView = item,
@@ -229,11 +228,8 @@ private fun JobList(
                                 }
                             }
                         }
-
                     }
                 }
-
-
             }
         }
 

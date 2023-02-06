@@ -1,5 +1,6 @@
 package com.example.ui.jobs.screens
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import com.example.base.JobDto
 import com.example.base.util.BaseViewModel
 import com.example.base.util.Fail
@@ -16,7 +17,7 @@ class JobViewModel @Inject constructor(
     private val filterJobs: FilterJobList,
     private val getAllLocation: GetAllLocation,
     private val getAllRoles: GetAllRoles,
-) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()) {
+) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()), DefaultLifecycleObserver {
 
     private var searchResultJobList = listOf<JobDto>()
     var currentPage = 1
