@@ -138,7 +138,7 @@ private fun JobList(
         }
     ) {
         when (viewState.allJobList) {
-            is Loading,Uninitialized -> {
+            is Loading, Uninitialized -> {
                 LoadingShimmerJobList()
             }
             is Fail -> {
@@ -163,7 +163,7 @@ private fun JobList(
                 }
 
             }
-            else -> {
+            is Success -> {
                 val jobList = viewState.allJobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
                     LazyColumn(
@@ -211,7 +211,7 @@ private fun JobList(
                                     false
                                 )
                             }
-                            if (viewState.insertJobList is LoadingMore || viewState.allJobList is LoadingMore) {
+                            if (viewState.insertJobList is LoadingMore) {
                                 item {
                                     Box(
                                         modifier = Modifier
@@ -232,15 +232,12 @@ private fun JobList(
 
                     }
                 }
-
-
             }
         }
-
-        lazyListState.OnBottomReached {
-            if (viewState.allJobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
-                actioner(JobScreenUiEvent.ShowNextPage)
-            }
+    }
+    lazyListState.OnBottomReached {
+        if (viewState.allJobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
+            actioner(JobScreenUiEvent.ShowNextPage)
         }
     }
 }
