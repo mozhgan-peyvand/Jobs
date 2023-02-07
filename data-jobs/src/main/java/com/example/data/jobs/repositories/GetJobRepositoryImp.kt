@@ -1,6 +1,6 @@
 package com.example.data.jobs.repositories
 
-import com.example.base.JobDto
+import com.example.base.models.JobDto
 import com.example.data.jobs.repositories.local.JobLocalDataSource
 import com.example.data.jobs.repositories.remote.JobRemoteDataSource
 import com.example.domain_jobs.repository.GetJobRepository

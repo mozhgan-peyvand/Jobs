@@ -2,7 +2,7 @@ package com.example.data_android.dataSourceImp
 
 import androidx.room.RoomDatabase
 import androidx.room.withTransaction
-import com.example.base.JobDto
+import com.example.base.models.JobDto
 import com.example.data.jobs.repositories.local.JobDao
 import com.example.data.jobs.repositories.local.JobLocalDataSource
 import kotlinx.coroutines.flow.Flow

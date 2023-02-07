@@ -1,7 +1,7 @@
 package com.example.data.jobs.repositories.local
 
 import androidx.room.*
-import com.example.base.JobDto
+import com.example.base.models.JobDto
 import kotlinx.coroutines.flow.Flow
 
 @Dao

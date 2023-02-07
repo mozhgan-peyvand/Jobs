@@ -1,7 +1,7 @@
 package com.example.ui.jobs.screens
 
 import androidx.lifecycle.DefaultLifecycleObserver
-import com.example.base.JobDto
+import com.example.base.models.JobDto
 import com.example.base.util.BaseViewModel
 import com.example.base.util.Fail
 import com.example.domain_jobs.usecase.*
@@ -37,12 +37,12 @@ class JobViewModel @Inject constructor(
         }
 
         onAsyncResult(
-            JobScreenState::allJobList,
+            JobScreenState::JobList,
             onSuccess = { listJobs ->
                 searchResultJobList = listJobs ?: emptyList()
             },
             onFail = {
-                setState { copy(allJobList = Fail(it)) }
+                setState { copy(JobList = Fail(it)) }
             }
         )
         onAsyncResult(
@@ -72,7 +72,7 @@ class JobViewModel @Inject constructor(
     private fun getAllLocations() {
         getAllLocation(Unit)
         getAllLocation.flow.execute(
-            reducer = { copy(allLocationList = it) }
+            reducer = { copy(LocationList = it) }
         )
     }
 
@@ -80,7 +80,7 @@ class JobViewModel @Inject constructor(
         getAllRoles(Unit)
         getAllRoles.flow.execute(
             reducer = {
-                copy(allRoleList = it)
+                copy(RoleList = it)
             }
         )
 
@@ -97,7 +97,7 @@ class JobViewModel @Inject constructor(
                 searchResult.add(item)
             }
         }
-        setState { copy(searchResultList = searchResult) }
+        setState { copy(searchJobList = searchResult) }
     }
 
     private fun insertJobList() {
@@ -114,7 +114,7 @@ class JobViewModel @Inject constructor(
         getAllJob(Unit)
         getAllJob.flow.execute(
             reducer = {
-                copy(allJobList = it)
+                copy(JobList = it)
             },
             page = currentPage
         )
@@ -128,7 +128,7 @@ class JobViewModel @Inject constructor(
             )
         )
         filterJobs.flow.execute(reducer = {
-            copy(allJobList = it)
+            copy(JobList = it)
         }
         )
     }

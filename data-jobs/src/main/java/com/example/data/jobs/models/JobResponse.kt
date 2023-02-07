@@ -1,9 +1,8 @@
 package com.example.data.jobs.models
 
-import com.example.base.JobDto
-import com.example.domain_jobs.model.JobModel
+import com.example.base.models.JobDto
+import com.squareup.moshi.Json
 import se.ansman.kotshi.JsonSerializable
-
 
 @JsonSerializable
 data class JobResponse(
@@ -20,22 +19,7 @@ data class JobResponse(
     val date_posted: String? = null,
     val keywords: List<String>? = null,
     val source: String? = null
-){
-    fun toGetJob() = JobModel(
-        id = id,
-        role = role,
-        company_name = company_name,
-        company_num_employees = company_num_employees,
-        employment_type = employment_type,
-        location = location,
-        remote = remote,
-        logo = logo,
-        url = url,
-        text = text,
-        date_posted = date_posted,
-        keywords = keywords,
-        source = source
-    )
+) {
 
     fun toJobDto() = JobDto(
         id = id ?: "",

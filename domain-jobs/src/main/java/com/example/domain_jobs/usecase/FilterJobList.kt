@@ -1,8 +1,7 @@
 package com.example.domain_jobs.usecase
 
-import com.example.base.JobDto
+import com.example.base.models.JobDto
 import com.example.base.util.IoDispatcher
-import com.example.domain_jobs.model.JobModel
 import com.example.domain_jobs.repository.GetJobRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

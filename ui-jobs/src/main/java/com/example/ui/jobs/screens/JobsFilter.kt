@@ -73,13 +73,13 @@ fun FilterJobs(
                     roleText = roleText,
                     sheetStateHide = { coroutineScope.launch { sheetState.hide() } },
                     onChangeRoleText = { roleText = it },
-                    roleList = viewState.allRoleList.invoke() ?: listOf()
+                    roleList = viewState.RoleList.invoke() ?: listOf()
                 )
                 1 -> CityContentBottomSheet(
                     cityText = cityText,
                     sheetStateHide = { coroutineScope.launch { sheetState.hide() } },
                     onChangeLocationText = { cityText = it },
-                    locationList = viewState.allLocationList.invoke() ?: listOf()
+                    locationList = viewState.LocationList.invoke() ?: listOf()
                 )
                 else -> {
                     val defaultBottomSheetList = listOf("")

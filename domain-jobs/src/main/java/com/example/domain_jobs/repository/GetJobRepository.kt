@@ -1,7 +1,6 @@
 package com.example.domain_jobs.repository
 
-import com.example.base.JobDto
-import com.example.domain_jobs.model.JobModel
+import com.example.base.models.JobDto
 import kotlinx.coroutines.flow.Flow
 
 interface GetJobRepository {

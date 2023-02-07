@@ -33,10 +33,9 @@ import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import coil.request.ImageRequest
-import com.example.base.JobDto
+import com.example.base.models.JobDto
 import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h3Primary
-import com.example.ui.jobs.models.JobInfoModel
 import com.example.base.R as BaseR
 import com.example.ui.jobs.R as UiJobsR
 

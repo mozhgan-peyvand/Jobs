@@ -12,8 +12,8 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.unit.dp
 import com.example.base.*
+import com.example.base.models.JobDto
 import com.example.base.util.*
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
@@ -130,19 +130,18 @@ private fun JobList(
             )
         }
     ) {
-        when (viewState.allJobList) {
+        when (viewState.JobList) {
+
             is Loading, Uninitialized -> {
                 LoadingShimmerJobList()
             }
-
             is Fail -> {
                 FailJobListRequest(filterResultList,actioner)
             }
-
             is Success -> {
-                val jobList = viewState.allJobList.invoke() ?: listOf()
+                val jobList = viewState.JobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
-                   SearchJobsList(viewState.searchResultList,Modifier)
+                   SearchJobsList(viewState.searchJobList,Modifier)
                 } else {
                     SwipeRefresh(
                         modifier = Modifier.fillMaxSize(),
@@ -196,7 +195,7 @@ private fun JobList(
         }
     }
     lazyListState.OnBottomReached {
-        if (viewState.allJobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
+        if (viewState.JobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
             actioner(JobScreenUiEvent.ShowNextPage)
         }
     }
