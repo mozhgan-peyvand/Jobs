@@ -5,6 +5,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import kotlinx.coroutines.flow.filter
 
 
@@ -46,5 +48,15 @@ fun LazyListState.OnBottomReached(
             .collect {
                 onLoadMore()
             }
+    }
+}
+
+@Composable
+fun <LO : LifecycleObserver> LO.ObserveLifecycle(lifecycle: Lifecycle) {
+    DisposableEffect(lifecycle) {
+        lifecycle.addObserver(this@ObserveLifecycle)
+        onDispose {
+            lifecycle.removeObserver(this@ObserveLifecycle)
+        }
     }
 }

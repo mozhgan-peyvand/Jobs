@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class JobDto(
     @PrimaryKey
-    val id: String ="" ,
+    val id: String = "" ,
     val role: String? = null,
     val companyName: String? = null,
     val companyNumEmployees: String? = null,
