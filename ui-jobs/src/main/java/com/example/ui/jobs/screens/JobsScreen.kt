@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.base.*
 import com.example.base.util.*
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
@@ -22,7 +21,6 @@ import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
 import com.example.ui.jobs.util.ui.AlertDialogSample
-import com.example.ui.jobs.util.ui.EmptyJobList
 import com.example.ui.jobs.util.ui.OnBottomReached
 import com.example.ui.jobs.util.ui.rememberMutableStateListOf
 import com.google.accompanist.swiperefresh.SwipeRefresh
@@ -73,9 +71,7 @@ fun JobScreenList(
                     }
                 },
                 filterJobList = { role, city ->
-                    actioner(
-                        JobScreenUiEvent.FilterJobsList(role, city)
-                    )
+                    actioner(JobScreenUiEvent.FilterJobsList(role, city))
                 },
                 viewState = viewState,
                 filterResultList = filterResultList,
@@ -87,9 +83,7 @@ fun JobScreenList(
         JobList(
             modifier = Modifier.padding(paddingValues),
             onMenuClicked = {
-                coroutineScope.launch {
-                    scaffoldState.drawerState.open()
-                }
+                coroutineScope.launch { scaffoldState.drawerState.open() }
             },
             filterResultList = filterResultList,
             viewState = viewState,
@@ -115,7 +109,6 @@ private fun JobList(
     actioner: (JobScreenUiEvent) -> Unit,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
-    val openDialog = remember { mutableStateOf(false) }
     val lazyListState = rememberLazyListState()
     val swipeRefreshState = rememberSwipeRefreshState(false)
 
@@ -141,46 +134,15 @@ private fun JobList(
             is Loading, Uninitialized -> {
                 LoadingShimmerJobList()
             }
-            is Fail -> {
-                Column {
-                    LaunchedEffect(key1 = Unit) {
-                        openDialog.value = true
-                    }
-                    AlertDialogSample(
-                        openDialog.value, { openDialog.value = false },
-                        {
-                            if (filterResultList.filter { it.isEmpty() }.size == 2)
-                                actioner(JobScreenUiEvent.ShowAllJobList)
-                            else
-                                actioner(
-                                    JobScreenUiEvent.FilterJobsList(
-                                        filterResultList[0],
-                                        filterResultList[1]
-                                    )
-                                )
-                        },
-                    )
-                }
 
+            is Fail -> {
+                FailJobListRequest(filterResultList,actioner)
             }
+
             is Success -> {
                 val jobList = viewState.allJobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
-                    LazyColumn(
-                        modifier = modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colors.background)
-                            .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
-
-                        ) {
-                        items(viewState.searchResultList) { item ->
-                            JobItem(
-                                jobInfoView = item,
-                                modifier = Modifier,
-                                false
-                            )
-                        }
-                    }
+                   SearchJobsList(viewState.searchResultList,Modifier)
                 } else {
                     SwipeRefresh(
                         modifier = Modifier.fillMaxSize(),
@@ -215,14 +177,14 @@ private fun JobList(
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .padding(16.dp)
+                                            .padding(dimensionResource(id = BaseR.dimen.spacing_4x))
                                     ) {
                                         CircularProgressIndicator(
                                             modifier = Modifier
-                                                .size(16.dp)
+                                                .size(dimensionResource(id = BaseR.dimen.spacing_4x))
                                                 .align(Alignment.Center),
                                             color = MaterialTheme.colors.primary,
-                                            strokeWidth = 2.dp
+                                            strokeWidth = dimensionResource(id = BaseR.dimen.spacing_half_base)
                                         )
                                     }
                                 }
@@ -269,3 +231,49 @@ fun LoadingShimmerJobList() {
     }
 }
 
+@Composable
+fun SearchJobsList(searchResultList: List<JobDto>, modifier: Modifier) {
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.background)
+            .padding(top = dimensionResource(id = BaseR.dimen.spacing_2x)),
+
+        ) {
+        items(searchResultList) { item ->
+            JobItem(
+                jobInfoView = item,
+                modifier = Modifier,
+                false
+            )
+        }
+    }
+}
+
+@Composable
+fun FailJobListRequest(
+    filterResultList: SnapshotStateList<String>,
+    actioner: (JobScreenUiEvent) -> Unit
+) {
+    val openDialog = remember { mutableStateOf(false) }
+
+    Column {
+        LaunchedEffect(key1 = Unit) {
+            openDialog.value = true
+        }
+        AlertDialogSample(
+            openDialog.value, { openDialog.value = false },
+            {
+                if (filterResultList.filter { it.isEmpty() }.size == 2)
+                    actioner(JobScreenUiEvent.ShowAllJobList)
+                else
+                    actioner(
+                        JobScreenUiEvent.FilterJobsList(
+                            filterResultList[0],
+                            filterResultList[1]
+                        )
+                    )
+            },
+        )
+    }
+}

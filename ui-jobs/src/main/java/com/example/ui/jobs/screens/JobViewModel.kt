@@ -40,6 +40,9 @@ class JobViewModel @Inject constructor(
             JobScreenState::allJobList,
             onSuccess = { listJobs ->
                 searchResultJobList = listJobs ?: emptyList()
+            },
+            onFail = {
+                setState { copy(allJobList = Fail(it)) }
             }
         )
         onAsyncResult(
@@ -48,6 +51,9 @@ class JobViewModel @Inject constructor(
                 getJobList()
                 getAllRoles()
                 getAllLocations()
+            },
+            onFail = {
+                setState { copy(insertJobList = Fail(it)) }
             }
         )
 
