@@ -1,5 +1,6 @@
 package com.example.ui.user.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
@@ -10,12 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import com.example.base.models.UserInfoEntity
 import com.example.base.R as BaseR
 import com.example.ui.user.R as UiUserR
 
 @Composable
 fun UserProfileSocialNetworkItem(
-    item: UserNetworkEntity,
+    item: UserInfoEntity,
     onClick: () -> Unit
 ) {
     Row(
@@ -27,9 +30,15 @@ fun UserProfileSocialNetworkItem(
             .padding(dimensionResource(id = BaseR.dimen.spacing_4x)),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Image(
+            modifier = Modifier.size(dimensionResource(id = BaseR.dimen.spacing_8x)),
+            painter = painterResource(id = item.image),
+            contentDescription = ""
+        )
+        Spacer(Modifier.weight(1f))
         item.title.let {
             Text(
-                text = it,
+                text = stringResource(id = it),
                 style = MaterialTheme.typography.caption,
                 color = MaterialTheme.colors.secondary
             )

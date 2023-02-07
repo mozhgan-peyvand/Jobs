@@ -6,9 +6,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.base.routers.AppRouters
+import com.example.base.util.ObserveLifecycle
 import com.example.ui.jobs.screens.JobScreen
 import com.example.ui.jobs.screens.JobViewModel
-import com.example.ui.jobs.util.ui.ObserveLifecycle
 
 
 fun NavGraphBuilder.addJobsGraph(

@@ -1,6 +1,7 @@
 package com.example.domain_jobs.usecase
 
 import com.example.base.util.IoDispatcher
+import com.example.base.util.NoResultUseCase
 import com.example.domain_jobs.repository.GetJobRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
