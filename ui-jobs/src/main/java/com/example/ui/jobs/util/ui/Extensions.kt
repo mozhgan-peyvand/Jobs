@@ -51,12 +51,4 @@ fun LazyListState.OnBottomReached(
     }
 }
 
-@Composable
-fun <LO : LifecycleObserver> LO.ObserveLifecycle(lifecycle: Lifecycle) {
-    DisposableEffect(lifecycle) {
-        lifecycle.addObserver(this@ObserveLifecycle)
-        onDispose {
-            lifecycle.removeObserver(this@ObserveLifecycle)
-        }
-    }
-}
+

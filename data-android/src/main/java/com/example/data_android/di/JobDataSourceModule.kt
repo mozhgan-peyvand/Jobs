@@ -2,8 +2,8 @@ package com.example.data_android.di
 
 import com.example.data.jobs.repositories.local.JobLocalDataSource
 import com.example.data.jobs.repositories.remote.JobRemoteDataSource
-import com.example.data_android.dataSourceImp.JobLocalDataSourceImp
-import com.example.data_android.dataSourceImp.JobRemoteDataSourceImp
+import com.example.data_android.dataSourceImp.jobDataSourceImp.JobLocalDataSourceImp
+import com.example.data_android.dataSourceImp.jobDataSourceImp.JobRemoteDataSourceImp
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

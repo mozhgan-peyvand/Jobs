@@ -7,5 +7,11 @@ plugins {
 
 
 dependencies {
-addHilt()
+    implementation(project(":base"))
+    implementation(project(":domain-user"))
+    addHilt()
+    addMoshi()
+    addKotshi()
+    addCoroutine()
+    addRoom()
 }

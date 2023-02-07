@@ -1,4 +1,4 @@
-package com.example.data_android.dataSourceImp
+package com.example.data_android.dataSourceImp.jobDataSourceImp
 
 import com.example.base.api.ApiUrlHelper
 import com.example.data.jobs.models.JobResponse

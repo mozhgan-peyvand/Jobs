@@ -154,7 +154,10 @@ private fun JobList(
                                 backgroundColor = MaterialTheme.colors.background,
                             )
                         },
-                        onRefresh = { actioner(JobScreenUiEvent.RefreshJobList) }
+                        onRefresh = {
+                            if (filterResultList.filter { it.isEmpty() }.size == 2)
+                            actioner(JobScreenUiEvent.RefreshJobList)
+                        }
                     ) {
                         LazyColumn(
                             modifier = modifier

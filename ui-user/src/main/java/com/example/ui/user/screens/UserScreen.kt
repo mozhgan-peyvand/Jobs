@@ -5,29 +5,49 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.base.models.UserInfoEntity
+import com.example.base.util.Loading
+import com.example.base.util.Success
+import com.example.base.util.Uninitialized
 import com.example.common.ui.view.theme.h3Primary
+import com.example.ui.user.models.UserScreenState
 import com.example.base.R as BaseR
 import com.example.ui.user.R as UiUserR
-import com.example.common.ui.view.R as CommonUiViewR
 
 @Composable
-fun UserScreen() {
-    val context = LocalContext.current
+fun UserScreen(viewModel: UserViewModel) {
+
+    val viewState by viewModel.stateFlow.collectAsState(initial = UserScreenState())
+    var userInfoList = listOf<UserInfoEntity>()
+    when(viewState.userInfoList){
+        is Success -> {
+            userInfoList = viewState.userInfoList.invoke() ?: emptyList()
+        }
+        is Loading -> {
+            CircularProgressIndicator()
+        }
+    }
+    UserScreen(userInfoList)
+}
+
+@Composable
+fun UserScreen(userInfoList : List<UserInfoEntity>) {
+
     val uriHandler = LocalUriHandler.current
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -66,24 +86,15 @@ fun UserScreen() {
                 text = stringResource(id = UiUserR.string.msg_location),
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
-            val list = listOf(
-                UserNetworkEntity(
-                    stringResource(id = UiUserR.string.github_title),
-                    stringResource(id = UiUserR.string.link_github)
-                ),
-                UserNetworkEntity(
-                    stringResource(id = UiUserR.string.linkedin_title),
-                    stringResource(id = UiUserR.string.link_linkedin)
-                ),
-                UserNetworkEntity(
-                    stringResource(id = UiUserR.string.instagram_title),
-                    stringResource(id = UiUserR.string.link_instagram)
-                )
-            )
+
             LazyColumn(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                items(list) { item ->
+                items(userInfoList) { item ->
+                    val linkItemUserInfo = item.link?.let {
+                        stringResource(id = it)
+                    }
+
                     UserProfileSocialNetworkItem(item = item) {
-                        item.link.let {
+                        linkItemUserInfo?.let {
                             uriHandler.openUri(it)
                         }
                     }

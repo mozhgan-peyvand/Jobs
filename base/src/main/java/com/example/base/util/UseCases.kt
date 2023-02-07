@@ -1,4 +1,4 @@
-package com.example.domain_jobs.usecase
+package com.example.base.util
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.BufferOverflow
