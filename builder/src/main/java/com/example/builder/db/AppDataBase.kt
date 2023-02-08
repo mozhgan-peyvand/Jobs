@@ -10,6 +10,6 @@ import com.example.data.user.repositories.local.UserDataBase
 
 @Database(
     entities = [JobDto::class, UserInfoEntity::class],
-    version = 7
+    version = 8
 )
 abstract class AppDataBase : RoomDatabase(), JobDatabase, UserDataBase

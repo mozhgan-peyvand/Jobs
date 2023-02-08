@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class JobDto(
     @PrimaryKey
-    val id: String = "" ,
+    val id: String = "",
     val role: String? = null,
     val companyName: String? = null,
     val companyNumEmployees: String? = null,
@@ -16,4 +16,5 @@ data class JobDto(
     val logo: String? = null,
     val url: String? = null,
     val datePosted: String? = null,
+    val jobDetail: String? = null
 )

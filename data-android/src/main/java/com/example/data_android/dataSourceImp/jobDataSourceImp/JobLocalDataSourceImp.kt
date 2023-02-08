@@ -52,4 +52,8 @@ class JobLocalDataSourceImp @Inject constructor(
             }
         }
     }
+
+    override suspend fun getJobDetailInfo(jobId: String): Flow<String> {
+        return jobDao.getJobDetailInfo(jobId)
+    }
 }

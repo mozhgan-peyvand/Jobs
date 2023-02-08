@@ -11,6 +11,7 @@
     <string name="label_search_city">Enter City</string>
     <string name="label_search_role">Enter Role</string>
     <string name="msg_empty_result_job_search">There are no search results !</string>
+    <string name="label_buttom_more_information">more informataion</string>
 
 <!--    jobTopBar-->
   <string name="label_search_job">Search</string>

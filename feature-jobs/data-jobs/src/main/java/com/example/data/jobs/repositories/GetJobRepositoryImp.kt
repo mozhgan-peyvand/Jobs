@@ -11,32 +11,36 @@ import javax.inject.Singleton
 @Singleton
 class GetJobRepositoryImp @Inject constructor(
     private val jobRemoteDataSource: JobRemoteDataSource,
-    private val JobLocalDataSource: JobLocalDataSource
+    private val jobLocalDataSource: JobLocalDataSource
 ) : GetJobRepository {
 
     override suspend fun insertAllJobs(page: Int) {
         val result = jobRemoteDataSource.getAllJobList(page = page)
         result?.takeIf { it.isNotEmpty() }?.let {
-            JobLocalDataSource.insertJobList(it.map { jobResponse ->
+            jobLocalDataSource.insertJobList(it.map { jobResponse ->
                 jobResponse.toJobDto()
             }, page = page)
         }
     }
 
     override suspend fun getAllRoles(): Flow<List<String>> {
-        return JobLocalDataSource.getRoleList()
+        return jobLocalDataSource.getRoleList()
     }
 
     override suspend fun getAllLocation(): Flow<List<String>> {
-        return JobLocalDataSource.getLocationList()
+        return jobLocalDataSource.getLocationList()
     }
 
     override suspend fun getAllJobs(): Flow<List<JobDto>?> {
-        return JobLocalDataSource.getAllJobList()
+        return jobLocalDataSource.getAllJobList()
     }
 
     override suspend fun filterJobsList(role: String?, city: String?): Flow<List<JobDto>> {
-        return JobLocalDataSource.filterJobList(role ?: "", city ?: "")
+        return jobLocalDataSource.filterJobList(role ?: "", city ?: "")
+    }
+
+    override suspend fun getJobDetailInfo(jobId: String): Flow<String> {
+        return jobLocalDataSource.getJobDetailInfo(jobId = jobId)
     }
 
 }

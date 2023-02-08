@@ -12,6 +12,7 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.navigation.NavHostController
 import com.example.base.models.JobDto
 import com.example.base.util.*
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
@@ -32,7 +33,8 @@ import com.example.base.R as BaseR
 
 @Composable
 fun JobScreen(
-    viewModel: JobViewModel
+    viewModel: JobViewModel,
+    navigateToJobDetail: NavHostController
 ) {
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
@@ -40,7 +42,8 @@ fun JobScreen(
         actioner = { action ->
             viewModel.submitAction(action)
         },
-        viewState = viewState
+        viewState = viewState,
+        navigateToJobDetail
     )
 }
 
@@ -48,6 +51,7 @@ fun JobScreen(
 fun JobScreenList(
     actioner: (JobScreenUiEvent) -> Unit,
     viewState: JobScreenState,
+    navigateToJobDetail: NavHostController,
 ) {
 
     val closeSearch = rememberSaveable {
@@ -90,7 +94,8 @@ fun JobScreenList(
             closeSearchValue = closeSearch.value,
             searchText = searchText.value,
             onChangeSearchText = { searchText.value = it },
-            actioner = actioner
+            actioner = actioner,
+            navigateToJobDetail
         )
     }
 }
@@ -106,6 +111,7 @@ private fun JobList(
     searchText: String,
     onChangeSearchText: (String) -> Unit,
     actioner: (JobScreenUiEvent) -> Unit,
+    navigateToJobDetail: NavHostController,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val lazyListState = rememberLazyListState()
@@ -172,9 +178,10 @@ private fun JobList(
                         ) {
                             items(items = jobList, key = { it.id }) { item ->
                                 JobItem(
-                                    jobInfoView = item,
+                                    jobDto = item,
                                     modifier = Modifier,
-                                    false
+                                    false,
+                                    navigateToJobDetail
                                 )
                             }
                             if (viewState.insertJobList is LoadingMore) {
@@ -234,9 +241,9 @@ fun LoadingShimmerJobList() {
 
         items(jobList) { item ->
             JobItem(
-                isLoading = true,
-                jobInfoView = item,
-                modifier = Modifier
+                jobDto = item,
+                modifier = Modifier,
+                isLoading = true
             )
 
         }
@@ -254,7 +261,7 @@ fun SearchJobsList(searchResultList: List<JobDto>, modifier: Modifier) {
         ) {
         items(searchResultList) { item ->
             JobItem(
-                jobInfoView = item,
+                jobDto = item,
                 modifier = Modifier,
                 false
             )
