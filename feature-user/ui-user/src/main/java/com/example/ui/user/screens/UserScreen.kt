@@ -9,9 +9,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,11 +19,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.base.models.UserInfoEntity
+import com.example.base.util.Fail
 import com.example.base.util.Loading
 import com.example.base.util.Success
 import com.example.base.util.Uninitialized
+import com.example.common.ui.view.dialog.AlertDialogSample
 import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.user.models.UserScreenState
+import com.example.ui.user.models.UserScreenUiEvent
 import com.example.base.R as BaseR
 import com.example.ui.user.R as UiUserR
 
@@ -33,20 +34,42 @@ import com.example.ui.user.R as UiUserR
 fun UserScreen(viewModel: UserViewModel) {
 
     val viewState by viewModel.stateFlow.collectAsState(initial = UserScreenState())
-    var userInfoList = listOf<UserInfoEntity>()
-    when(viewState.userInfoList){
-        is Success -> {
-            userInfoList = viewState.userInfoList.invoke() ?: emptyList()
-        }
-        is Loading -> {
-            CircularProgressIndicator()
-        }
-    }
-    UserScreen(userInfoList)
+
+    UserScreen(
+        actioner = { action ->
+            viewModel.submitAction(action)
+        },
+        viewState = viewState
+    )
+
 }
 
 @Composable
-fun UserScreen(userInfoList : List<UserInfoEntity>) {
+fun UserScreen(actioner: (UserScreenUiEvent) -> Unit, viewState: UserScreenState) {
+    var userInfoList = listOf<UserInfoEntity>()
+
+    when (viewState.userInfoList) {
+
+        is Success -> {
+            userInfoList = viewState.userInfoList.invoke()
+        }
+        is Loading,Uninitialized -> {
+            CircularProgressIndicator()
+        }
+        is Fail -> {
+            FailUserListRequest(actioner = { actioner(UserScreenUiEvent.GetUserInfoList) })
+        }
+    }
+    if (viewState.insertUserInfo is Fail) {
+        FailUserListRequest(actioner = { actioner(UserScreenUiEvent.InsertUserInfoList) })
+    }
+
+    UserScreen(userInfoList)
+
+}
+
+@Composable
+fun UserScreen(userInfoList: List<UserInfoEntity>) {
 
     val uriHandler = LocalUriHandler.current
     Box(
@@ -107,5 +130,21 @@ fun UserScreen(userInfoList : List<UserInfoEntity>) {
             }
         }
 
+    }
+}
+
+@Composable
+fun FailUserListRequest(
+    actioner: (UserScreenUiEvent) -> Unit
+) {
+    val openDialog = remember { mutableStateOf(false) }
+
+    Column {
+        LaunchedEffect(key1 = Unit) {
+            openDialog.value = true
+        }
+        AlertDialogSample(
+            openDialog.value, { openDialog.value = false }, { actioner },
+        )
     }
 }

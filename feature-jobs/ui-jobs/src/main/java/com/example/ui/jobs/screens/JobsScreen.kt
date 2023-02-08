@@ -18,9 +18,9 @@ import com.example.base.util.*
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
 import com.example.base.util.toolbar.ScrollStrategy
 import com.example.base.util.toolbar.rememberCollapsingToolbarScaffoldState
+import com.example.common.ui.view.dialog.AlertDialogSample
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
-import com.example.ui.jobs.util.ui.AlertDialogSample
 import com.example.ui.jobs.util.ui.OnBottomReached
 import com.example.ui.jobs.util.ui.rememberMutableStateListOf
 import com.google.accompanist.swiperefresh.SwipeRefresh
@@ -130,18 +130,21 @@ private fun JobList(
             )
         }
     ) {
+        if (viewState.insertJobList is Fail) {
+            FailJobListRequest(filterResultList, actioner)
+        }
         when (viewState.JobList) {
 
             is Loading, Uninitialized -> {
                 LoadingShimmerJobList()
             }
             is Fail -> {
-                FailJobListRequest(filterResultList,actioner)
+                FailJobListRequest(filterResultList, actioner)
             }
             is Success -> {
                 val jobList = viewState.JobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
-                   SearchJobsList(viewState.searchJobList,Modifier)
+                    SearchJobsList(viewState.searchJobList, Modifier)
                 } else {
                     SwipeRefresh(
                         modifier = Modifier.fillMaxSize(),
@@ -156,7 +159,7 @@ private fun JobList(
                         },
                         onRefresh = {
                             if (filterResultList.filter { it.isEmpty() }.size == 2)
-                            actioner(JobScreenUiEvent.RefreshJobList)
+                                actioner(JobScreenUiEvent.RefreshJobList)
                         }
                     ) {
                         LazyColumn(

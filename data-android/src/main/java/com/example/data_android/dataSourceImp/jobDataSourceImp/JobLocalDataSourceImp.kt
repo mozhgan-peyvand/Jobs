@@ -37,17 +37,19 @@ class JobLocalDataSourceImp @Inject constructor(
     }
 
     override suspend fun filterJobList(role: String, city: String): Flow<List<JobDto>> {
-        if (role.isEmpty() && city.isNotEmpty()) {
-            return jobDao.getFilterJobListWithCity(city)
+        return when {
+            role.isEmpty() && city.isNotEmpty() -> {
+                jobDao.getFilterJobListWithCity(city)
+            }
+            role.isNotEmpty() && city.isEmpty() -> {
+                jobDao.getFilterJobListWithRole(role)
+            }
+            role.isEmpty() && city.isEmpty() -> {
+                jobDao.getJobList()
+            }
+            else -> {
+                jobDao.getFilterJobList(role = role, city = city)
+            }
         }
-        if (role.isNotEmpty() && city.isEmpty()) {
-            return jobDao.getFilterJobListWithRole(role)
-        }
-        if (role.isEmpty() && city.isEmpty()) {
-            return jobDao.getJobList()
-        }
-
-        return jobDao.getFilterJobList(role = role, city = city)
-
     }
 }
