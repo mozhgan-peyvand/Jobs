@@ -79,7 +79,12 @@ fun Typography.h3Primary(): TextStyle {
         color = MaterialTheme.colors.primary
     )
 }
-
+@Composable
+fun Typography.h1OnPrimary(): TextStyle {
+    return h1.copy(
+        color = MaterialTheme.colors.onPrimary
+    )
+}
 
 @Composable
 fun Typography.overLineOnPrimary(): TextStyle {

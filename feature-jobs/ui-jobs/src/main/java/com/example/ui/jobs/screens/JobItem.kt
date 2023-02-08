@@ -35,6 +35,7 @@ import coil.compose.SubcomposeAsyncImageContent
 import coil.request.ImageRequest
 import com.example.base.models.JobDto
 import com.example.common.ui.view.theme.captionSecondary
+import com.example.common.ui.view.theme.h1OnPrimary
 import com.example.common.ui.view.theme.h3Primary
 import com.example.base.R as BaseR
 import com.example.ui.jobs.R as UiJobsR
@@ -125,13 +126,6 @@ fun LoadingShimmerItem(modifier: Modifier) {
 
 @Composable
 fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
-    val colorBackGround = remember {
-        mutableStateListOf<Color>(
-            Color(235, 189, 75, 255),
-            Color(104, 213, 128, 255),
-            Color(226, 108, 108, 255),
-        )
-    }
     val uriHandler = LocalUriHandler.current
     Card(modifier = modifier
         .fillMaxWidth()
@@ -174,12 +168,10 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
                             )
                         }
                         is AsyncImagePainter.State.Error -> {
-                            val randColor =
-                                colorBackGround[(0..2).random()]
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .background(randColor),
+                                    .background(MaterialTheme.colors.primary),
                                 contentAlignment = Alignment.Center
                             )
                             {
@@ -187,7 +179,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
                                     text = jobInfoView.companyName?.toCharArray()?.first()
                                         .toString(),
                                     textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.h1,
+                                    style = MaterialTheme.typography.h1OnPrimary(),
                                 )
                             }
                         }
