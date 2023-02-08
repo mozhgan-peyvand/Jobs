@@ -12,7 +12,6 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import com.example.base.*
 import com.example.base.models.JobDto
 import com.example.base.util.*
 import com.example.base.util.toolbar.CollapsingToolbarScaffold
@@ -110,7 +109,8 @@ private fun JobList(
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val lazyListState = rememberLazyListState()
-    val swipeRefreshState = rememberSwipeRefreshState(false)
+    val swipeRefreshState = rememberSwipeRefreshState(viewState.JobList is Loading || viewState.insertJobList is Loading)
+    val coroutineScope = rememberCoroutineScope()
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -192,6 +192,13 @@ private fun JobList(
                                             strokeWidth = dimensionResource(id = BaseR.dimen.spacing_half_base)
                                         )
                                     }
+                                }
+                            }
+                        }
+                        LaunchedEffect(key1 = closeSearchValue){
+                            if (closeSearchValue){
+                                coroutineScope.launch {
+                                    lazyListState.scrollToItem(0)
                                 }
                             }
                         }
