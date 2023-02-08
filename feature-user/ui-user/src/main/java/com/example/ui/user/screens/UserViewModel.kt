@@ -20,6 +20,13 @@ class UserViewModel @Inject constructor(
     init {
         insertUserInfo()
 
+        onEachAction { action ->
+            when(action){
+                is UserScreenUiEvent.GetUserInfoList -> getUserInfoList()
+                is UserScreenUiEvent.InsertUserInfoList -> insertUserInfo()
+            }
+        }
+
         onAsyncResult(
             UserScreenState::insertUserInfo,
             onSuccess = {
