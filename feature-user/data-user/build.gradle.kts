@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":domain-user"))
+    implementation(project(":feature-user:domain-user"))
     addHilt()
     addMoshi()
     addKotshi()

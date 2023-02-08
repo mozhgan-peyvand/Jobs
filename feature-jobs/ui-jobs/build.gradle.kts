@@ -15,7 +15,7 @@ android{
 }
 
 dependencies {
-    implementation(project(":domain-jobs"))
+    implementation(project(":feature-jobs:domain-jobs"))
     implementation(project(":common-ui-view"))
     implementation(project(":base"))
     addCompose()

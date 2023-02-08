@@ -7,7 +7,7 @@ plugins {
 
 
 dependencies {
-    implementation(project(":domain-jobs"))
+    implementation(project(":feature-jobs:domain-jobs"))
     implementation(project(":base"))
     addHilt()
     addRetrofit()
