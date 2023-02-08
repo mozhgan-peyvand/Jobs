@@ -7,7 +7,7 @@ plugins {
 dependencies {
 
     implementation(project(":base"))
-    implementation(project(":domain-user"))
+    implementation(project(":feature-user:domain-user"))
     implementation(project(":common-ui-view"))
     addCompose()
     addNavigationComponent()

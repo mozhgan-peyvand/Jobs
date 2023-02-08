@@ -18,14 +18,14 @@ android{
     }
 }
 dependencies {
-    implementation(project(":ui-jobs"))
+    implementation(project(":feature-jobs:ui-jobs"))
     implementation(project(":common-ui-view"))
-    implementation(project(":ui-user"))
+    implementation(project(":feature-user:ui-user"))
     implementation(project(":base"))
-    implementation(project(":data-jobs"))
-    implementation(project(":data-user"))
-    implementation(project(":domain-jobs"))
-    implementation(project(":domain-user"))
+    implementation(project(":feature-jobs:data-jobs"))
+    implementation(project(":feature-user:data-user"))
+    implementation(project(":feature-jobs:domain-jobs"))
+    implementation(project(":feature-user:domain-user"))
     implementation(project(":data-android"))
     addCompose()
     addNavigationComponent()

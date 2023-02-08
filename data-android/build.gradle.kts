@@ -7,8 +7,8 @@ plugins {
 
 
 dependencies {
-    implementation(project(":data-jobs"))
-    implementation(project(":data-user"))
+    implementation(project(":feature-jobs:data-jobs"))
+    implementation(project(":feature-user:data-user"))
     implementation(project(":base"))
     addHilt()
     addRetrofit()
