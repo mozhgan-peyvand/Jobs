@@ -8,15 +8,19 @@ import se.ansman.kotshi.JsonSerializable
 data class JobResponse(
     val id: String? = null,
     val role: String? = null,
-    val company_name: String? = null,
-    val company_num_employees: String? = null,
-    val employment_type: String? = null,
+    @Json(name = "company_name")
+    val companyName: String? = null,
+    @Json(name = "company_num_employees")
+    val companyNumberEmployees: String? = null,
+    @Json(name = "employment_type")
+    val employmentType: String? = null,
     val location: String? = null,
     val remote: Boolean? = null,
     val logo: String? = null,
     val url: String? = null,
     val text: String? = null,
-    val date_posted: String? = null,
+    @Json(name = "date_posted")
+    val datePosted: String? = null,
     val keywords: List<String>? = null,
     val source: String? = null
 ) {
@@ -24,13 +28,14 @@ data class JobResponse(
     fun toJobDto() = JobDto(
         id = id ?: "",
         role = role,
-        companyName = company_name,
-        companyNumEmployees = company_num_employees,
-        employmentType = employment_type,
+        companyName = companyName,
+        companyNumEmployees = companyNumberEmployees,
+        employmentType = employmentType,
         location = location,
         remote = remote,
         logo = logo,
         url = url,
-        datePosted = date_posted
+        jobDetail= text,
+        datePosted = datePosted
     )
 }

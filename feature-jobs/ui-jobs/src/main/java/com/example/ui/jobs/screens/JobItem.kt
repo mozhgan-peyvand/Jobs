@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
@@ -37,20 +38,22 @@ import com.example.base.models.JobDto
 import com.example.common.ui.view.theme.captionSecondary
 import com.example.common.ui.view.theme.h1OnPrimary
 import com.example.common.ui.view.theme.h3Primary
+import com.example.ui.jobs.util.navigation.JobRouters
 import com.example.base.R as BaseR
 import com.example.ui.jobs.R as UiJobsR
 
 @Composable
 fun JobItem(
-    jobInfoView: JobDto,
+    jobDto: JobDto,
     modifier: Modifier = Modifier,
     isLoading: Boolean,
+    navigateToJobDetail: NavHostController? = null,
 ) {
 
     if (isLoading) {
         LoadingShimmerItem(modifier)
     } else {
-        JobItemInfo(modifier, jobInfoView)
+        JobItemInfo(modifier, jobDto,navigateToJobDetail)
     }
 }
 
@@ -125,12 +128,11 @@ fun LoadingShimmerItem(modifier: Modifier) {
 }
 
 @Composable
-fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
-    val uriHandler = LocalUriHandler.current
+fun JobItemInfo(modifier: Modifier, jobDto: JobDto, navigateToJobDetail: NavHostController?) {
     Card(modifier = modifier
         .fillMaxWidth()
         .clickable {
-//            uriHandler.openUri(jobInfoView.description ?: "")
+            navigateToJobDetail?.navigate(JobRouters.JobDetailScreen.routers+"/${jobDto.id}")
         }
         .background(MaterialTheme.colors.surface)
         .padding(
@@ -152,7 +154,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
             ) {
                 SubcomposeAsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(jobInfoView.logo)
+                        .data(jobDto.logo)
                         .build(),
                     modifier = modifier.fillMaxSize(),
                     contentDescription = ""
@@ -176,7 +178,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
                             )
                             {
                                 Text(
-                                    text = jobInfoView.companyName?.toCharArray()?.first()
+                                    text = jobDto.companyName?.toCharArray()?.first()
                                         .toString(),
                                     textAlign = TextAlign.Center,
                                     style = MaterialTheme.typography.h1OnPrimary(),
@@ -196,7 +198,7 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
                     .padding(start = dimensionResource(id = BaseR.dimen.spacing_3x)),
             ) {
                 Text(
-                    text = jobInfoView.companyName ?: "",
+                    text = jobDto.companyName ?: "",
                     modifier = Modifier
                         .fillMaxWidth(),
                     maxLines = 1,
@@ -206,22 +208,22 @@ fun JobItemInfo(modifier: Modifier, jobInfoView: JobDto) {
 
                 ItemInfo(
                     taskTitle = stringResource(id = UiJobsR.string.label_location_title),
-                    taskName = jobInfoView.location
+                    taskName = jobDto.location
                 )
 
                 ItemInfo(
                     taskTitle = stringResource(id = UiJobsR.string.label_employmentType_title),
-                    taskName = jobInfoView.employmentType
+                    taskName = jobDto.employmentType
                 )
 
                 ItemInfo(
                     taskTitle = stringResource(id = UiJobsR.string.label_role_title),
-                    taskName = jobInfoView.role
+                    taskName = jobDto.role
                 )
 
                 ItemInfo(
                     taskTitle = stringResource(id = UiJobsR.string.label_data_title),
-                    jobInfoView.datePosted
+                    jobDto.datePosted
                 )
             }
         }
