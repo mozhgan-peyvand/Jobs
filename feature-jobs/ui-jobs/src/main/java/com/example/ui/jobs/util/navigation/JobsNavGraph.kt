@@ -33,7 +33,7 @@ fun NavGraphBuilder.addJobsGraph(
         ) {
             val viewModel = hiltViewModel<JobDetailViewModel>()
             viewModel.ObserveLifecycle(lifecycle = LocalLifecycleOwner.current.lifecycle)
-            JobDetailScreen(viewModel = viewModel,jobItemId = it.arguments?.getString(KEY_ARTICLE_ID) ?: "")
+            JobDetailScreen(viewModel = viewModel)
         }
     }
 }

@@ -44,19 +44,24 @@ class BuilderActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
 
-    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val appTheme = remember {
                 mutableStateOf(false)
             }
-            val showBottomBarAndTopBar = remember { mutableStateOf(false) }
+            val showBottomBar = remember { mutableStateOf(false) }
+            val showTopBar = remember { mutableStateOf(false) }
 
             AppTheme(darkTheme = appTheme.value) {
                 navController = rememberNavController()
                 navController.addOnDestinationChangedListener { _, destination, _ ->
-                    showBottomBarAndTopBar.value = when (destination.route) {
+                    showBottomBar.value = when (destination.route) {
+                        AppRouters.SplashScreen.routers -> false
+                        AppRouters.JobScreen.routers, AppRouters.UserScreen.routers -> true
+                        else -> false
+                    }
+                    showTopBar.value = when(destination.route){
                         AppRouters.SplashScreen.routers -> false
                         else -> true
                     }
@@ -66,12 +71,12 @@ class BuilderActivity : ComponentActivity() {
                 Scaffold(
                     scaffoldState = scaffoldState,
                     bottomBar = {
-                        if (showBottomBarAndTopBar.value) {
+                        if (showBottomBar.value) {
                             BottomBar(navController = navController)
                         }
                     },
                     topBar = {
-                        if (showBottomBarAndTopBar.value) {
+                        if (showTopBar.value) {
                             TitleWithThemeToggle(isDarkTheme = appTheme) {
                                 appTheme.value = !appTheme.value
                             }
@@ -86,8 +91,8 @@ class BuilderActivity : ComponentActivity() {
                         modifier = Modifier.padding(paddingValue)
                     ) {
                         addSplash {
-                            navController.navigate(AppRouters.JobScreen.routers){
-                                popUpTo(AppRouters.SplashScreen.routers){
+                            navController.navigate(AppRouters.JobScreen.routers) {
+                                popUpTo(AppRouters.SplashScreen.routers) {
                                     inclusive = true
                                 }
                             }

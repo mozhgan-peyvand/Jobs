@@ -39,6 +39,6 @@ interface JobDao {
     fun deleteTable()
 
     @Transaction
-    @Query("SELECT jobDetail FROM JobDto WHERE id=:id")
-    fun getJobDetailInfo(id: String): Flow<String>
+    @Query("SELECT * FROM JobDto WHERE id=:id")
+    fun getJobDetailInfo(id: String): Flow<JobDto>
 }

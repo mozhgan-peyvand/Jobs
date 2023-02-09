@@ -9,5 +9,5 @@ interface JobLocalDataSource {
     suspend fun getLocationList(): Flow<List<String>>
     suspend fun getRoleList(): Flow<List<String>>
     suspend fun filterJobList(role: String,city: String): Flow<List<JobDto>>
-    suspend fun getJobDetailInfo(jobId: String): Flow<String>
+    suspend fun getJobDetailInfo(jobId: String): Flow<JobDto>
 }

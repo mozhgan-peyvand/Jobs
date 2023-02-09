@@ -1,7 +1,8 @@
 package com.example.ui.jobs.screens
 
+import android.os.Build
 import android.widget.TextView
-import androidx.compose.foundation.background
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -24,26 +25,22 @@ import com.example.base.R as BaseR
 import com.example.ui.jobs.R as JobR
 import com.example.base.util.Success
 import com.example.common.ui.view.theme.captionSecondary
-import com.example.common.ui.view.theme.h3Primary
 import com.example.ui.jobs.models.JobDetailScreenState
-import com.example.ui.jobs.models.JobDetailScreenUiEvent
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun JobDetailScreen(viewModel: JobDetailViewModel, jobItemId: String) {
+fun JobDetailScreen(viewModel: JobDetailViewModel) {
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobDetailScreenState())
 
     JobDetail(
-        actioner = { action ->
-            viewModel.submitAction(action)
-        },
         viewState
     )
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun JobDetail(
-    actioner: (JobDetailScreenUiEvent) -> Unit,
     viewState: JobDetailScreenState
 ) {
     val uriHandler = LocalUriHandler.current
@@ -55,16 +52,19 @@ fun JobDetail(
             .verticalScroll(scrollState)
     ) {
         if (viewState.jobDetailInfo is Success) {
+            val jobEntity = viewState.jobDetailInfo.invoke()
             HtmlText(
-                html = viewState.jobDetailInfo.invoke()
+                html = jobEntity.jobDetail ?: ""
             )
-            Button(onClick = {
-//                uriHandler.openUri(jobDto.description ?: "")
-            },
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colors.onSecondary)) {
+            Button(
+                onClick = {
+                uriHandler.openUri( jobEntity.url ?: "")
+                },
+                colors = ButtonDefaults.buttonColors(MaterialTheme.colors.surface),
+                modifier = Modifier
+                    .padding(dimensionResource(id = BaseR.dimen.spacing_2x))
+            ) {
                 Text(
-                    modifier = Modifier
-                        .padding(dimensionResource(id = BaseR.dimen.spacing_2x)),
                     text = stringResource(id = JobR.string.label_buttom_more_information),
                     style = MaterialTheme.typography.captionSecondary()
                 )
@@ -73,6 +73,7 @@ fun JobDetail(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun HtmlText(html: String, modifier: Modifier = Modifier) {
     val compatContext = LocalContext.current
