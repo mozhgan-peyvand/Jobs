@@ -14,7 +14,7 @@ class GetJobRepositoryImp @Inject constructor(
     private val jobLocalDataSource: JobLocalDataSource
 ) : GetJobRepository {
 
-    override suspend fun insertAllJobs(page: Int) {
+    override suspend fun insertJobList(page: Int) {
         val result = jobRemoteDataSource.getAllJobList(page = page)
         result?.takeIf { it.isNotEmpty() }?.let {
             jobLocalDataSource.insertJobList(it.map { jobResponse ->
@@ -23,15 +23,15 @@ class GetJobRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getAllRoles(): Flow<List<String>> {
+    override suspend fun getRoleList(): Flow<List<String>> {
         return jobLocalDataSource.getRoleList()
     }
 
-    override suspend fun getAllLocation(): Flow<List<String>> {
+    override suspend fun getLocationList(): Flow<List<String>> {
         return jobLocalDataSource.getLocationList()
     }
 
-    override suspend fun getAllJobs(): Flow<List<JobDto>?> {
+    override suspend fun getJobList(): Flow<List<JobDto>?> {
         return jobLocalDataSource.getAllJobList()
     }
 

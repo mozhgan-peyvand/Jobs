@@ -7,11 +7,11 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetAllRoles @Inject constructor(
+class GetRoleList @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val repository: GetJobRepository
 ) : SubjectUseCase<Unit, List<String>>(dispatcher){
     override suspend fun createObservable(params: Unit): Flow<List<String>> {
-        return repository.getAllRoles()
+        return repository.getRoleList()
     }
 }

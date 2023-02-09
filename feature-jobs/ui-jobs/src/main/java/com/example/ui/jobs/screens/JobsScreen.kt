@@ -34,7 +34,7 @@ import com.example.base.R as BaseR
 @Composable
 fun JobScreen(
     viewModel: JobViewModel,
-    navigateToJobDetail: NavHostController
+    navController: NavHostController
 ) {
 
     val viewState by viewModel.stateFlow.collectAsState(initial = JobScreenState())
@@ -43,7 +43,7 @@ fun JobScreen(
             viewModel.submitAction(action)
         },
         viewState = viewState,
-        navigateToJobDetail
+        navController
     )
 }
 

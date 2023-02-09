@@ -11,7 +11,7 @@ class InsertJobList @Inject constructor(
     private val repository: GetJobRepository
 ) : NoResultUseCase<InsertJobList.Param>(dispatcher) {
     override suspend fun doWork(params: Param) {
-        return repository.insertAllJobs(params.page)
+        return repository.insertJobList(params.page)
     }
     data class Param(var page: Int)
 }

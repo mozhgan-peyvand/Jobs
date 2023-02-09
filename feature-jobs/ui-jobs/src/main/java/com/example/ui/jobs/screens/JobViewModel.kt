@@ -13,10 +13,10 @@ import javax.inject.Inject
 @HiltViewModel
 class JobViewModel @Inject constructor(
     private val insertJobListLocal: InsertJobList,
-    private val getAllJob: GetAllJob,
+    private val getJobList: GetJobList,
     private val filterJobs: FilterJobList,
-    private val getAllLocation: GetAllLocation,
-    private val getAllRoles: GetAllRoles,
+    private val getLocationList: GetLocationList,
+    private val getRoleList: GetRoleList,
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()), DefaultLifecycleObserver {
 
     private var searchResultJobList = listOf<JobDto>()
@@ -70,15 +70,15 @@ class JobViewModel @Inject constructor(
     }
 
     private fun getAllLocations() {
-        getAllLocation(Unit)
-        getAllLocation.flow.execute(
+        getLocationList(Unit)
+        getLocationList.flow.execute(
             reducer = { copy(LocationList = it) }
         )
     }
 
     private fun getAllRoles() {
-        getAllRoles(Unit)
-        getAllRoles.flow.execute(
+        getRoleList(Unit)
+        getRoleList.flow.execute(
             reducer = {
                 copy(RoleList = it)
             }
@@ -111,8 +111,8 @@ class JobViewModel @Inject constructor(
     }
 
     private fun getJobList() {
-        getAllJob(Unit)
-        getAllJob.flow.execute(
+        getJobList(Unit)
+        getJobList.flow.execute(
             reducer = {
                 copy(JobList = it)
             },
