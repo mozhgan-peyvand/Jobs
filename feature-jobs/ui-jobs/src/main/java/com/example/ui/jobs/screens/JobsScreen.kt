@@ -51,7 +51,7 @@ fun JobScreen(
 fun JobScreenList(
     actioner: (JobScreenUiEvent) -> Unit,
     viewState: JobScreenState,
-    navigateToJobDetail: NavHostController,
+    navController: NavHostController,
 ) {
 
     val closeSearch = rememberSaveable {
@@ -95,7 +95,7 @@ fun JobScreenList(
             searchText = searchText.value,
             onChangeSearchText = { searchText.value = it },
             actioner = actioner,
-            navigateToJobDetail
+            navController = navController
         )
     }
 }
@@ -111,7 +111,7 @@ private fun JobList(
     searchText: String,
     onChangeSearchText: (String) -> Unit,
     actioner: (JobScreenUiEvent) -> Unit,
-    navigateToJobDetail: NavHostController,
+    navController: NavHostController,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val lazyListState = rememberLazyListState()
@@ -150,7 +150,7 @@ private fun JobList(
             is Success -> {
                 val jobList = viewState.JobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
-                    SearchJobsList(viewState.searchJobList, Modifier)
+                    SearchJobsList(viewState.searchJobList, Modifier,navController)
                 } else {
                     SwipeRefresh(
                         modifier = Modifier.fillMaxSize(),
@@ -181,7 +181,7 @@ private fun JobList(
                                     jobDto = item,
                                     modifier = Modifier,
                                     false,
-                                    navigateToJobDetail
+                                    navController
                                 )
                             }
                             if (viewState.insertJobList is LoadingMore) {
@@ -251,7 +251,11 @@ fun LoadingShimmerJobList() {
 }
 
 @Composable
-fun SearchJobsList(searchResultList: List<JobDto>, modifier: Modifier) {
+fun SearchJobsList(
+    searchResultList: List<JobDto>,
+    modifier: Modifier,
+    navController: NavHostController
+) {
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -263,7 +267,8 @@ fun SearchJobsList(searchResultList: List<JobDto>, modifier: Modifier) {
             JobItem(
                 jobDto = item,
                 modifier = Modifier,
-                false
+                false,
+                navController
             )
         }
     }

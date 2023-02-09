@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -47,13 +46,13 @@ fun JobItem(
     jobDto: JobDto,
     modifier: Modifier = Modifier,
     isLoading: Boolean,
-    navigateToJobDetail: NavHostController? = null,
+    navController: NavHostController? = null,
 ) {
 
     if (isLoading) {
         LoadingShimmerItem(modifier)
     } else {
-        JobItemInfo(modifier, jobDto,navigateToJobDetail)
+        JobItemInfo(modifier, jobDto,navController)
     }
 }
 
@@ -128,11 +127,11 @@ fun LoadingShimmerItem(modifier: Modifier) {
 }
 
 @Composable
-fun JobItemInfo(modifier: Modifier, jobDto: JobDto, navigateToJobDetail: NavHostController?) {
+fun JobItemInfo(modifier: Modifier, jobDto: JobDto, navController: NavHostController?) {
     Card(modifier = modifier
         .fillMaxWidth()
         .clickable {
-            navigateToJobDetail?.navigate(JobRouters.JobDetailScreen.routers+"/${jobDto.id}")
+            navController?.navigate(JobRouters.JobDetailScreen.routers+"/${jobDto.id}")
         }
         .background(MaterialTheme.colors.surface)
         .padding(
