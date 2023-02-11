@@ -26,7 +26,7 @@ Gradle Kotlin DSL, Custom plugin
 
 * Night/Day mode: there is a button in the toolbar to change the theme to night and day mode.
 
-# Package structure:
+# Modules
 * base: This module includes api packages for provide retrofit and connecting with the server, models package for maintaining database models, routers package for maintaining routes, and an util package for maintaining extenstions and functions that are used as an app.
 * builder: Since we use builder pattern, these modules have access to all modules, and you can use this module to make SDK and put it in any application. BottomNavigation , splash and roomProvider are in this module.
 * buldeSrc: All the libraries that are used in the modules are placed in this module, and the custom plugin is also in this module, which is placed in all the modules to determine the build variant and so on.
