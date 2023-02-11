@@ -116,7 +116,6 @@ private fun JobList(
     val state = rememberCollapsingToolbarScaffoldState()
     val lazyListState = rememberLazyListState()
     val swipeRefreshState = rememberSwipeRefreshState(viewState.JobList is Loading || viewState.insertJobList is Loading)
-    val coroutineScope = rememberCoroutineScope()
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -199,13 +198,6 @@ private fun JobList(
                                             strokeWidth = dimensionResource(id = BaseR.dimen.spacing_half_base)
                                         )
                                     }
-                                }
-                            }
-                        }
-                        LaunchedEffect(key1 = closeSearchValue){
-                            if (closeSearchValue){
-                                coroutineScope.launch {
-                                    lazyListState.scrollToItem(0)
                                 }
                             }
                         }
