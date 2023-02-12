@@ -23,20 +23,8 @@ class GetJobRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getRoleList(): Flow<List<String>> {
-        return jobLocalDataSource.getRoleList()
-    }
-
-    override suspend fun getLocationList(): Flow<List<String>> {
-        return jobLocalDataSource.getLocationList()
-    }
-
     override suspend fun getJobList(): Flow<List<JobDto>?> {
         return jobLocalDataSource.getAllJobList()
-    }
-
-    override suspend fun filterJobsList(role: String?, city: String?): Flow<List<JobDto>> {
-        return jobLocalDataSource.filterJobList(role ?: "", city ?: "")
     }
 
     override suspend fun getJobDetailInfo(jobId: String): Flow<JobDto> {

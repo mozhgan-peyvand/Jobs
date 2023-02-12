@@ -1,5 +1,7 @@
 package com.example.ui.jobs.util.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.*
@@ -9,6 +11,7 @@ import com.example.base.util.ObserveLifecycle
 import com.example.ui.jobs.screens.*
 
 
+@RequiresApi(Build.VERSION_CODES.M)
 fun NavGraphBuilder.addJobsGraph(
     navHostController: NavHostController
 ) {

@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -22,12 +21,9 @@ import com.example.common.ui.view.dialog.AlertDialogSample
 import com.example.ui.jobs.models.JobScreenState
 import com.example.ui.jobs.models.JobScreenUiEvent
 import com.example.ui.jobs.util.ui.OnBottomReached
-import com.example.ui.jobs.util.ui.rememberMutableStateListOf
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import com.example.base.R as BaseR
 
 
@@ -57,43 +53,17 @@ fun JobScreenList(
     val closeSearch = rememberSaveable {
         mutableStateOf(true)
     }
-    val searchText = rememberSaveable {
-        mutableStateOf("")
-    }
-    val filterResultList = rememberMutableStateListOf("", "")
 
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-    val coroutineScope = rememberCoroutineScope()
+    val scaffoldState = rememberScaffoldState()
+
     Scaffold(
-        scaffoldState = scaffoldState,
-        drawerContent = {
-            FilterJobs(
-                onCloseFilterJobsDrawer = {
-                    coroutineScope.launch {
-                        scaffoldState.drawerState.close()
-                    }
-                },
-                filterJobList = { role, city ->
-                    actioner(JobScreenUiEvent.FilterJobsList(role, city))
-                },
-                viewState = viewState,
-                filterResultList = filterResultList,
-                closeSearch = { closeSearch.value = it }
-            ) { searchText.value = it }
-        }
+        scaffoldState = scaffoldState
     ) { paddingValues ->
 
         JobList(
             modifier = Modifier.padding(paddingValues),
-            onMenuClicked = {
-                coroutineScope.launch { scaffoldState.drawerState.open() }
-            },
-            filterResultList = filterResultList,
-            viewState = viewState,
-            closeSearch = { closeSearch.value = it },
+            viewState = viewState, closeSearch = { closeSearch.value = it },
             closeSearchValue = closeSearch.value,
-            searchText = searchText.value,
-            onChangeSearchText = { searchText.value = it },
             actioner = actioner,
             navController = navController
         )
@@ -103,19 +73,16 @@ fun JobScreenList(
 @Composable
 private fun JobList(
     modifier: Modifier,
-    onMenuClicked: () -> Job,
-    filterResultList: SnapshotStateList<String>,
     viewState: JobScreenState,
     closeSearch: (Boolean) -> Unit,
     closeSearchValue: Boolean,
-    searchText: String,
-    onChangeSearchText: (String) -> Unit,
     actioner: (JobScreenUiEvent) -> Unit,
     navController: NavHostController,
 ) {
     val state = rememberCollapsingToolbarScaffoldState()
     val lazyListState = rememberLazyListState()
-    val swipeRefreshState = rememberSwipeRefreshState(viewState.JobList is Loading || viewState.insertJobList is Loading)
+    val swipeRefreshState =
+        rememberSwipeRefreshState(viewState.JobList is Loading || viewState.insertJobList is Loading)
 
     CollapsingToolbarScaffold(
         modifier = Modifier
@@ -124,19 +91,13 @@ private fun JobList(
         scrollStrategy = ScrollStrategy.EnterAlways,
         toolbar = {
             JobTopBar(
-                onClickedFilterJobs = {
-                    onMenuClicked.invoke()
-                },
-                filterResultList = filterResultList,
                 actioner = { searchText -> actioner(JobScreenUiEvent.SearchJobsList(searchText)) },
                 closeSearch = closeSearch,
-                searchText = searchText,
-                onChangeSearchText = onChangeSearchText
             )
         }
     ) {
         if (viewState.insertJobList is Fail) {
-            FailJobListRequest(filterResultList, actioner)
+            FailJobListRequest(actioner)
         }
         when (viewState.JobList) {
 
@@ -144,12 +105,12 @@ private fun JobList(
                 LoadingShimmerJobList()
             }
             is Fail -> {
-                FailJobListRequest(filterResultList, actioner)
+                FailJobListRequest(actioner)
             }
             is Success -> {
                 val jobList = viewState.JobList.invoke() ?: listOf()
                 if (!closeSearchValue) {
-                    SearchJobsList(viewState.searchJobList, Modifier,navController)
+                    SearchJobsList(viewState.searchJobList, Modifier, navController)
                 } else {
                     SwipeRefresh(
                         modifier = Modifier.fillMaxSize(),
@@ -163,7 +124,6 @@ private fun JobList(
                             )
                         },
                         onRefresh = {
-                            if (filterResultList.filter { it.isEmpty() }.size == 2)
                                 actioner(JobScreenUiEvent.RefreshJobList)
                         }
                     ) {
@@ -207,7 +167,7 @@ private fun JobList(
         }
     }
     lazyListState.OnBottomReached {
-        if (viewState.JobList !is Loading && filterResultList.filter { it.isEmpty() }.size == 2 && searchText.isEmpty()) {
+        if (viewState.JobList !is Loading) {
             actioner(JobScreenUiEvent.ShowNextPage)
         }
     }
@@ -268,7 +228,6 @@ fun SearchJobsList(
 
 @Composable
 fun FailJobListRequest(
-    filterResultList: SnapshotStateList<String>,
     actioner: (JobScreenUiEvent) -> Unit
 ) {
     val openDialog = remember { mutableStateOf(false) }
@@ -280,15 +239,7 @@ fun FailJobListRequest(
         AlertDialogSample(
             openDialog.value, { openDialog.value = false },
             {
-                if (filterResultList.filter { it.isEmpty() }.size == 2)
-                    actioner(JobScreenUiEvent.ShowAllJobList)
-                else
-                    actioner(
-                        JobScreenUiEvent.FilterJobsList(
-                            filterResultList[0],
-                            filterResultList[1]
-                        )
-                    )
+                actioner(JobScreenUiEvent.ShowAllJobList)
             },
         )
     }

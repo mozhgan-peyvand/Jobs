@@ -13,10 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class JobViewModel @Inject constructor(
     private val insertJobListLocal: InsertJobList,
-    private val getJobList: GetJobList,
-    private val filterJobs: FilterJobList,
-    private val getLocationList: GetLocationList,
-    private val getRoleList: GetRoleList,
+    private val getJobList: GetJobList
 ) : BaseViewModel<JobScreenState, JobScreenUiEvent>(JobScreenState()), DefaultLifecycleObserver {
 
     private var searchResultJobList = listOf<JobDto>()
@@ -30,7 +27,6 @@ class JobViewModel @Inject constructor(
                 JobScreenUiEvent.ShowAllJobList -> insertJobList()
                 JobScreenUiEvent.RefreshJobList -> refresh()
                 JobScreenUiEvent.ShowNextPage -> getNextPage()
-                is JobScreenUiEvent.FilterJobsList -> filterJobs(action.role, action.city)
                 is JobScreenUiEvent.SearchJobsList -> searchJobs(action.searchText ?: "")
                 else -> throw IllegalArgumentException("unknown action: $action")
             }
@@ -49,8 +45,6 @@ class JobViewModel @Inject constructor(
             JobScreenState::insertJobList,
             onSuccess = {
                 getJobList()
-                getAllRoles()
-                getAllLocations()
             },
             onFail = {
                 setState { copy(insertJobList = Fail(it)) }
@@ -69,22 +63,6 @@ class JobViewModel @Inject constructor(
         insertJobList()
     }
 
-    private fun getAllLocations() {
-        getLocationList(Unit)
-        getLocationList.flow.execute(
-            reducer = { copy(LocationList = it) }
-        )
-    }
-
-    private fun getAllRoles() {
-        getRoleList(Unit)
-        getRoleList.flow.execute(
-            reducer = {
-                copy(RoleList = it)
-            }
-        )
-
-    }
 
     private fun searchJobs(searchText: String) {
         val searchResult = mutableListOf<JobDto>()
@@ -117,19 +95,6 @@ class JobViewModel @Inject constructor(
                 copy(JobList = it)
             },
             page = currentPage
-        )
-    }
-
-    private fun filterJobs(role: String? = null, city: String? = null) {
-        filterJobs(
-            FilterJobList.Params(
-                role = role,
-                city = city
-            )
-        )
-        filterJobs.flow.execute(reducer = {
-            copy(JobList = it)
-        }
         )
     }
 }
