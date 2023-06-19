@@ -7,7 +7,7 @@ import com.squareup.moshi.Moshi
 import java.lang.reflect.Type
 
 class DefaultIfNullFactory : JsonAdapter.Factory {
-    override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
+    override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*> {
         val delegate = moshi.nextAdapter<Any>(this, type, annotations)
         return object : JsonAdapter<Any>() {
             override fun fromJson(reader: JsonReader): Any? {

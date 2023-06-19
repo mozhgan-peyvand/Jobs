@@ -12,7 +12,6 @@ dependencies {
     addHilt()
     addRetrofit()
     addMoshi()
-    addKotshi()
     addCoroutine()
     addRoom()
 }

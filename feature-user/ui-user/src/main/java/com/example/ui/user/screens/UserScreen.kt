@@ -59,6 +59,8 @@ fun UserScreen(actioner: (UserScreenUiEvent) -> Unit, viewState: UserScreenState
         is Fail -> {
             FailUserListRequest(actioner = { actioner(UserScreenUiEvent.GetUserInfoList) })
         }
+
+        else -> {}
     }
     if (viewState.insertUserInfo is Fail) {
         FailUserListRequest(actioner = { actioner(UserScreenUiEvent.InsertUserInfoList) })

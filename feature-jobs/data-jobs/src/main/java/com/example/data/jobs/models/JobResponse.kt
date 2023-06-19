@@ -2,9 +2,9 @@ package com.example.data.jobs.models
 
 import com.example.base.models.JobDto
 import com.squareup.moshi.Json
-import se.ansman.kotshi.JsonSerializable
+import com.squareup.moshi.JsonClass
 
-@JsonSerializable
+@JsonClass(generateAdapter = true)
 data class JobResponse(
     val id: String? = null,
     val role: String? = null,
@@ -39,3 +39,15 @@ data class JobResponse(
         datePosted = datePosted
     )
 }
+
+@JsonClass(generateAdapter = true)
+data class JsonModel(
+    @Json(name = "id")
+    val id: String,
+    @Json(name = "employee_name")
+    val employeeName: String,
+    @Json(name = "employee_salary")
+    val employeeSalary: String,
+    @Json(name = "employee_age")
+    val employeeAge: String
+)

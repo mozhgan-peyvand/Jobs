@@ -1,8 +1,8 @@
 package com.example.base.api
 
-import se.ansman.kotshi.JsonSerializable
+import com.squareup.moshi.JsonClass
 
-@JsonSerializable
+@JsonClass(generateAdapter = true)
 data class PublicResponse<out T> (
     val count: Int? = null,
     val next: String? = null,
