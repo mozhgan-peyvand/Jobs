@@ -164,6 +164,8 @@ private fun JobList(
                     }
                 }
             }
+
+            else -> {}
         }
     }
     lazyListState.OnBottomReached {

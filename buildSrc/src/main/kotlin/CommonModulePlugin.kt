@@ -23,12 +23,12 @@ class CommonModulePlugin : Plugin<Project> {
                 compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
                 buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
                 compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_1_8
-                    targetCompatibility = JavaVersion.VERSION_1_8
+                    sourceCompatibility = JavaVersion.VERSION_11
+                    targetCompatibility = JavaVersion.VERSION_11
                 }
                 project.tasks.withType(KotlinCompile::class.java).configureEach {
                     kotlinOptions {
-                        jvmTarget = JavaVersion.VERSION_1_8.toString()
+                        jvmTarget = JavaVersion.VERSION_11.toString()
                         freeCompilerArgs = listOf("-Xjvm-default=all")
 
                     }
@@ -46,7 +46,7 @@ class CommonModulePlugin : Plugin<Project> {
 
                 }
 
-                composeOptions.kotlinCompilerExtensionVersion = "1.0.5"
+                composeOptions.kotlinCompilerExtensionVersion = "1.4.1"
                 buildFeatures.compose = true
                 flavorDimensions("mode")
                 productFlavors {
@@ -83,8 +83,7 @@ class CommonModulePlugin : Plugin<Project> {
             with(project) {
                 addCompose()
                 dependencies {
-                    add("implementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0")
-                    add("implementation", "androidx.core:core-ktx:1.7.0")
+                    add("implementation", "androidx.core:core-ktx:1.9.0")
                     // testing dependencies
                     add("testImplementation", "junit:junit:4.+")
                     add("androidTestImplementation", "androidx.test.ext:junit:1.1.3")

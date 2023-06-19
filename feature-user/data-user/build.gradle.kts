@@ -11,7 +11,6 @@ dependencies {
     implementation(project(":feature-user:domain-user"))
     addHilt()
     addMoshi()
-    addKotshi()
     addCoroutine()
     addRoom()
 }

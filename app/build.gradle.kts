@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
-        multiDexEnabled = true
+//        multiDexEnabled = true
         minSdk = BuildAndroidConfig.MIN_SDK_VERSION
         targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
         testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
@@ -71,7 +71,7 @@ android {
         }
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -81,7 +81,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.5"
+        kotlinCompilerExtensionVersion = "1.4.1"
     }
 
 }

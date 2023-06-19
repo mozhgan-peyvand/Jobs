@@ -5,11 +5,11 @@ object BuildAndroidConfig {
 
     const val APPLICATION_ID = "com.example.jobs"
     const val TEST_INSTRUMENTATION_RUNNER = "com.example.jobs"
-    const val COMPILE_SDK_VERSION = 32
+    const val COMPILE_SDK_VERSION = 33
     const val MIN_SDK_VERSION = 21
-    const val TARGET_SDK_VERSION = 32
+    const val TARGET_SDK_VERSION = 33
     const val SUPPORT_LIBRARY_VECTOR_DRAWABLES = true
-    const val BUILD_TOOLS_VERSION = "30.0.2"
+    const val BUILD_TOOLS_VERSION = "33.0.0"
 }
 
 object Ext {
@@ -17,7 +17,7 @@ object Ext {
     const val versionMajor = 0
     const val versionMinor = 0
     const val versionPatch = 0
-    const val minimumSdkVersion = 17
+    const val minimumSdkVersion = 21
 }
 
 fun generateVersionCode(): Int {
