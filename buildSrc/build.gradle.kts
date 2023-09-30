@@ -11,16 +11,16 @@ gradlePlugin {
 }
 repositories {
     mavenLocal()
-//    mavenCentral()
-//    google()
-    maven {
-        url = uri("https://nexus.partdp.ir/repository/part-android/")
-        artifactUrls("https://nexus.partdp.ir/repository/part-android/")
-        credentials {
-            username = "android-user"
-            password = "EL2BB+*wkXEaydY=/2>2Kx-tV4CV-%"
-        }
-    }
+    mavenCentral()
+    google()
+//    maven {
+//        url = uri("https://nexus.partdp.ir/repository/part-android/")
+//        artifactUrls("https://nexus.partdp.ir/repository/part-android/")
+//        credentials {
+//            username = "android-user"
+//            password = "EL2BB+*wkXEaydY=/2>2Kx-tV4CV-%"
+//        }
+//    }
 }
 object PluginsVersions {
     const val GRADLE_ANDROID = "7.3.1"
